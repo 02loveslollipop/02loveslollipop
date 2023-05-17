@@ -26,8 +26,8 @@
 
 <p align="center">     
     <br>
-     
-        Console.WriteLine(String.Format("「 I'm a computer and data science student from {0} 」","Colombia"));
+    
+  Console.WriteLine(String.Format("「 I'm a computer and data science student from {0} 」","Colombia"));
       
     </br>
 </p>
