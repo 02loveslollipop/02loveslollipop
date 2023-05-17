@@ -24,7 +24,7 @@
 </h3>
 
 
-<0 align="center">     
+<p align="center">     
     <br>
       <samp>
         Console.WriteLine(String.Format("「 I'm a computer and data science student from {0} 」","Colombia"));
