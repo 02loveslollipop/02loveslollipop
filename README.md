@@ -32,10 +32,6 @@
     </br>
 </p>
 
-<p align="center">
- <a href="https://dev.to/alsiam" target="_blank">
-  <img src="https://img.shields.io/badge/dev.to-0A0A0A?style=for-the-badge&logo=dev.to&logoColor=white" alt="alsiam" />
- </a>
  <a href="[https://twitter.com/alsiam_dev](https://twitter.com/02lovelollipop)" target="_blank">
   <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" />
  </a>
