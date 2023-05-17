@@ -24,13 +24,10 @@
 </h3>
 
 
-<h2 align="center"> 
-  <samp>
-    
+<h2 align="center">     
     <br>
     「 I'm a computer and data science student from <b>Colombia</b> 」
     </br>
-  </samp>
 </h2>
 
 <p align="center">
