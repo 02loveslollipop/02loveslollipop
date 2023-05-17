@@ -27,15 +27,14 @@
 </h3>
 
 
-<p align="center"> 
+<h2 align="center"> 
   <samp>
     
     <br>
     「 I'm a computer and data science student from <b>Colombia</b> 」
     </br>
-    <br>
   </samp>
-</p>
+</h2>
 
 <p align="center">
  <a href="https://dev.to/alsiam" target="_blank">
