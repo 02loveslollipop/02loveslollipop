@@ -24,11 +24,13 @@
 </h3>
 
 
-<h2 align="center">     
+<0 align="center">     
     <br>
-    「 I'm a computer and data science student from <b>Colombia</b> 」
+      <samp>
+        Console.WriteLine(String.Format("「 I'm a computer and data science student from {0} 」","Colombia"));
+      </samp>
     </br>
-</h2>
+</p>
 
 <p align="center">
  <a href="https://dev.to/alsiam" target="_blank">
