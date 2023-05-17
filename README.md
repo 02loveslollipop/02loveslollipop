@@ -32,7 +32,7 @@
     
     <br>
     「 I'm a computer and data science student from <b>Colombia</b> 」
-    <br>
+    </br>
     <br>
   </samp>
 </p>
