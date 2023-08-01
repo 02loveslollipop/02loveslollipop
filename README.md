@@ -36,8 +36,8 @@
 <p>
  <img align="right" width="350" src="/assets/programmer.gif" alt="Coding gif" />
   
- ✌️ &emsp; Enjoy to do programming <br/><br/>
- ❤️ &emsp; Love to writing code and specially Python<br/><br/>
+ 🎓 &emsp; Computer and Data Science Student <br/><br/>
+ ❤️ &emsp; Love writing code in Python<br/><br/>
  📧 &emsp; Reach me anytime: 02loveslollipop@boliversal.com<br/><br/>
 
 </p>
