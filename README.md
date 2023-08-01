@@ -57,6 +57,5 @@
 <p align="center"> 
     <a href="https://github.com/alsiam"><img alt="02loveslollipop's Github Stats" src="https://denvercoder1-github-readme-stats.vercel.app/api?username=02loveslollipop&show_icons=true&count_private=true&theme=react&border_color=7F3FBF&bg_color=0D1117&title_color=F85D7F&icon_color=F8D866" height="192px" width="49.5%"/></a>
   <a href="https://github.com/alsiam"><img alt="02loveslollipop's Top Languages" src="https://denvercoder1-github-readme-stats.vercel.app/api/top-langs/?username=02loveslollipop&langs_count=8&layout=compact&theme=react&border_color=7F3FBF&bg_color=0D1117&title_color=F85D7F&icon_color=F8D866" height="192px" width="49.5%"/></a>
-  <br/>
 </p>
 
