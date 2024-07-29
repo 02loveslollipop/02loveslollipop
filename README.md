@@ -5,17 +5,9 @@
 <!-- Intro  -->
 <h3 align="center">
         <samp>&gt; Hey There!, I am
-                <b><a target="_blank" href="https://boliversal.com">02loveslollipop</a></b>
+                <b><a target="_blank" href="https://02loveslollipop.uk">02loveslollipop</a></b>
         </samp>
 </h3>
-
-
-<p align="center">
- <a href="[https://twitter.com/alsiam_dev](https://twitter.com/02lovelollipop)" target="_blank">
-  <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" />
- </a>
-</p>
-<br />
 
  # About me
  
@@ -24,7 +16,7 @@
   
  🎓 &emsp; Computer and Data Science Student <br/><br/>
  ❤️ &emsp; Love writing code in Python<br/><br/>
- 📧 &emsp; Reach me anytime: 02loveslollipop@boliversal.com<br/><br/>
+ 📧 &emsp; Reach me anytime: contact@02loveslollipop.uk<br/><br/>
 
 </p>
 
