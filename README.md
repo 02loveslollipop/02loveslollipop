@@ -46,8 +46,22 @@
   </a>
 </p>
 
+
+<a href="https://github.com/anuraghazra/github-readme-stats">
+  <img height=200 align="center" src="https://github-readme-stats.vercel.app/api?username=anuraghazra" />
+</a>
+<a href="https://github.com/anuraghazra/convoychat">
+  <img height=200 align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=anuraghazra&layout=compact&langs_count=8&card_width=320" />
+</a>
+
 <p align="center"> 
-    <a href="https://github.com/02loveslollipop"><img alt="02loveslollipop's Github Stats" src="https://github.widgets.02labs.me/api?username=02loveslollipop&show_icons=true&count_private=true&theme=react&border_color=7F3FBF&bg_color=0D1117&title_color=F85D7F&icon_color=F8D866" height="192px" width="49.5%"/></a>
-  <a href="https://github.com/02loveslollipop"><img alt="02loveslollipop's Top Languages" src="https://github.widgets.02labs.me/api/top-langs/?username=02loveslollipop&layout=compact&theme=react&border_color=7F3FBF&bg_color=0D1117&title_color=F85D7F&icon_color=F8D866&langs_count=10&hide=Java,JavaScript,HTML,CSS,CMake,TypeScript&exclude_repo=SSL-and-Supervised-for-Character-Classification,SportsTown_v2,nyc-mineria-proyecto" height="192px" width="49.5%"/></a>
+    <a href="https://github.com/02loveslollipop">
+      <img alt="02loveslollipop's Github Stats" src="https://github.widgets.02labs.me/api?username=02loveslollipop&show_icons=true&count_private=true&theme=react&border_color=7F3FBF&bg_color=0D1117&title_color=F85D7F&icon_color=F8D866" height="200" width="49.5%" align="center"/>
+    </a>
+
+  
+  <a href="https://github.com/02loveslollipop">
+    <img alt="02loveslollipop's Top Languages" src="https://github.widgets.02labs.me/api/top-langs/?username=02loveslollipop&layout=compact&theme=react&border_color=7F3FBF&bg_color=0D1117&title_color=F85D7F&icon_color=F8D866&langs_count=8&hide=Java,JavaScript,HTML,CSS,CMake,TypeScript&exclude_repo=SSL-and-Supervised-for-Character-Classification,SportsTown_v2,nyc-mineria-proyecto" height="200" width="49.5%" align="center"/>
+  </a>
 </p>
 
