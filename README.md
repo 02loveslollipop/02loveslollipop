@@ -56,12 +56,12 @@
 
 <p align="center"> 
     <a href="https://github.com/02loveslollipop">
-      <img alt="02loveslollipop's Github Stats" src="https://github.widgets.02labs.me/api?username=02loveslollipop&show_icons=true&count_private=true&theme=react&border_color=7F3FBF&bg_color=0D1117&title_color=F85D7F&icon_color=F8D866" height="200" width="49.5%" align="center"/>
+      <img alt="02loveslollipop's Github Stats" src="https://github.widgets.02labs.me/api?username=02loveslollipop&show_icons=true&count_private=true&theme=react&border_color=7F3FBF&bg_color=0D1117&title_color=F85D7F&icon_color=F8D866&card_width=400" height="200" width="49.5%" align="center"/>
     </a>
 
   
   <a href="https://github.com/02loveslollipop">
-    <img alt="02loveslollipop's Top Languages" src="https://github.widgets.02labs.me/api/top-langs/?username=02loveslollipop&layout=compact&theme=react&border_color=7F3FBF&bg_color=0D1117&title_color=F85D7F&icon_color=F8D866&langs_count=8&hide=Java,JavaScript,HTML,CSS,CMake,TypeScript&exclude_repo=SSL-and-Supervised-for-Character-Classification,SportsTown_v2,nyc-mineria-proyecto" height="200" width="49.5%" align="center"/>
+    <img alt="02loveslollipop's Top Languages" src="https://github.widgets.02labs.me/api/top-langs/?username=02loveslollipop&layout=compact&theme=react&border_color=7F3FBF&bg_color=0D1117&title_color=F85D7F&icon_color=F8D866&langs_count=8&hide=Java,JavaScript,HTML,CSS,CMake,TypeScript&exclude_repo=SSL-and-Supervised-for-Character-Classification,SportsTown_v2,nyc-mineria-proyecto&card_width=400" height="200" width="49.5%" align="center"/>
   </a>
 </p>
 
