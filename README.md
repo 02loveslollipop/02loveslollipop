@@ -16,7 +16,8 @@
   
  🎓 &emsp; Pursuing dual bachelor’s degrees in Systems & Computer Engineering and Data Science<br/><br/>
  ❤️ &emsp; Love writing code in Python, Go and C<br/><br/>
- 📧 &emsp; Reach me anytime: contact@02loveslollipop.uk<br/><br/>
+ 📧 &emsp; Reach me anytime: contact@02labs.me<br/><br/>
+ 🌐 &emsp; My web page and blog: [02labs.me](https://02labs.me)  [blog.02labs.me](https://blog.02labs.me)<br/><br/>
 
 </p>
 
