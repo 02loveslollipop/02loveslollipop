@@ -171,15 +171,20 @@ def fetch_graphql(query, token, variables=None):
 
 
 def get_all_time_languages(token):
-    """Fetch all non-fork repos and aggregate language byte counts."""
+    """Fetch all non-fork repos (public and private) across all pages and aggregate language byte counts."""
     query = """
-    query {
+    query ($after: String) {
       viewer {
         login
-        repositories(first: 100, ownerAffiliations: [OWNER, COLLABORATOR, ORGANIZATION_MEMBER], orderBy: {field: PUSHED_AT, direction: DESC}) {
+        repositories(first: 100, after: $after, ownerAffiliations: [OWNER, COLLABORATOR, ORGANIZATION_MEMBER], orderBy: {field: PUSHED_AT, direction: DESC}) {
+          pageInfo {
+            hasNextPage
+            endCursor
+          }
           nodes {
             nameWithOwner
             isFork
+            isPrivate
             languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
               edges {
                 size
@@ -194,26 +199,45 @@ def get_all_time_languages(token):
       }
     }
     """
-    res = fetch_graphql(query, token)
-    if not res or "data" not in res:
-        print("Failed to fetch all-time languages.", file=sys.stderr)
-        return {}, "02loveslollipop"
-
-    username = res["data"]["viewer"]["login"]
+    has_next_page = True
+    after_cursor = None
     lang_bytes = {}
-    for repo in res["data"]["viewer"]["repositories"]["nodes"]:
-        if not repo or repo.get("isFork"):
-            continue
-        for edge in repo.get("languages", {}).get("edges", []) or []:
-            if not edge or not edge.get("node"):
-                continue
-            name = edge["node"]["name"]
-            size = edge.get("size", 0)
-            # Exclude markup / documentation languages from programming language counts if desired
-            if name in ["HTML", "TeX", "Markdown"]:
-                continue
-            lang_bytes[name] = lang_bytes.get(name, 0) + size
+    username = "02loveslollipop"
+    public_count = 0
+    private_count = 0
 
+    while has_next_page:
+        res = fetch_graphql(query, token, variables={"after": after_cursor})
+        if not res or "data" not in res or not res["data"].get("viewer"):
+            break
+
+        viewer = res["data"]["viewer"]
+        username = viewer.get("login", username)
+        repos_data = viewer.get("repositories", {})
+
+        for repo in repos_data.get("nodes", []):
+            if not repo or repo.get("isFork"):
+                continue
+            if repo.get("isPrivate"):
+                private_count += 1
+            else:
+                public_count += 1
+
+            for edge in repo.get("languages", {}).get("edges", []) or []:
+                if not edge or not edge.get("node"):
+                    continue
+                name = edge["node"]["name"]
+                size = edge.get("size", 0)
+                # Exclude pure markup / non-code documentation from programming language metrics
+                if name in ["HTML", "TeX", "Markdown"]:
+                    continue
+                lang_bytes[name] = lang_bytes.get(name, 0) + size
+
+        page_info = repos_data.get("pageInfo", {})
+        has_next_page = page_info.get("hasNextPage", False)
+        after_cursor = page_info.get("endCursor")
+
+    print(f"   Analyzed {public_count} public and {private_count} private repositories across all pages.")
     return lang_bytes, username
 
 
@@ -348,44 +372,14 @@ def format_bytes(size_bytes):
 
 
 def render_markdown_section(all_time, recent):
-    """Render the markdown table comparing All-Time and Currently Coding."""
-    total_all_time = sum(all_time.values()) or 1
-    total_recent = sum(recent.values()) or 1
-
-    sorted_all_time = sorted(
-        all_time.items(), key=lambda x: x[1], reverse=True
-    )[:6]
-    sorted_recent = sorted(recent.items(), key=lambda x: x[1], reverse=True)[:6]
-
-    md = []
-    md.append("<!-- START_SECTION:use_to_code -->")
-    md.append('<p align="center">')
-    md.append(
-        '  <img src="./assets/cards/code-ranking.svg" alt="Languages Ranking: All-Time vs Now" width="100%"/>'
-    )
-    md.append("</p>\n")
-
-    md.append("<details open>")
-    md.append("<summary><b>📊 Detailed Breakdown & Activity Metrics</b></summary>")
-    md.append("\n")
-
-    md.append(
-        "| Rank | 🏆 All-Time Language | Codebase Share | 🔥 Currently Coding (Last 30 Days) | Recent Share |"
-    )
-    md.append(
-        "| :---: | :--- | :--- | :--- | :--- |"
-    )
-
-    max_rows = max(len(sorted_all_time), len(sorted_recent))
-def render_markdown_section(all_time, recent):
     """Render the section for README.md with only the card visible and data for crawlers."""
     total_all_time = sum(all_time.values()) or 1
     total_recent = sum(recent.values()) or 1
 
     sorted_all_time = sorted(
         all_time.items(), key=lambda x: x[1], reverse=True
-    )[:8]
-    sorted_recent = sorted(recent.items(), key=lambda x: x[1], reverse=True)[:8]
+    )[:10]
+    sorted_recent = sorted(recent.items(), key=lambda x: x[1], reverse=True)[:10]
 
     md = []
     md.append("<!-- START_SECTION:use_to_code -->")
@@ -404,10 +398,26 @@ def render_markdown_section(all_time, recent):
     max_rows = max(len(sorted_all_time), len(sorted_recent))
     for i in range(max_rows):
         rank = f"{i+1}"
-        col_a = f"{sorted_all_time[i][0]} ({format_bytes(sorted_all_time[i][1])})" if i < len(sorted_all_time) else "-"
-        col_a_share = f"{(sorted_all_time[i][1] / total_all_time) * 100:.1f}%" if i < len(sorted_all_time) else "-"
-        col_r = f"{sorted_recent[i][0]} (+{sorted_recent[i][1]:,} lines)" if i < len(sorted_recent) else "-"
-        col_r_share = f"{(sorted_recent[i][1] / total_recent) * 100:.1f}%" if i < len(sorted_recent) else "-"
+        col_a = (
+            f"{sorted_all_time[i][0]} ({format_bytes(sorted_all_time[i][1])})"
+            if i < len(sorted_all_time)
+            else "-"
+        )
+        col_a_share = (
+            f"{(sorted_all_time[i][1] / total_all_time) * 100:.1f}%"
+            if i < len(sorted_all_time)
+            else "-"
+        )
+        col_r = (
+            f"{sorted_recent[i][0]} (+{sorted_recent[i][1]:,} lines)"
+            if i < len(sorted_recent)
+            else "-"
+        )
+        col_r_share = (
+            f"{(sorted_recent[i][1] / total_recent) * 100:.1f}%"
+            if i < len(sorted_recent)
+            else "-"
+        )
         md.append(f"| {rank} | {col_a} | {col_a_share} | {col_r} | {col_r_share} |")
 
     md.append("-->")
@@ -416,101 +426,120 @@ def render_markdown_section(all_time, recent):
 
 
 def render_svg_card(all_time, recent, output_path):
-    """Render a standalone dark SVG card showing All-Time vs Now rankings."""
+    """Render a standalone dark SVG card showing All-Time vs Now rankings (Top 10)."""
     total_all_time = sum(all_time.values()) or 1
     total_recent = sum(recent.values()) or 1
 
     sorted_all_time = sorted(
         all_time.items(), key=lambda x: x[1], reverse=True
-    )[:5]
-    sorted_recent = sorted(recent.items(), key=lambda x: x[1], reverse=True)[:5]
+    )[:10]
+    sorted_recent = sorted(recent.items(), key=lambda x: x[1], reverse=True)[:10]
 
     today_str = datetime.date.today().strftime("%B %d, %Y")
 
-    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 270" width="820" height="270" fill="none">
-  <defs>
-    <style>
-      .header {{ font: 600 17px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #F85D7F; }}
-      .subhead {{ font: 600 14px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #F8D866; }}
-      .label {{ font: 500 13px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #e6edf3; }}
-      .value {{ font: 400 12px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #8b949e; }}
-      .footer {{ font: 400 11px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #6e7681; }}
-    </style>
-    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0D1117" />
-      <stop offset="100%" stop-color="#161b22" />
-    </linearGradient>
-  </defs>
+    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 440" width="820" height="440" fill="none">
+  <style>
+    * {{
+      font-family: 'Segoe UI', Ubuntu, "Helvetica Neue", Sans-Serif;
+    }}
+    .header {{
+      font-weight: 700;
+      font-size: 18px;
+      fill: #fe428e;
+    }}
+    .subhead-trophy {{
+      font-weight: 600;
+      font-size: 14px;
+      fill: #f8d847;
+    }}
+    .subhead-fire {{
+      font-weight: 600;
+      font-size: 14px;
+      fill: #fe428e;
+    }}
+    .label {{
+      font-weight: 500;
+      font-size: 13px;
+      fill: #a9fef7;
+    }}
+    .value {{
+      font-weight: 400;
+      font-size: 12px;
+      fill: #ffffff;
+    }}
+    .footer {{
+      font-weight: 400;
+      font-size: 12px;
+      fill: #a9fef7;
+      opacity: 0.75;
+    }}
+  </style>
 
   <!-- Background Card -->
-  <rect x="1.5" y="1.5" width="817" height="267" rx="12" fill="url(#cardGrad)" stroke="#7F3FBF" stroke-width="2"/>
+  <rect x="1" y="1" width="818" height="438" rx="6" fill="#141321" stroke="#7F3FBF" stroke-width="1.5"/>
 
   <!-- Title Banner -->
-  <text x="30" y="36" class="header">Languages &amp; Tools Ranking</text>
-  <text x="790" y="36" text-anchor="end" class="footer">Updated: {today_str}</text>
-  <line x1="30" y1="48" x2="790" y2="48" stroke="#30363d" stroke-width="1"/>
+  <text x="25" y="33" class="header">Languages &amp; Tools Ranking</text>
+  <text x="795" y="33" text-anchor="end" class="footer">Updated: {today_str}</text>
+  <line x1="25" y1="46" x2="795" y2="46" stroke="#7F3FBF" stroke-opacity="0.3" stroke-width="1"/>
 
-  <!-- Column 1: All-Time Ranking -->
-  <g transform="translate(30, 68)">
+  <!-- Divider Line Between Columns -->
+  <line x1="410" y1="56" x2="410" y2="420" stroke="#7F3FBF" stroke-opacity="0.25" stroke-dasharray="3 3" stroke-width="1"/>
+
+  <!-- Column 1: All-Time Ranking (Top 10) -->
+  <g transform="translate(25, 70)">
     <!-- Material Symbols: Trophy (Rounded Filled) -->
-    <svg x="0" y="-14" width="18" height="18" viewBox="0 -960 960 960" fill="#F8D866">
+    <svg x="0" y="-15" width="18" height="18" viewBox="0 -960 960 960" fill="#f8d847">
       <path d="M284-526v-166H180v44q0 45 29.5 78.5T284-526Zm392 0q45-10 74.5-43.5T780-648v-44H676v166ZM450-180v-148q-54-11-96-46.5T296-463q-74-8-125-60t-51-125v-44q0-24.75 17.63-42.38Q155.25-752 180-752h104v-28q0-24.75 17.63-42.38Q319.25-840 344-840h272q24.75 0 42.38 17.62Q676-804.75 676-780v28h104q24.75 0 42.38 17.62Q840-716.75 840-692v44q0 73-51 125t-125 60q-16 53-58 88.5T510-328v148h122q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H328q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h122Z"/>
     </svg>
-    <text x="25" y="0" class="subhead">All-Time Codebase</text>
+    <text x="24" y="0" class="subhead-trophy">All-Time Codebase</text>
 """
 
-    # Add left column items
-    y_offset = 24
+    # Add left column items (Top 10)
+    y_offset = 26
     for i, (lang, size) in enumerate(sorted_all_time):
         color = LANGUAGE_COLORS.get(lang, "#8b949e")
         pct = (size / total_all_time) * 100
-        bar_width = int((pct / 100.0) * 230)
-        bar_width = max(6, min(230, bar_width))
+        bar_width = max(5, int((pct / 100.0) * 344))
         formatted_size = format_bytes(size)
 
         svg += f"""
     <!-- Item {i+1}: {lang} -->
-    <circle cx="6" cy="{y_offset - 4}" r="5" fill="{color}"/>
-    <text x="20" y="{y_offset}" class="label">{lang}</text>
-    <text x="350" y="{y_offset}" text-anchor="end" class="value">{formatted_size} ({pct:.1f}%)</text>
-    <!-- Progress Bar Track & Fill -->
-    <rect x="20" y="{y_offset + 6}" width="330" height="6" rx="3" fill="#21262d"/>
-    <rect x="20" y="{y_offset + 6}" width="{bar_width * 330 // 230}" height="6" rx="3" fill="{color}"/>
+    <circle cx="5" cy="{y_offset - 4}" r="4" fill="{color}"/>
+    <text x="16" y="{y_offset}" class="label">{lang}</text>
+    <text x="360" y="{y_offset}" text-anchor="end" class="value">{formatted_size} ({pct:.1f}%)</text>
+    <rect x="16" y="{y_offset + 6}" width="344" height="5" rx="2.5" fill="#222036"/>
+    <rect x="16" y="{y_offset + 6}" width="{bar_width}" height="5" rx="2.5" fill="{color}"/>
 """
-        y_offset += 38
+        y_offset += 34
 
     svg += """  </g>
 
-  <!-- Divider Line -->
-  <line x1="410" y1="60" x2="410" y2="245" stroke="#30363d" stroke-dasharray="4 4" stroke-width="1"/>
-
-  <!-- Column 2: Currently Coding (Past 30 Days) -->
-  <g transform="translate(435, 68)">
+  <!-- Column 2: Currently Coding (Past 30 Days - Top 10) -->
+  <g transform="translate(435, 70)">
     <!-- Material Symbols: Mode Heat (Rounded Filled) -->
-    <svg x="0" y="-14" width="18" height="18" viewBox="0 -960 960 960" fill="#F85D7F">
+    <svg x="0" y="-15" width="18" height="18" viewBox="0 -960 960 960" fill="#fe428e">
       <path d="M160-400q0-116 71.5-225T428-811q17-11 34.5-.5T480-780v72q0 34 23.5 57t57.5 23q18 0 33.5-7.5T622-658q8-9 18-12.5t19 2.5q66 45 103.5 116T800-400q0 95-49 171.5T622-113q23-26 35.5-58t12.5-67q0-38-14-71.5T615-370L480-502 346-370q-28 27-42 60.5T290-238q0 35 12.5 67t35.5 58q-80-39-129-115.5T160-400Zm320-18 92 90q18 18 28 41t10 49q0 53-38 90.5T480-110q-54 0-92-37.5T350-238q0-26 9.5-49t28.5-41l92-90Z"/>
     </svg>
-    <text x="25" y="0" class="subhead">Currently Coding (Past 30 Days)</text>
+    <text x="24" y="0" class="subhead-fire">Currently Coding (Past 30 Days)</text>
 """
 
-    # Add right column items
-    y_offset = 24
+    # Add right column items (Top 10)
+    y_offset = 26
     for i, (lang, lines) in enumerate(sorted_recent):
         color = LANGUAGE_COLORS.get(lang, "#8b949e")
         pct = (lines / total_recent) * 100
-        bar_width = int((pct / 100.0) * 230)
-        bar_width = max(6, min(230, bar_width))
+        bar_width = max(5, int((pct / 100.0) * 344))
 
         svg += f"""
     <!-- Item {i+1}: {lang} -->
-    <circle cx="6" cy="{y_offset - 4}" r="5" fill="{color}"/>
-    <text x="20" y="{y_offset}" class="label">{lang}</text>
-    <text x="350" y="{y_offset}" text-anchor="end" class="value">+{lines:,} lines ({pct:.1f}%)</text>
-    <!-- Progress Bar Track & Fill -->
-    <rect x="20" y="{y_offset + 6}" width="330" height="6" rx="3" fill="#21262d"/>
-    <rect x="20" y="{y_offset + 6}" width="{bar_width * 330 // 230}" height="6" rx="3" fill="{color}"/>
+    <circle cx="5" cy="{y_offset - 4}" r="4" fill="{color}"/>
+    <text x="16" y="{y_offset}" class="label">{lang}</text>
+    <text x="360" y="{y_offset}" text-anchor="end" class="value">+{lines:,} lines ({pct:.1f}%)</text>
+    <rect x="16" y="{y_offset + 6}" width="344" height="5" rx="2.5" fill="#222036"/>
+    <rect x="16" y="{y_offset + 6}" width="{bar_width}" height="5" rx="2.5" fill="{color}"/>
 """
-        y_offset += 38
+        y_offset += 34
 
     svg += """  </g>
 </svg>"""

@@ -36,14 +36,16 @@
 Data for search engine crawlers and screen readers:
 | Rank | All-Time Language | Codebase Share | Currently Coding (Last 30 Days) | Recent Share |
 | :--- | :--- | :--- | :--- | :--- |
-| 1 | Python (62.2 MB) | 55.7% | Python (+23,308 lines) | 36.1% |
-| 2 | Jupyter Notebook (42.5 MB) | 38.0% | Jupyter Notebook (+22,800 lines) | 35.3% |
-| 3 | Cython (1.4 MB) | 1.3% | TypeScript (+11,660 lines) | 18.0% |
-| 4 | TypeScript (1.1 MB) | 0.9% | JavaScript (+3,634 lines) | 5.6% |
-| 5 | Dart (886 KB) | 0.8% | Kotlin (+1,692 lines) | 2.6% |
-| 6 | C++ (862 KB) | 0.8% | SQL (+430 lines) | 0.7% |
-| 7 | JavaScript (570 KB) | 0.5% | CSS (+418 lines) | 0.6% |
-| 8 | CSS (354 KB) | 0.3% | Go (+361 lines) | 0.6% |
+| 1 | Python (62.2 MB) | 50.4% | Python (+16,950 lines) | 53.4% |
+| 2 | Jupyter Notebook (42.5 MB) | 34.4% | Jupyter Notebook (+11,400 lines) | 35.9% |
+| 3 | Java (10.3 MB) | 8.3% | Kotlin (+1,692 lines) | 5.3% |
+| 4 | TypeScript (2.6 MB) | 2.1% | JavaScript (+385 lines) | 1.2% |
+| 5 | Cython (1.4 MB) | 1.2% | Go (+361 lines) | 1.1% |
+| 6 | Dart (886 KB) | 0.7% | CSS (+300 lines) | 0.9% |
+| 7 | C++ (862 KB) | 0.7% | SQL (+269 lines) | 0.8% |
+| 8 | JavaScript (570 KB) | 0.5% | Shell (+212 lines) | 0.7% |
+| 9 | CSS (354 KB) | 0.3% | Dockerfile (+75 lines) | 0.2% |
+| 10 | C (325 KB) | 0.3% | TypeScript (+24 lines) | 0.1% |
 -->
 <!-- END_SECTION:use_to_code -->
 
