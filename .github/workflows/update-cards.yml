@@ -1,0 +1,80 @@
+name: Update Profile Cards
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # Runs daily at 00:00 UTC
+  workflow_dispatch:      # Allows manual run from GitHub Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  generate-cards:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+
+      - name: Ensure target directory exists
+        run: mkdir -p assets/cards
+
+      # 1. Streak Stats
+      - name: Generate Streak Stats
+        uses: DenverCoder1/github-readme-streak-stats@main
+        with:
+          options: user=02loveslollipop&theme=radical&border=7F3FBF&background=0D1117
+          path: assets/cards/streak-stats.svg
+          token: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+
+      # 2. Profile Summary Card (Profile Details)
+      - name: Generate Profile Details
+        uses: vn7n24fzkq/github-profile-summary-cards@release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+        with:
+          USERNAME: 02loveslollipop
+          THEME: radical
+          AUTO_PUSH: false
+
+      - name: Move Profile Details Card
+        run: |
+          if [ -f "profile-summary-card-output/radical/0-profile-details.svg" ]; then
+            mv profile-summary-card-output/radical/0-profile-details.svg assets/cards/profile-details.svg
+            rm -rf profile-summary-card-output
+          elif [ -f "profile-summary-card-output/radical/profile-details.svg" ]; then
+            mv profile-summary-card-output/radical/profile-details.svg assets/cards/profile-details.svg
+            rm -rf profile-summary-card-output
+          fi
+
+      # 3. Overall Stats Card
+      - name: Generate GitHub Stats
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: stats
+          options: username=02loveslollipop&show_icons=true&count_private=true&theme=react&border_color=7F3FBF&bg_color=0D1117&title_color=F85D7F&icon_color=F8D866&card_width=400
+          path: assets/cards/github-stats.svg
+          token: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+
+      # 4. Top Languages Card
+      - name: Generate Top Languages
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: top-langs
+          options: username=02loveslollipop&layout=compact&theme=react&border_color=7F3FBF&bg_color=0D1117&title_color=F85D7F&icon_color=F8D866&langs_count=8&hide=Java,JavaScript,HTML,CSS,CMake,TypeScript&exclude_repo=SSL-and-Supervised-for-Character-Classification,SportsTown_v2,nyc-mineria-proyecto&card_width=400
+          path: assets/cards/top-langs.svg
+          token: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+
+      # 5. Commit and Push
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/cards/*.svg
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update profile cards [skip ci]"
+            git push
+          else
+            echo "No changes detected in cards."
+          fi

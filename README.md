@@ -37,25 +37,22 @@
 
 <p align="center">
   <a href="https://github.com/02loveslollipop">
-    <img src="https://github-readme-streak-stats.herokuapp.com/?user=02loveslollipop&theme=radical&border=7F3FBF&background=0D1117" alt="02loveslollipop's GitHub streak"/>
+    <img src="./assets/cards/streak-stats.svg" alt="02loveslollipop's GitHub streak"/>
   </a>
 </p>
 
 <p align="center">
   <a href="https://github.com/02loveslollipop">
-    <img src="https://github.widgets.02labs.me/api/cards/profile-details?username=02loveslollipop&theme=radical" alt="02loveslollipop's GitHub Contribution"/>
+    <img src="./assets/cards/profile-details.svg" alt="02loveslollipop's GitHub Contribution"/>
   </a>
 </p>
 
-
 <p align="center"> 
-    <a href="https://github.com/02loveslollipop">
-      <img alt="02loveslollipop's Github Stats" src="https://github.widgets.02labs.me/api?username=02loveslollipop&show_icons=true&count_private=true&theme=react&border_color=7F3FBF&bg_color=0D1117&title_color=F85D7F&icon_color=F8D866&card_width=400" height="200" width="49.5%" align="center"/>
-    </a>
-
-  
   <a href="https://github.com/02loveslollipop">
-    <img alt="02loveslollipop's Top Languages" src="https://github.widgets.02labs.me/api/top-langs/?username=02loveslollipop&layout=compact&theme=react&border_color=7F3FBF&bg_color=0D1117&title_color=F85D7F&icon_color=F8D866&langs_count=8&hide=Java,JavaScript,HTML,CSS,CMake,TypeScript&exclude_repo=SSL-and-Supervised-for-Character-Classification,SportsTown_v2,nyc-mineria-proyecto&card_width=400" height="200" width="49.5%" align="center"/>
+    <img alt="02loveslollipop's Github Stats" src="./assets/cards/github-stats.svg" height="200" width="49.5%" align="center"/>
+  </a>
+  <a href="https://github.com/02loveslollipop">
+    <img alt="02loveslollipop's Top Languages" src="./assets/cards/top-langs.svg" height="200" width="49.5%" align="center"/>
   </a>
 </p>
 
