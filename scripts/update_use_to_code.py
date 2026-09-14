@@ -377,36 +377,40 @@ def render_markdown_section(all_time, recent):
     )
 
     max_rows = max(len(sorted_all_time), len(sorted_recent))
-    medals = ["🥇", "🥈", "🥉", "4️⃣", "5️⃣", "6️⃣"]
+def render_markdown_section(all_time, recent):
+    """Render the section for README.md with only the card visible and data for crawlers."""
+    total_all_time = sum(all_time.values()) or 1
+    total_recent = sum(recent.values()) or 1
 
+    sorted_all_time = sorted(
+        all_time.items(), key=lambda x: x[1], reverse=True
+    )[:8]
+    sorted_recent = sorted(recent.items(), key=lambda x: x[1], reverse=True)[:8]
+
+    md = []
+    md.append("<!-- START_SECTION:use_to_code -->")
+    md.append('<p align="center">')
+    md.append(
+        '  <img src="./assets/cards/code-ranking.svg" alt="Languages &amp; Tools Ranking: All-Time vs Currently Coding" width="100%"/>'
+    )
+    md.append("</p>\n")
+
+    # Data for search engines, web crawlers, and accessibility (hidden from visual rendering)
+    md.append("<!--")
+    md.append("Data for search engine crawlers and screen readers:")
+    md.append("| Rank | All-Time Language | Codebase Share | Currently Coding (Last 30 Days) | Recent Share |")
+    md.append("| :--- | :--- | :--- | :--- | :--- |")
+
+    max_rows = max(len(sorted_all_time), len(sorted_recent))
     for i in range(max_rows):
-        rank = medals[i] if i < len(medals) else f"{i+1}."
-
-        # All-Time column
-        if i < len(sorted_all_time):
-            lang_a, size_a = sorted_all_time[i]
-            pct_a = (size_a / total_all_time) * 100
-            bar_a = format_progress_bar(pct_a, length=12)
-            col_a = f"**{lang_a}** ({format_bytes(size_a)})"
-            col_a_share = f"`{bar_a}` {pct_a:.1f}%"
-        else:
-            col_a = "-"
-            col_a_share = "-"
-
-        # Recent column
-        if i < len(sorted_recent):
-            lang_r, lines_r = sorted_recent[i]
-            pct_r = (lines_r / total_recent) * 100
-            bar_r = format_progress_bar(pct_r, length=12)
-            col_r = f"**{lang_r}** (+{lines_r:,} lines)"
-            col_r_share = f"`{bar_r}` {pct_r:.1f}%"
-        else:
-            col_r = "-"
-            col_r_share = "-"
-
+        rank = f"{i+1}"
+        col_a = f"{sorted_all_time[i][0]} ({format_bytes(sorted_all_time[i][1])})" if i < len(sorted_all_time) else "-"
+        col_a_share = f"{(sorted_all_time[i][1] / total_all_time) * 100:.1f}%" if i < len(sorted_all_time) else "-"
+        col_r = f"{sorted_recent[i][0]} (+{sorted_recent[i][1]:,} lines)" if i < len(sorted_recent) else "-"
+        col_r_share = f"{(sorted_recent[i][1] / total_recent) * 100:.1f}%" if i < len(sorted_recent) else "-"
         md.append(f"| {rank} | {col_a} | {col_a_share} | {col_r} | {col_r_share} |")
 
-    md.append("\n</details>")
+    md.append("-->")
     md.append("<!-- END_SECTION:use_to_code -->")
     return "\n".join(md)
 
@@ -423,7 +427,7 @@ def render_svg_card(all_time, recent, output_path):
 
     today_str = datetime.date.today().strftime("%B %d, %Y")
 
-    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 330" width="820" height="330" fill="none">
+    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 270" width="820" height="270" fill="none">
   <defs>
     <style>
       .header {{ font: 600 17px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #F85D7F; }}
@@ -439,16 +443,20 @@ def render_svg_card(all_time, recent, output_path):
   </defs>
 
   <!-- Background Card -->
-  <rect x="1.5" y="1.5" width="817" height="327" rx="12" fill="url(#cardGrad)" stroke="#7F3FBF" stroke-width="2"/>
+  <rect x="1.5" y="1.5" width="817" height="267" rx="12" fill="url(#cardGrad)" stroke="#7F3FBF" stroke-width="2"/>
 
   <!-- Title Banner -->
-  <text x="30" y="38" class="header">⚡ Languages &amp; Tools Ranking</text>
-  <text x="790" y="38" text-anchor="end" class="footer">Updated: {today_str}</text>
-  <line x1="30" y1="52" x2="790" y2="52" stroke="#30363d" stroke-width="1"/>
+  <text x="30" y="36" class="header">Languages &amp; Tools Ranking</text>
+  <text x="790" y="36" text-anchor="end" class="footer">Updated: {today_str}</text>
+  <line x1="30" y1="48" x2="790" y2="48" stroke="#30363d" stroke-width="1"/>
 
   <!-- Column 1: All-Time Ranking -->
-  <g transform="translate(30, 72)">
-    <text x="0" y="0" class="subhead">🏆 All-Time Codebase</text>
+  <g transform="translate(30, 68)">
+    <!-- Material Symbols: Trophy (Rounded Filled) -->
+    <svg x="0" y="-14" width="18" height="18" viewBox="0 -960 960 960" fill="#F8D866">
+      <path d="M284-526v-166H180v44q0 45 29.5 78.5T284-526Zm392 0q45-10 74.5-43.5T780-648v-44H676v166ZM450-180v-148q-54-11-96-46.5T296-463q-74-8-125-60t-51-125v-44q0-24.75 17.63-42.38Q155.25-752 180-752h104v-28q0-24.75 17.63-42.38Q319.25-840 344-840h272q24.75 0 42.38 17.62Q676-804.75 676-780v28h104q24.75 0 42.38 17.62Q840-716.75 840-692v44q0 73-51 125t-125 60q-16 53-58 88.5T510-328v148h122q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H328q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h122Z"/>
+    </svg>
+    <text x="25" y="0" class="subhead">All-Time Codebase</text>
 """
 
     # Add left column items
@@ -466,19 +474,23 @@ def render_svg_card(all_time, recent, output_path):
     <text x="20" y="{y_offset}" class="label">{lang}</text>
     <text x="350" y="{y_offset}" text-anchor="end" class="value">{formatted_size} ({pct:.1f}%)</text>
     <!-- Progress Bar Track & Fill -->
-    <rect x="20" y="{y_offset + 8}" width="330" height="7" rx="3.5" fill="#21262d"/>
-    <rect x="20" y="{y_offset + 8}" width="{bar_width * 330 // 230}" height="7" rx="3.5" fill="{color}"/>
+    <rect x="20" y="{y_offset + 6}" width="330" height="6" rx="3" fill="#21262d"/>
+    <rect x="20" y="{y_offset + 6}" width="{bar_width * 330 // 230}" height="6" rx="3" fill="{color}"/>
 """
-        y_offset += 42
+        y_offset += 38
 
     svg += """  </g>
 
   <!-- Divider Line -->
-  <line x1="410" y1="65" x2="410" y2="280" stroke="#30363d" stroke-dasharray="4 4" stroke-width="1"/>
+  <line x1="410" y1="60" x2="410" y2="245" stroke="#30363d" stroke-dasharray="4 4" stroke-width="1"/>
 
   <!-- Column 2: Currently Coding (Past 30 Days) -->
-  <g transform="translate(435, 72)">
-    <text x="0" y="0" class="subhead">🔥 Currently Coding (Past 30 Days)</text>
+  <g transform="translate(435, 68)">
+    <!-- Material Symbols: Mode Heat (Rounded Filled) -->
+    <svg x="0" y="-14" width="18" height="18" viewBox="0 -960 960 960" fill="#F85D7F">
+      <path d="M160-400q0-116 71.5-225T428-811q17-11 34.5-.5T480-780v72q0 34 23.5 57t57.5 23q18 0 33.5-7.5T622-658q8-9 18-12.5t19 2.5q66 45 103.5 116T800-400q0 95-49 171.5T622-113q23-26 35.5-58t12.5-67q0-38-14-71.5T615-370L480-502 346-370q-28 27-42 60.5T290-238q0 35 12.5 67t35.5 58q-80-39-129-115.5T160-400Zm320-18 92 90q18 18 28 41t10 49q0 53-38 90.5T480-110q-54 0-92-37.5T350-238q0-26 9.5-49t28.5-41l92-90Z"/>
+    </svg>
+    <text x="25" y="0" class="subhead">Currently Coding (Past 30 Days)</text>
 """
 
     # Add right column items
@@ -495,16 +507,12 @@ def render_svg_card(all_time, recent, output_path):
     <text x="20" y="{y_offset}" class="label">{lang}</text>
     <text x="350" y="{y_offset}" text-anchor="end" class="value">+{lines:,} lines ({pct:.1f}%)</text>
     <!-- Progress Bar Track & Fill -->
-    <rect x="20" y="{y_offset + 8}" width="330" height="7" rx="3.5" fill="#21262d"/>
-    <rect x="20" y="{y_offset + 8}" width="{bar_width * 330 // 230}" height="7" rx="3.5" fill="{color}"/>
+    <rect x="20" y="{y_offset + 6}" width="330" height="6" rx="3" fill="#21262d"/>
+    <rect x="20" y="{y_offset + 6}" width="{bar_width * 330 // 230}" height="6" rx="3" fill="{color}"/>
 """
-        y_offset += 42
+        y_offset += 38
 
     svg += """  </g>
-
-  <!-- Footer Info -->
-  <line x1="30" y1="298" x2="790" y2="298" stroke="#30363d" stroke-width="1"/>
-  <text x="30" y="315" class="footer">✨ Dynamic statistics computed weekly from commits &amp; language distributions</text>
 </svg>"""
 
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
