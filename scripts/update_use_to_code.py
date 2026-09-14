@@ -362,6 +362,59 @@ def format_progress_bar(percentage, length=18):
     return "█" * filled + "░" * (length - filled)
 
 
+LANGUAGE_BYTES_PER_LINE = {
+    "Python": 35,
+    "Jupyter Notebook": 40,
+    "Java": 45,
+    "TypeScript": 38,
+    "JavaScript": 38,
+    "Cython": 35,
+    "Dart": 36,
+    "C++": 38,
+    "C": 35,
+    "CSS": 32,
+    "Kotlin": 36,
+    "Go": 32,
+    "Rust": 36,
+    "HTML": 35,
+    "SQL": 38,
+    "Shell": 30,
+    "Dockerfile": 32,
+    "Vue": 36,
+    "Svelte": 36,
+    "PHP": 38,
+    "Ruby": 32,
+    "Swift": 38,
+}
+
+
+def estimate_lines(size_bytes, lang):
+    """Estimate lines of code from byte size using language density."""
+    bpl = LANGUAGE_BYTES_PER_LINE.get(lang, 35)
+    return max(1, int(round(size_bytes / bpl)))
+
+
+def format_kb(size_bytes):
+    """Format bytes into KB string."""
+    kb = size_bytes / 1024.0
+    if kb >= 10:
+        return f"{kb:,.0f} KB"
+    elif kb >= 1:
+        return f"{kb:.1f} KB"
+    return f"{max(0.1, kb):.1f} KB"
+
+
+def format_lines_count(lines):
+    """Format lines count into human-readable compact string."""
+    if lines >= 1_000_000:
+        return f"{lines / 1_000_000:.2f}M lines"
+    elif lines >= 100_000:
+        return f"{lines / 1_000:.0f}k lines"
+    elif lines >= 1_000:
+        return f"{lines / 1_000:.1f}k lines"
+    return f"{lines:,} lines"
+
+
 def format_bytes(size_bytes):
     """Format bytes to human readable string."""
     if size_bytes >= 1024 * 1024:
@@ -392,33 +445,40 @@ def render_markdown_section(all_time, recent):
     # Data for search engines, web crawlers, and accessibility (hidden from visual rendering)
     md.append("<!--")
     md.append("Data for search engine crawlers and screen readers:")
-    md.append("| Rank | All-Time Language | Codebase Share | Currently Coding (Last 30 Days) | Recent Share |")
-    md.append("| :--- | :--- | :--- | :--- | :--- |")
+    md.append(
+        "| Rank | All-Time Language | Codebase (KB) | Est. Lines | Codebase Share | Currently Coding (Last 30 Days) | Recent Share |"
+    )
+    md.append(
+        "| :--- | :--- | :--- | :--- | :--- | :--- | :--- |"
+    )
 
     max_rows = max(len(sorted_all_time), len(sorted_recent))
     for i in range(max_rows):
         rank = f"{i+1}"
-        col_a = (
-            f"{sorted_all_time[i][0]} ({format_bytes(sorted_all_time[i][1])})"
-            if i < len(sorted_all_time)
-            else "-"
+        if i < len(sorted_all_time):
+            lang_a = sorted_all_time[i][0]
+            size_a = sorted_all_time[i][1]
+            kb_a = format_kb(size_a)
+            lines_a = format_lines_count(estimate_lines(size_a, lang_a))
+            share_a = f"{(size_a / total_all_time) * 100:.1f}%"
+        else:
+            lang_a = "-"
+            kb_a = "-"
+            lines_a = "-"
+            share_a = "-"
+
+        if i < len(sorted_recent):
+            lang_r = sorted_recent[i][0]
+            lines_r = sorted_recent[i][1]
+            recent_str = f"{lang_r} (+{lines_r:,} lines)"
+            share_r = f"{(lines_r / total_recent) * 100:.1f}%"
+        else:
+            recent_str = "-"
+            share_r = "-"
+
+        md.append(
+            f"| {rank} | {lang_a} | {kb_a} | {lines_a} | {share_a} | {recent_str} | {share_r} |"
         )
-        col_a_share = (
-            f"{(sorted_all_time[i][1] / total_all_time) * 100:.1f}%"
-            if i < len(sorted_all_time)
-            else "-"
-        )
-        col_r = (
-            f"{sorted_recent[i][0]} (+{sorted_recent[i][1]:,} lines)"
-            if i < len(sorted_recent)
-            else "-"
-        )
-        col_r_share = (
-            f"{(sorted_recent[i][1] / total_recent) * 100:.1f}%"
-            if i < len(sorted_recent)
-            else "-"
-        )
-        md.append(f"| {rank} | {col_a} | {col_a_share} | {col_r} | {col_r_share} |")
 
     md.append("-->")
     md.append("<!-- END_SECTION:use_to_code -->")
@@ -501,13 +561,16 @@ def render_svg_card(all_time, recent, output_path):
         color = LANGUAGE_COLORS.get(lang, "#8b949e")
         pct = (size / total_all_time) * 100
         bar_width = max(5, int((pct / 100.0) * 344))
-        formatted_size = format_bytes(size)
+        kb_str = format_kb(size)
+        lines_count = estimate_lines(size, lang)
+        lines_str = format_lines_count(lines_count)
+        metric_str = f"{kb_str} · {lines_str}"
 
         svg += f"""
     <!-- Item {i+1}: {lang} -->
     <circle cx="5" cy="{y_offset - 4}" r="4" fill="{color}"/>
     <text x="16" y="{y_offset}" class="label">{lang}</text>
-    <text x="360" y="{y_offset}" text-anchor="end" class="value">{formatted_size} ({pct:.1f}%)</text>
+    <text x="360" y="{y_offset}" text-anchor="end" class="value">{metric_str}</text>
     <rect x="16" y="{y_offset + 6}" width="344" height="5" rx="2.5" fill="#222036"/>
     <rect x="16" y="{y_offset + 6}" width="{bar_width}" height="5" rx="2.5" fill="{color}"/>
 """
