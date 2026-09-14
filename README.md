@@ -36,16 +36,16 @@
 Data for search engine crawlers and screen readers:
 | Rank | All-Time Language | Codebase (KB) | Est. Lines | Codebase Share | Currently Coding (Last 30 Days) | Recent Share |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 | Python | 63,723 KB | 1.86M lines | 50.7% | Python (+23,898 lines) | 32.2% |
-| 2 | Jupyter Notebook | 43,482 KB | 1.11M lines | 34.6% | Jupyter Notebook (+22,800 lines) | 30.7% |
-| 3 | Java | 10,539 KB | 240k lines | 8.4% | TypeScript (+11,660 lines) | 15.7% |
-| 4 | Cython | 1,478 KB | 43.3k lines | 1.2% | JavaScript (+11,099 lines) | 15.0% |
-| 5 | TypeScript | 1,083 KB | 29.2k lines | 0.9% | Kotlin (+1,692 lines) | 2.3% |
-| 6 | Dart | 886 KB | 25.2k lines | 0.7% | LaTeX (+1,377 lines) | 1.9% |
-| 7 | C++ | 862 KB | 23.2k lines | 0.7% | SQL (+556 lines) | 0.7% |
-| 8 | JavaScript | 788 KB | 21.2k lines | 0.6% | CSS (+418 lines) | 0.6% |
-| 9 | LaTeX | 451 KB | 13.2k lines | 0.4% | Go (+361 lines) | 0.5% |
-| 10 | CSS | 354 KB | 11.3k lines | 0.3% | Shell (+212 lines) | 0.3% |
+| 1 | Python | 63,723 KB | 1.86M lines | 75.7% | Python (+17,540 lines) | 79.2% |
+| 2 | Java | 10,539 KB | 240k lines | 12.5% | Kotlin (+1,692 lines) | 7.6% |
+| 3 | TypeScript | 2,684 KB | 72.3k lines | 3.2% | Jupyter Notebook (+1,241 lines) | 5.6% |
+| 4 | Cython | 1,478 KB | 43.3k lines | 1.8% | JavaScript (+385 lines) | 1.7% |
+| 5 | Dart | 886 KB | 25.2k lines | 1.1% | Go (+361 lines) | 1.6% |
+| 6 | JavaScript | 876 KB | 23.6k lines | 1.0% | CSS (+300 lines) | 1.4% |
+| 7 | C++ | 862 KB | 23.2k lines | 1.0% | SQL (+269 lines) | 1.2% |
+| 8 | LaTeX | 451 KB | 13.2k lines | 0.5% | Shell (+212 lines) | 1.0% |
+| 9 | Jupyter Notebook | 420 KB | 8.9k lines | 0.5% | Dockerfile (+75 lines) | 0.3% |
+| 10 | CSS | 354 KB | 11.3k lines | 0.4% | TypeScript (+24 lines) | 0.1% |
 -->
 <!-- END_SECTION:use_to_code -->
 
@@ -60,7 +60,7 @@ Data for search engine crawlers and screen readers:
 Weekly Contributed Projects Data (Ranked by Insertions):
 | Rank | Repository | Insertions This Week | Commits | Primary Languages |
 | :--- | :--- | :--- | :--- | :--- |
-| 1 | 03loveslollipop/cdp_2026 | +12,763 lines | 25 commits | Jupyter Notebook (95.6%), Python (4.1%) |
+| 1 | 03loveslollipop/cdp_2026 | +12,763 lines | 25 commits | Python (81.0%), Jupyter Notebook (13.6%), HTML (3.7%), PowerShell (0.5%) |
 | 2 | 02loveslollipop/MiPedido | +4,818 lines | 48 commits | Dart (34.8%), Python (25.6%), Kotlin (22.1%), C++ (5.8%), Go (5.6%), CMake (4.5%), HTML (1.1%), Swift (0.5%) |
 | 3 | 02loveslollipop/opsdesk | +2,444 lines | 36 commits | Python (70.2%), HTML (17.7%), CSS (9.2%), Dockerfile (1.6%), Makefile (1.3%) |
 | 4 | 02loveslollipop/02labs | +1,457 lines | 5 commits | Astro (28.6%), TypeScript (22.6%), CSS (20.1%), LaTeX (19.3%), JavaScript (5.8%), Python (2.3%), Shell (1.4%) |

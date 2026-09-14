@@ -57,12 +57,18 @@
       <rect x="25" y="8" width="770" height="8" rx="4" fill="white"/>
     </mask>
     <rect x="25" y="8" width="770" height="8" rx="4" fill="#222036"/>
-    <rect x="25.00" y="8" width="736.36" height="8" fill="#DA5B0B" mask="url(#bar-mask-0)"/>
-    <rect x="761.36" y="8" width="31.54" height="8" fill="#3572A5" mask="url(#bar-mask-0)"/>
-    <circle cx="29" cy="24.5" r="3.5" fill="#DA5B0B"/>
-    <text x="36" y="28" class="lang-legend">Jupyter Notebook 95.6%</text>
-    <circle cx="199.0" cy="24.5" r="3.5" fill="#3572A5"/>
-    <text x="206.0" y="28" class="lang-legend">Python 4.1%</text>
+    <rect x="25.00" y="8" width="623.84" height="8" fill="#3572A5" mask="url(#bar-mask-0)"/>
+    <rect x="648.84" y="8" width="104.63" height="8" fill="#DA5B0B" mask="url(#bar-mask-0)"/>
+    <rect x="753.48" y="8" width="28.18" height="8" fill="#e34c26" mask="url(#bar-mask-0)"/>
+    <rect x="781.66" y="8" width="4.11" height="8" fill="#012456" mask="url(#bar-mask-0)"/>
+    <circle cx="29" cy="24.5" r="3.5" fill="#3572A5"/>
+    <text x="36" y="28" class="lang-legend">Python 81.0%</text>
+    <circle cx="129.0" cy="24.5" r="3.5" fill="#DA5B0B"/>
+    <text x="136.0" y="28" class="lang-legend">Jupyter Notebook 13.6%</text>
+    <circle cx="299.0" cy="24.5" r="3.5" fill="#e34c26"/>
+    <text x="306.0" y="28" class="lang-legend">HTML 3.7%</text>
+    <circle cx="378.0" cy="24.5" r="3.5" fill="#012456"/>
+    <text x="385.0" y="28" class="lang-legend">PowerShell 0.5%</text>
   </g>
   <line x1="25" y1="114" x2="795" y2="114" stroke="#7F3FBF" stroke-opacity="0.2" stroke-dasharray="3 3" stroke-width="1"/>
 

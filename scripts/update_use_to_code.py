@@ -23,6 +23,17 @@ import urllib.request
 import urllib.error
 import subprocess
 
+try:
+    from scripts.jupyter_utils import (
+        get_all_jupyter_stats,
+        get_notebook_commit_additions,
+    )
+except ImportError:
+    from jupyter_utils import (
+        get_all_jupyter_stats,
+        get_notebook_commit_additions,
+    )
+
 # Extension to Language mapping
 EXTENSION_TO_LANGUAGE = {
     # Python & Data
@@ -186,6 +197,9 @@ def get_all_time_languages(token):
             nameWithOwner
             isFork
             isPrivate
+            defaultBranchRef {
+              name
+            }
             languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
               edges {
                 size
@@ -206,6 +220,7 @@ def get_all_time_languages(token):
     username = "02loveslollipop"
     public_count = 0
     private_count = 0
+    jupyter_repos = []
 
     while has_next_page:
         res = fetch_graphql(query, token, variables={"after": after_cursor})
@@ -224,6 +239,7 @@ def get_all_time_languages(token):
             else:
                 public_count += 1
 
+            has_jupyter = False
             for edge in repo.get("languages", {}).get("edges", []) or []:
                 if not edge or not edge.get("node"):
                     continue
@@ -234,14 +250,40 @@ def get_all_time_languages(token):
                 # Exclude pure markup / non-code documentation from programming language metrics
                 if name in ["HTML", "Markdown"]:
                     continue
+                if name == "Jupyter Notebook":
+                    has_jupyter = True
+                    continue
                 lang_bytes[name] = lang_bytes.get(name, 0) + size
+
+            if has_jupyter:
+                branch = (
+                    repo.get("defaultBranchRef", {}).get("name")
+                    if repo.get("defaultBranchRef")
+                    else "main"
+                )
+                jupyter_repos.append(
+                    {"nameWithOwner": repo["nameWithOwner"], "defaultBranch": branch}
+                )
 
         page_info = repos_data.get("pageInfo", {})
         has_next_page = page_info.get("hasNextPage", False)
         after_cursor = page_info.get("endCursor")
 
     print(f"   Analyzed {public_count} public and {private_count} private repositories across all pages.")
-    return lang_bytes, username
+
+    custom_lines = {}
+    if jupyter_repos:
+        print(f"   Running advance check on Jupyter notebooks across {len(jupyter_repos)} repositories...")
+        try:
+            j_lines, j_bytes, _ = get_all_jupyter_stats(token, jupyter_repos, github_request)
+            if j_bytes > 0:
+                lang_bytes["Jupyter Notebook"] = j_bytes
+                custom_lines["Jupyter Notebook"] = j_lines
+                print(f"   Jupyter code blocks: {j_lines:,} executable code lines ({format_kb(j_bytes)}).")
+        except Exception as e:
+            print(f"   Warning: Jupyter advance check failed: {e}", file=sys.stderr)
+
+    return lang_bytes, username, custom_lines
 
 
 def get_recent_activity(token, days=30):
@@ -297,8 +339,13 @@ def get_recent_activity(token, days=30):
             c_url = f"https://api.github.com/repos/{repo_name}/commits/{commit_sha}"
             c_data = github_request(c_url, token)
             if c_data and "files" in c_data:
+                parent_sha = (
+                    c_data["parents"][0]["sha"] if c_data.get("parents") else None
+                )
                 for f in c_data["files"]:
-                    add_file_additions(f, lang_lines)
+                    add_file_additions(
+                        f, lang_lines, repo_name, commit_sha, parent_sha, token
+                    )
         else:
             # Multiple commits: compare parent of earliest commit to latest commit
             earliest_commit = commits[-1]
@@ -310,27 +357,43 @@ def get_recent_activity(token, days=30):
             comp_data = github_request(comp_url, token)
             if comp_data and "files" in comp_data:
                 for f in comp_data["files"]:
-                    add_file_additions(f, lang_lines)
+                    add_file_additions(
+                        f, lang_lines, repo_name, latest_sha, base_sha, token
+                    )
                 # If earliest commit had no parent (initial commit), also add its own files
                 if not parents:
                     c_url = f"https://api.github.com/repos/{repo_name}/commits/{earliest_commit['sha']}"
                     c_data = github_request(c_url, token)
                     if c_data and "files" in c_data:
                         for f in c_data["files"]:
-                            add_file_additions(f, lang_lines)
+                            add_file_additions(
+                                f, lang_lines, repo_name, earliest_commit["sha"], None, token
+                            )
             else:
                 # Fallback: iterate commits if compare fails
                 for c in commits[:15]:
                     c_url = f"https://api.github.com/repos/{repo_name}/commits/{c['sha']}"
                     c_data = github_request(c_url, token)
                     if c_data and "files" in c_data:
+                        parent_sha = (
+                            c_data["parents"][0]["sha"] if c_data.get("parents") else None
+                        )
                         for f in c_data["files"]:
-                            add_file_additions(f, lang_lines)
+                            add_file_additions(
+                                f, lang_lines, repo_name, c["sha"], parent_sha, token
+                            )
 
     return lang_lines
 
 
-def add_file_additions(file_obj, lang_lines):
+def add_file_additions(
+    file_obj,
+    lang_lines,
+    repo_name=None,
+    commit_sha=None,
+    parent_sha=None,
+    token=None,
+):
     """Classify file by extension and accumulate addition count."""
     filename = file_obj.get("filename", "")
     additions = file_obj.get("additions", 0)
@@ -358,7 +421,14 @@ def add_file_additions(file_obj, lang_lines):
     if lang in ["HTML", "Markdown"]:
         return
 
-    lang_lines[lang] = lang_lines.get(lang, 0) + additions
+    # Advance check for Jupyter: count only executable code lines in code blocks
+    if lang == "Jupyter Notebook" and repo_name and commit_sha and token:
+        additions = get_notebook_commit_additions(
+            repo_name, commit_sha, parent_sha, filename, token
+        )
+
+    if additions > 0:
+        lang_lines[lang] = lang_lines.get(lang, 0) + additions
 
 
 def format_progress_bar(percentage, length=18):
@@ -430,7 +500,7 @@ def format_bytes(size_bytes):
     return f"{size_bytes} B"
 
 
-def render_markdown_section(all_time, recent):
+def render_markdown_section(all_time, recent, custom_lines=None):
     """Render the section for README.md with only the card visible and data for crawlers."""
     total_all_time = sum(all_time.values()) or 1
     total_recent = sum(recent.values()) or 1
@@ -465,7 +535,10 @@ def render_markdown_section(all_time, recent):
             lang_a = sorted_all_time[i][0]
             size_a = sorted_all_time[i][1]
             kb_a = format_kb(size_a)
-            lines_a = format_lines_count(estimate_lines(size_a, lang_a))
+            if custom_lines and lang_a in custom_lines:
+                lines_a = format_lines_count(custom_lines[lang_a])
+            else:
+                lines_a = format_lines_count(estimate_lines(size_a, lang_a))
             share_a = f"{(size_a / total_all_time) * 100:.1f}%"
         else:
             lang_a = "-"
@@ -491,7 +564,7 @@ def render_markdown_section(all_time, recent):
     return "\n".join(md)
 
 
-def render_svg_card(all_time, recent, output_path):
+def render_svg_card(all_time, recent, output_path, custom_lines=None):
     """Render a standalone dark SVG card showing All-Time vs Now rankings (Top 10)."""
     total_all_time = sum(all_time.values()) or 1
     total_recent = sum(recent.values()) or 1
@@ -568,7 +641,10 @@ def render_svg_card(all_time, recent, output_path):
         pct = (size / total_all_time) * 100
         bar_width = max(5, int((pct / 100.0) * 344))
         kb_str = format_kb(size)
-        lines_count = estimate_lines(size, lang)
+        if custom_lines and lang in custom_lines:
+            lines_count = custom_lines[lang]
+        else:
+            lines_count = estimate_lines(size, lang)
         lines_str = format_lines_count(lines_count)
         metric_str = f"{kb_str} · {lines_str}"
 
@@ -679,7 +755,7 @@ def update_readme(template_path, readme_path, rendered_section):
 def main():
     token = get_token()
     print("1. Fetching all-time language stats...")
-    all_time, username = get_all_time_languages(token)
+    all_time, username, custom_lines = get_all_time_languages(token)
     print(f"   Found {len(all_time)} languages across {username}'s repositories.")
 
     print("2. Fetching recent 30-day activity & line additions...")
@@ -693,10 +769,10 @@ def main():
     svg_path = os.path.join(base_dir, "assets", "cards", "code-ranking.svg")
 
     print("3. Generating SVG card...")
-    render_svg_card(all_time, recent, svg_path)
+    render_svg_card(all_time, recent, svg_path, custom_lines)
 
     print("4. Rendering README.md from template...")
-    section_md = render_markdown_section(all_time, recent)
+    section_md = render_markdown_section(all_time, recent, custom_lines)
     update_readme(template_path, readme_path, section_md)
 
     print("5. Generating weekly contributed repos card & updating README...")

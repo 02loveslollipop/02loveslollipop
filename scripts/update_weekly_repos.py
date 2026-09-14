@@ -16,6 +16,21 @@ import urllib.request
 import urllib.error
 import subprocess
 
+try:
+    from scripts.jupyter_utils import (
+        get_notebook_commit_additions,
+        analyze_repository_notebooks,
+        load_cache,
+        save_cache,
+    )
+except ImportError:
+    from jupyter_utils import (
+        get_notebook_commit_additions,
+        analyze_repository_notebooks,
+        load_cache,
+        save_cache,
+    )
+
 # Language Colors (consistent with profile widgets)
 LANGUAGE_COLORS = {
     "Python": "#3572A5",
@@ -122,6 +137,9 @@ def get_weekly_repos(token, days=7, limit=7):
               isPrivate
               description
               url
+              defaultBranchRef {{
+                name
+              }}
               primaryLanguage {{
                 name
                 color
@@ -157,6 +175,7 @@ def get_weekly_repos(token, days=7, limit=7):
 
     results = []
     meta_repo = f"{viewer_login}/{viewer_login}".lower()
+    cache = load_cache()
 
     for item in contribs:
         repo = item.get("repository")
@@ -187,7 +206,18 @@ def get_weekly_repos(token, days=7, limit=7):
                 f"https://api.github.com/repos/{repo_name}/commits/{commits[0]['sha']}",
                 token,
             )
-            if c_data and "stats" in c_data:
+            if c_data and "files" in c_data:
+                parent_sha = (
+                    c_data["parents"][0]["sha"] if c_data.get("parents") else None
+                )
+                for f in c_data["files"]:
+                    if f["filename"].endswith(".ipynb"):
+                        total_insertions += get_notebook_commit_additions(
+                            repo_name, commits[0]["sha"], parent_sha, f["filename"], token
+                        )
+                    else:
+                        total_insertions += f.get("additions", 0)
+            elif c_data and "stats" in c_data:
                 total_insertions = c_data["stats"].get("additions", 0)
         else:
             parents = commits[-1].get("parents", [])
@@ -198,22 +228,43 @@ def get_weekly_repos(token, days=7, limit=7):
                 token,
             )
             if comp and "files" in comp:
-                total_insertions = sum(f.get("additions", 0) for f in comp["files"])
+                for f in comp["files"]:
+                    if f["filename"].endswith(".ipynb"):
+                        total_insertions += get_notebook_commit_additions(
+                            repo_name, latest_sha, base_sha, f["filename"], token
+                        )
+                    else:
+                        total_insertions += f.get("additions", 0)
                 if not parents:
                     c_data = github_request(
                         f"https://api.github.com/repos/{repo_name}/commits/{commits[-1]['sha']}",
                         token,
                     )
-                    if c_data and "stats" in c_data:
-                        total_insertions += c_data["stats"].get("additions", 0)
+                    if c_data and "files" in c_data:
+                        for f in c_data["files"]:
+                            if f["filename"].endswith(".ipynb"):
+                                total_insertions += get_notebook_commit_additions(
+                                    repo_name, commits[-1]["sha"], None, f["filename"], token
+                                )
+                            else:
+                                total_insertions += f.get("additions", 0)
             else:
                 for c in commits[:15]:
                     c_data = github_request(
                         f"https://api.github.com/repos/{repo_name}/commits/{c['sha']}",
                         token,
                     )
-                    if c_data and "stats" in c_data:
-                        total_insertions += c_data["stats"].get("additions", 0)
+                    if c_data and "files" in c_data:
+                        parent_sha = (
+                            c_data["parents"][0]["sha"] if c_data.get("parents") else None
+                        )
+                        for f in c_data["files"]:
+                            if f["filename"].endswith(".ipynb"):
+                                total_insertions += get_notebook_commit_additions(
+                                    repo_name, c["sha"], parent_sha, f["filename"], token
+                                )
+                            else:
+                                total_insertions += f.get("additions", 0)
 
         raw_edges = repo.get("languages", {}).get("edges", []) or []
         langs = []
@@ -222,9 +273,22 @@ def get_weekly_repos(token, days=7, limit=7):
             name = edge["node"]["name"]
             size = edge.get("size", 0)
             name = LANGUAGE_ALIASES.get(name, name)
+            if name == "Jupyter Notebook":
+                branch = (
+                    repo.get("defaultBranchRef", {}).get("name")
+                    if repo.get("defaultBranchRef")
+                    else "main"
+                )
+                repo_jupyter = analyze_repository_notebooks(
+                    repo_name, branch, token, cache, github_request
+                )
+                if repo_jupyter and repo_jupyter.get("bytes", 0) > 0:
+                    size = repo_jupyter["bytes"]
             langs.append({"name": name, "size": size})
             total_size += size
 
+        save_cache(cache)
+        langs.sort(key=lambda x: x["size"], reverse=True)
         total_size = total_size or 1
 
         # Calculate percentages
