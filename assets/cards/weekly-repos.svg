@@ -144,31 +144,34 @@
   </g>
   <line x1="25" y1="276" x2="795" y2="276" stroke="#7F3FBF" stroke-opacity="0.2" stroke-dasharray="3 3" stroke-width="1"/>
 
-  <!-- Repo 4: 02loveslollipop/OpenCROW -->
+  <!-- Repo 4: 02loveslollipop/Ch0wn3rs-daily -->
   <g transform="translate(0, 300)">
     <!-- Folder Icon -->
     <svg x="25" y="-12" width="15" height="15" viewBox="0 -960 960 960" fill="#f8d847">
       <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Z"/>
     </svg>
-    <text x="46" y="0" class="repo-name">02loveslollipop/OpenCROW</text>
-    <text x="795" y="0" text-anchor="end" class="commit-count">+6 commits this week</text>
+    <text x="46" y="0" class="repo-name">02loveslollipop/Ch0wn3rs-daily</text>
+
+    <rect x="220" y="-12" width="52" height="16" rx="4" fill="#222036" stroke="#7F3FBF" stroke-width="1"/>
+    <text x="246" y="0" text-anchor="middle" class="private-badge">Private</text>
+    <text x="795" y="0" text-anchor="end" class="commit-count">+11 commits this week</text>
 
     <!-- Stacked Bar -->
     <mask id="bar-mask-3">
       <rect x="25" y="9" width="770" height="9" rx="4.5" fill="white"/>
     </mask>
     <rect x="25" y="9" width="770" height="9" rx="4.5" fill="#222036"/>
-    <rect x="25.00" y="9" width="710.02" height="9" fill="#3572A5" mask="url(#bar-mask-3)"/>
-    <rect x="735.02" y="9" width="33.61" height="9" fill="#89e051" mask="url(#bar-mask-3)"/>
-    <rect x="768.62" y="9" width="13.16" height="9" fill="#e34c26" mask="url(#bar-mask-3)"/>
-    <rect x="781.78" y="9" width="7.01" height="9" fill="#4F88C0" mask="url(#bar-mask-3)"/>
-    <circle cx="29" cy="28" r="3.5" fill="#3572A5"/>
-    <text x="37" y="32" class="lang-legend">Python 92.2%</text>
-    <circle cx="133.4" cy="28" r="3.5" fill="#89e051"/>
-    <text x="141.4" y="32" class="lang-legend">Shell 4.4%</text>
-    <circle cx="223.4" cy="28" r="3.5" fill="#e34c26"/>
-    <text x="231.4" y="32" class="lang-legend">HTML 1.7%</text>
-    <circle cx="306.2" cy="28" r="3.5" fill="#4F88C0"/>
-    <text x="314.2" y="32" class="lang-legend">Sage 0.9%</text>
+    <rect x="25.00" y="9" width="451.36" height="9" fill="#3178c6" mask="url(#bar-mask-3)"/>
+    <rect x="476.36" y="9" width="180.83" height="9" fill="#ff3e00" mask="url(#bar-mask-3)"/>
+    <rect x="657.19" y="9" width="81.51" height="9" fill="#563d7c" mask="url(#bar-mask-3)"/>
+    <rect x="738.70" y="9" width="55.62" height="9" fill="#f1e05a" mask="url(#bar-mask-3)"/>
+    <circle cx="29" cy="28" r="3.5" fill="#3178c6"/>
+    <text x="37" y="32" class="lang-legend">TypeScript 58.6%</text>
+    <circle cx="162.2" cy="28" r="3.5" fill="#ff3e00"/>
+    <text x="170.2" y="32" class="lang-legend">Svelte 23.5%</text>
+    <circle cx="266.6" cy="28" r="3.5" fill="#563d7c"/>
+    <text x="274.6" y="32" class="lang-legend">CSS 10.6%</text>
+    <circle cx="349.40000000000003" cy="28" r="3.5" fill="#f1e05a"/>
+    <text x="357.40000000000003" y="32" class="lang-legend">JavaScript 7.2%</text>
   </g>
 </svg>
