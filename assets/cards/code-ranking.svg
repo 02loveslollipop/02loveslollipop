@@ -32,34 +32,34 @@
     <!-- Item 1: Python -->
     <circle cx="6" cy="20" r="5" fill="#3572A5"/>
     <text x="20" y="24" class="label">Python</text>
-    <text x="350" y="24" text-anchor="end" class="value">62.2 MB (54.9%)</text>
+    <text x="350" y="24" text-anchor="end" class="value">62.2 MB (55.7%)</text>
     <!-- Progress Bar Track & Fill -->
     <rect x="20" y="30" width="330" height="6" rx="3" fill="#21262d"/>
-    <rect x="20" y="30" width="180" height="6" rx="3" fill="#3572A5"/>
+    <rect x="20" y="30" width="183" height="6" rx="3" fill="#3572A5"/>
 
     <!-- Item 2: Jupyter Notebook -->
     <circle cx="6" cy="58" r="5" fill="#DA5B0B"/>
     <text x="20" y="62" class="label">Jupyter Notebook</text>
-    <text x="350" y="62" text-anchor="end" class="value">42.5 MB (37.5%)</text>
+    <text x="350" y="62" text-anchor="end" class="value">42.5 MB (38.0%)</text>
     <!-- Progress Bar Track & Fill -->
     <rect x="20" y="68" width="330" height="6" rx="3" fill="#21262d"/>
-    <rect x="20" y="68" width="123" height="6" rx="3" fill="#DA5B0B"/>
+    <rect x="20" y="68" width="124" height="6" rx="3" fill="#DA5B0B"/>
 
-    <!-- Item 3: TypeScript -->
-    <circle cx="6" cy="96" r="5" fill="#3178c6"/>
-    <text x="20" y="100" class="label">TypeScript</text>
-    <text x="350" y="100" text-anchor="end" class="value">2.6 MB (2.3%)</text>
+    <!-- Item 3: Cython -->
+    <circle cx="6" cy="96" r="5" fill="#fed10a"/>
+    <text x="20" y="100" class="label">Cython</text>
+    <text x="350" y="100" text-anchor="end" class="value">1.4 MB (1.3%)</text>
     <!-- Progress Bar Track & Fill -->
     <rect x="20" y="106" width="330" height="6" rx="3" fill="#21262d"/>
-    <rect x="20" y="106" width="8" height="6" rx="3" fill="#3178c6"/>
+    <rect x="20" y="106" width="8" height="6" rx="3" fill="#fed10a"/>
 
-    <!-- Item 4: Cython -->
-    <circle cx="6" cy="134" r="5" fill="#fed10a"/>
-    <text x="20" y="138" class="label">Cython</text>
-    <text x="350" y="138" text-anchor="end" class="value">1.4 MB (1.3%)</text>
+    <!-- Item 4: TypeScript -->
+    <circle cx="6" cy="134" r="5" fill="#3178c6"/>
+    <text x="20" y="138" class="label">TypeScript</text>
+    <text x="350" y="138" text-anchor="end" class="value">1.1 MB (0.9%)</text>
     <!-- Progress Bar Track & Fill -->
     <rect x="20" y="144" width="330" height="6" rx="3" fill="#21262d"/>
-    <rect x="20" y="144" width="8" height="6" rx="3" fill="#fed10a"/>
+    <rect x="20" y="144" width="8" height="6" rx="3" fill="#3178c6"/>
 
     <!-- Item 5: Dart -->
     <circle cx="6" cy="172" r="5" fill="#00B4AB"/>
@@ -84,41 +84,41 @@
     <!-- Item 1: Python -->
     <circle cx="6" cy="20" r="5" fill="#3572A5"/>
     <text x="20" y="24" class="label">Python</text>
-    <text x="350" y="24" text-anchor="end" class="value">+16,942 lines (53.4%)</text>
+    <text x="350" y="24" text-anchor="end" class="value">+23,308 lines (36.1%)</text>
     <!-- Progress Bar Track & Fill -->
     <rect x="20" y="30" width="330" height="6" rx="3" fill="#21262d"/>
-    <rect x="20" y="30" width="175" height="6" rx="3" fill="#3572A5"/>
+    <rect x="20" y="30" width="117" height="6" rx="3" fill="#3572A5"/>
 
     <!-- Item 2: Jupyter Notebook -->
     <circle cx="6" cy="58" r="5" fill="#DA5B0B"/>
     <text x="20" y="62" class="label">Jupyter Notebook</text>
-    <text x="350" y="62" text-anchor="end" class="value">+11,400 lines (36.0%)</text>
+    <text x="350" y="62" text-anchor="end" class="value">+22,800 lines (35.3%)</text>
     <!-- Progress Bar Track & Fill -->
     <rect x="20" y="68" width="330" height="6" rx="3" fill="#21262d"/>
-    <rect x="20" y="68" width="117" height="6" rx="3" fill="#DA5B0B"/>
+    <rect x="20" y="68" width="116" height="6" rx="3" fill="#DA5B0B"/>
 
-    <!-- Item 3: Kotlin -->
-    <circle cx="6" cy="96" r="5" fill="#A97BFF"/>
-    <text x="20" y="100" class="label">Kotlin</text>
-    <text x="350" y="100" text-anchor="end" class="value">+1,692 lines (5.3%)</text>
+    <!-- Item 3: TypeScript -->
+    <circle cx="6" cy="96" r="5" fill="#3178c6"/>
+    <text x="20" y="100" class="label">TypeScript</text>
+    <text x="350" y="100" text-anchor="end" class="value">+11,660 lines (18.0%)</text>
     <!-- Progress Bar Track & Fill -->
     <rect x="20" y="106" width="330" height="6" rx="3" fill="#21262d"/>
-    <rect x="20" y="106" width="17" height="6" rx="3" fill="#A97BFF"/>
+    <rect x="20" y="106" width="58" height="6" rx="3" fill="#3178c6"/>
 
     <!-- Item 4: JavaScript -->
     <circle cx="6" cy="134" r="5" fill="#f1e05a"/>
     <text x="20" y="138" class="label">JavaScript</text>
-    <text x="350" y="138" text-anchor="end" class="value">+385 lines (1.2%)</text>
+    <text x="350" y="138" text-anchor="end" class="value">+3,634 lines (5.6%)</text>
     <!-- Progress Bar Track & Fill -->
     <rect x="20" y="144" width="330" height="6" rx="3" fill="#21262d"/>
-    <rect x="20" y="144" width="8" height="6" rx="3" fill="#f1e05a"/>
+    <rect x="20" y="144" width="17" height="6" rx="3" fill="#f1e05a"/>
 
-    <!-- Item 5: Go -->
-    <circle cx="6" cy="172" r="5" fill="#00ADD8"/>
-    <text x="20" y="176" class="label">Go</text>
-    <text x="350" y="176" text-anchor="end" class="value">+361 lines (1.1%)</text>
+    <!-- Item 5: Kotlin -->
+    <circle cx="6" cy="172" r="5" fill="#A97BFF"/>
+    <text x="20" y="176" class="label">Kotlin</text>
+    <text x="350" y="176" text-anchor="end" class="value">+1,692 lines (2.6%)</text>
     <!-- Progress Bar Track & Fill -->
     <rect x="20" y="182" width="330" height="6" rx="3" fill="#21262d"/>
-    <rect x="20" y="182" width="8" height="6" rx="3" fill="#00ADD8"/>
+    <rect x="20" y="182" width="8" height="6" rx="3" fill="#A97BFF"/>
   </g>
 </svg>
