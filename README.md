@@ -36,18 +36,36 @@
 Data for search engine crawlers and screen readers:
 | Rank | All-Time Language | Codebase (KB) | Est. Lines | Codebase Share | Currently Coding (Last 30 Days) | Recent Share |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 | Python | 63,706 KB | 1.86M lines | 51.0% | Python (+23,400 lines) | 36.2% |
-| 2 | Jupyter Notebook | 43,482 KB | 1.11M lines | 34.8% | Jupyter Notebook (+22,800 lines) | 35.2% |
-| 3 | Java | 10,539 KB | 240k lines | 8.4% | TypeScript (+11,660 lines) | 18.0% |
-| 4 | Cython | 1,478 KB | 43.3k lines | 1.2% | JavaScript (+3,634 lines) | 5.6% |
-| 5 | TypeScript | 1,083 KB | 29.2k lines | 0.9% | Kotlin (+1,692 lines) | 2.6% |
-| 6 | Dart | 886 KB | 25.2k lines | 0.7% | SQL (+430 lines) | 0.7% |
-| 7 | C++ | 862 KB | 23.2k lines | 0.7% | CSS (+418 lines) | 0.6% |
-| 8 | JavaScript | 570 KB | 15.4k lines | 0.5% | Go (+361 lines) | 0.6% |
-| 9 | CSS | 354 KB | 11.3k lines | 0.3% | Shell (+212 lines) | 0.3% |
-| 10 | C | 325 KB | 9.5k lines | 0.3% | Dockerfile (+75 lines) | 0.1% |
+| 1 | Python | 63,706 KB | 1.86M lines | 50.2% | Python (+17,042 lines) | 53.6% |
+| 2 | Jupyter Notebook | 43,482 KB | 1.11M lines | 34.3% | Jupyter Notebook (+11,400 lines) | 35.8% |
+| 3 | Java | 10,539 KB | 240k lines | 8.3% | Kotlin (+1,692 lines) | 5.3% |
+| 4 | TypeScript | 2,684 KB | 72.3k lines | 2.1% | JavaScript (+385 lines) | 1.2% |
+| 5 | Cython | 1,478 KB | 43.3k lines | 1.2% | Go (+361 lines) | 1.1% |
+| 6 | Dart | 886 KB | 25.2k lines | 0.7% | CSS (+300 lines) | 0.9% |
+| 7 | C++ | 862 KB | 23.2k lines | 0.7% | SQL (+269 lines) | 0.8% |
+| 8 | JavaScript | 570 KB | 15.4k lines | 0.4% | Shell (+212 lines) | 0.7% |
+| 9 | LaTeX | 451 KB | 13.2k lines | 0.4% | Dockerfile (+75 lines) | 0.2% |
+| 10 | CSS | 354 KB | 11.3k lines | 0.3% | TypeScript (+24 lines) | 0.1% |
 -->
 <!-- END_SECTION:use_to_code -->
+
+<br/>
+
+<!-- START_SECTION:weekly_repos -->
+<p align="center">
+  <img src="./assets/cards/weekly-repos.svg" alt="Top Contributed Repositories (This Week)" width="100%"/>
+</p>
+
+<!--
+Weekly Contributed Repositories Data:
+| Repository | Commits This Week | Primary Languages |
+| :--- | :--- | :--- |
+| 02loveslollipop/MiPedido | 48 commits | Dart (34.8%), Python (25.6%), Kotlin (22.1%), C++ (5.8%), Go (5.6%), CMake (4.5%), HTML (1.1%), Swift (0.5%) |
+| 02loveslollipop/opsdesk | 36 commits | Python (70.2%), HTML (17.7%), CSS (9.2%), Dockerfile (1.6%), Makefile (1.3%) |
+| 03loveslollipop/cdp_2026 | 25 commits | Jupyter Notebook (95.6%), Python (4.1%) |
+| 02loveslollipop/OpenCROW | 6 commits | Python (92.2%), Shell (4.4%), HTML (1.7%), Sage (0.9%) |
+-->
+<!-- END_SECTION:weekly_repos -->
 
 <br/>
 

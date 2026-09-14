@@ -71,8 +71,8 @@ EXTENSION_TO_LANGUAGE = {
     ".dockerfile": "Dockerfile",
     "dockerfile": "Dockerfile",
     ".sql": "SQL",
-    ".tex": "TeX",
-    ".latex": "TeX",
+    ".tex": "LaTeX",
+    ".latex": "LaTeX",
     ".swift": "Swift",
     ".rb": "Ruby",
     ".php": "PHP",
@@ -109,6 +109,7 @@ LANGUAGE_COLORS = {
     "Shell": "#89e051",
     "Svelte": "#ff3e00",
     "Astro": "#ff5a03",
+    "LaTeX": "#3D6117",
     "TeX": "#3D6117",
     "HTML": "#e34c26",
     "CSS": "#563d7c",
@@ -228,8 +229,10 @@ def get_all_time_languages(token):
                     continue
                 name = edge["node"]["name"]
                 size = edge.get("size", 0)
+                if name == "TeX":
+                    name = "LaTeX"
                 # Exclude pure markup / non-code documentation from programming language metrics
-                if name in ["HTML", "TeX", "Markdown"]:
+                if name in ["HTML", "Markdown"]:
                     continue
                 lang_bytes[name] = lang_bytes.get(name, 0) + size
 
@@ -348,8 +351,11 @@ def add_file_additions(file_obj, lang_lines):
     if not lang:
         return
 
-    # Exclude HTML/TeX from primary coding stats if desired
-    if lang in ["HTML", "TeX"]:
+    if lang == "TeX":
+        lang = "LaTeX"
+
+    # Exclude pure markup from primary coding stats if desired
+    if lang in ["HTML", "Markdown"]:
         return
 
     lang_lines[lang] = lang_lines.get(lang, 0) + additions
@@ -692,6 +698,30 @@ def main():
     print("4. Rendering README.md from template...")
     section_md = render_markdown_section(all_time, recent)
     update_readme(template_path, readme_path, section_md)
+
+    print("5. Generating weekly contributed repos card & updating README...")
+    try:
+        try:
+            from update_weekly_repos import (
+                get_weekly_repos,
+                render_weekly_repos_card,
+                render_markdown_section as render_weekly_section,
+                update_readme as update_weekly_readme,
+            )
+        except ImportError:
+            from scripts.update_weekly_repos import (
+                get_weekly_repos,
+                render_weekly_repos_card,
+                render_markdown_section as render_weekly_section,
+                update_readme as update_weekly_readme,
+            )
+        weekly_svg = os.path.join(base_dir, "assets", "cards", "weekly-repos.svg")
+        weekly_repos = get_weekly_repos(token, days=7, limit=4)
+        render_weekly_repos_card(weekly_repos, weekly_svg)
+        weekly_md = render_weekly_section(weekly_repos)
+        update_weekly_readme(template_path, readme_path, weekly_md)
+    except Exception as e:
+        print(f"Weekly repos card update warning: {e}", file=sys.stderr)
 
     print("Done!")
 

@@ -34,9 +34,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md assets/cards/code-ranking.svg
+          git add README.md assets/cards/code-ranking.svg assets/cards/weekly-repos.svg
           if ! git diff --cached --quiet; then
-            git commit -m "chore: update use-to-code rankings [skip ci]"
+            git commit -m "chore: update use-to-code rankings and weekly repos [skip ci]"
             git push
           else
             echo "No changes detected in rankings."
