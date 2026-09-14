@@ -76,23 +76,23 @@
     <!-- Item 1: Python -->
     <circle cx="6" cy="20" r="5" fill="#3572A5"/>
     <text x="20" y="24" class="label">Python</text>
-    <text x="350" y="24" text-anchor="end" class="value">+16,342 lines (52.5%)</text>
+    <text x="350" y="24" text-anchor="end" class="value">+16,914 lines (53.4%)</text>
     <!-- Progress Bar Track & Fill -->
     <rect x="20" y="32" width="330" height="7" rx="3.5" fill="#21262d"/>
-    <rect x="20" y="32" width="172" height="7" rx="3.5" fill="#3572A5"/>
+    <rect x="20" y="32" width="175" height="7" rx="3.5" fill="#3572A5"/>
 
     <!-- Item 2: Jupyter Notebook -->
     <circle cx="6" cy="62" r="5" fill="#DA5B0B"/>
     <text x="20" y="66" class="label">Jupyter Notebook</text>
-    <text x="350" y="66" text-anchor="end" class="value">+11,400 lines (36.6%)</text>
+    <text x="350" y="66" text-anchor="end" class="value">+11,400 lines (36.0%)</text>
     <!-- Progress Bar Track & Fill -->
     <rect x="20" y="74" width="330" height="7" rx="3.5" fill="#21262d"/>
-    <rect x="20" y="74" width="120" height="7" rx="3.5" fill="#DA5B0B"/>
+    <rect x="20" y="74" width="117" height="7" rx="3.5" fill="#DA5B0B"/>
 
     <!-- Item 3: Kotlin -->
     <circle cx="6" cy="104" r="5" fill="#A97BFF"/>
     <text x="20" y="108" class="label">Kotlin</text>
-    <text x="350" y="108" text-anchor="end" class="value">+1,692 lines (5.4%)</text>
+    <text x="350" y="108" text-anchor="end" class="value">+1,692 lines (5.3%)</text>
     <!-- Progress Bar Track & Fill -->
     <rect x="20" y="116" width="330" height="7" rx="3.5" fill="#21262d"/>
     <rect x="20" y="116" width="17" height="7" rx="3.5" fill="#A97BFF"/>
@@ -108,7 +108,7 @@
     <!-- Item 5: Go -->
     <circle cx="6" cy="188" r="5" fill="#00ADD8"/>
     <text x="20" y="192" class="label">Go</text>
-    <text x="350" y="192" text-anchor="end" class="value">+361 lines (1.2%)</text>
+    <text x="350" y="192" text-anchor="end" class="value">+361 lines (1.1%)</text>
     <!-- Progress Bar Track & Fill -->
     <rect x="20" y="200" width="330" height="7" rx="3.5" fill="#21262d"/>
     <rect x="20" y="200" width="8" height="7" rx="3.5" fill="#00ADD8"/>

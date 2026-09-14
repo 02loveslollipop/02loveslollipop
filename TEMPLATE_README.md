@@ -27,26 +27,7 @@
 
 ## Use To Code
 
-<!-- START_SECTION:use_to_code -->
-<p align="center">
-  <img src="./assets/cards/code-ranking.svg" alt="Languages Ranking: All-Time vs Now" width="100%"/>
-</p>
-
-<details open>
-<summary><b>📊 Detailed Breakdown & Activity Metrics</b></summary>
-
-
-| Rank | 🏆 All-Time Language | Codebase Share | 🔥 Currently Coding (Last 30 Days) | Recent Share |
-| :---: | :--- | :--- | :--- | :--- |
-| 🥇 | **Python** (62.2 MB) | `███████░░░░░` 54.9% | **Python** (+16,914 lines) | `██████░░░░░░` 53.4% |
-| 🥈 | **Jupyter Notebook** (42.5 MB) | `█████░░░░░░░` 37.5% | **Jupyter Notebook** (+11,400 lines) | `████░░░░░░░░` 36.0% |
-| 🥉 | **TypeScript** (2.6 MB) | `░░░░░░░░░░░░` 2.3% | **Kotlin** (+1,692 lines) | `█░░░░░░░░░░░` 5.3% |
-| 4️⃣ | **Cython** (1.4 MB) | `░░░░░░░░░░░░` 1.3% | **JavaScript** (+385 lines) | `░░░░░░░░░░░░` 1.2% |
-| 5️⃣ | **Dart** (886 KB) | `░░░░░░░░░░░░` 0.8% | **Go** (+361 lines) | `░░░░░░░░░░░░` 1.1% |
-| 6️⃣ | **C++** (862 KB) | `░░░░░░░░░░░░` 0.7% | **CSS** (+300 lines) | `░░░░░░░░░░░░` 0.9% |
-
-</details>
-<!-- END_SECTION:use_to_code -->
+{use to code}
 
 <br/>
 

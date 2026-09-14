@@ -202,11 +202,13 @@ def get_all_time_languages(token):
     username = res["data"]["viewer"]["login"]
     lang_bytes = {}
     for repo in res["data"]["viewer"]["repositories"]["nodes"]:
-        if repo.get("isFork"):
+        if not repo or repo.get("isFork"):
             continue
-        for edge in repo.get("languages", {}).get("edges", []):
+        for edge in repo.get("languages", {}).get("edges", []) or []:
+            if not edge or not edge.get("node"):
+                continue
             name = edge["node"]["name"]
-            size = edge["size"]
+            size = edge.get("size", 0)
             # Exclude markup / documentation languages from programming language counts if desired
             if name in ["HTML", "TeX", "Markdown"]:
                 continue
@@ -249,8 +251,10 @@ def get_recent_activity(token, days=30):
     lang_lines = {}
 
     for item in repos:
+        if not item or not item.get("repository") or not item["repository"].get("nameWithOwner"):
+            continue
         repo_name = item["repository"]["nameWithOwner"]
-        count = item["contributions"]["totalCount"]
+        count = item.get("contributions", {}).get("totalCount", 0)
         if count == 0:
             continue
 
@@ -509,10 +513,34 @@ def render_svg_card(all_time, recent, output_path):
     print(f"Generated SVG card at: {output_path}")
 
 
-def update_readme(readme_path, rendered_section):
-    """Update README.md between comment delimiters."""
+def update_readme(template_path, readme_path, rendered_section):
+    """Render README.md from TEMPLATE_README.md by replacing {use to code}."""
+    if os.path.exists(template_path):
+        with open(template_path, "r", encoding="utf-8") as f:
+            template_content = f.read()
+
+        placeholder_pattern = re.compile(
+            r"(\{use[\s_]+to[\s_]+code\}|<!--\s*USE_TO_CODE\s*-->)", re.IGNORECASE
+        )
+        if placeholder_pattern.search(template_content):
+            new_content = placeholder_pattern.sub(rendered_section, template_content)
+        else:
+            heading = "## Use To Code"
+            if heading in template_content:
+                new_content = template_content.replace(
+                    heading, f"{heading}\n\n{rendered_section}"
+                )
+            else:
+                new_content = template_content + f"\n\n{heading}\n\n{rendered_section}\n"
+
+        with open(readme_path, "w", encoding="utf-8") as f:
+            f.write(new_content)
+        print(f"Successfully rendered {readme_path} from {template_path}.")
+        return True
+
+    # Fallback to editing README.md directly if template does not exist
     if not os.path.exists(readme_path):
-        print(f"File {readme_path} not found.", file=sys.stderr)
+        print(f"Neither {template_path} nor {readme_path} found.", file=sys.stderr)
         return False
 
     with open(readme_path, "r", encoding="utf-8") as f:
@@ -528,7 +556,6 @@ def update_readme(readme_path, rendered_section):
     if pattern.search(content):
         new_content = pattern.sub(rendered_section, content)
     else:
-        # If delimiters don't exist yet, insert after '## Use To Code'
         heading = "## Use To Code"
         if heading in content:
             new_content = content.replace(
@@ -555,15 +582,16 @@ def main():
 
     # Paths
     base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    template_path = os.path.join(base_dir, "TEMPLATE_README.md")
     readme_path = os.path.join(base_dir, "README.md")
     svg_path = os.path.join(base_dir, "assets", "cards", "code-ranking.svg")
 
     print("3. Generating SVG card...")
     render_svg_card(all_time, recent, svg_path)
 
-    print("4. Updating README.md...")
+    print("4. Rendering README.md from template...")
     section_md = render_markdown_section(all_time, recent)
-    update_readme(readme_path, section_md)
+    update_readme(template_path, readme_path, section_md)
 
     print("Done!")
 
