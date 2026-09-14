@@ -2,9 +2,9 @@
 """
 update_weekly_repos.py
 
-Analyzes weekly GitHub contributions to identify top contributed repositories
-in the past 7 days and renders a stacked-bar card (assets/cards/weekly-repos.svg)
-showing the language breakdown for each repository.
+Analyzes weekly GitHub contributions to identify top public repositories
+by code insertions (lines added) in the past 7 days, and renders a stacked-bar
+card (assets/cards/weekly-repos.svg) showing language breakdown for each repository.
 """
 
 import os
@@ -103,8 +103,8 @@ def fetch_graphql(query, token, variables=None):
     )
 
 
-def get_weekly_repos(token, days=7, limit=4):
-    """Fetch top contributed repositories in the past N days and their language distributions."""
+def get_weekly_repos(token, days=7, limit=7):
+    """Fetch top contributed PUBLIC repositories in the past N days, ranked by insertions."""
     now = datetime.datetime.now(datetime.timezone.utc)
     since_date = now - datetime.timedelta(days=days)
     since_iso = since_date.isoformat()
@@ -115,7 +115,7 @@ def get_weekly_repos(token, days=7, limit=4):
       viewer {{
         login
         contributionsCollection(from: "{since_iso}", to: "{now_iso}") {{
-          commitContributionsByRepository(maxRepositories: 15) {{
+          commitContributionsByRepository(maxRepositories: 25) {{
             repository {{
               name
               nameWithOwner
@@ -162,13 +162,58 @@ def get_weekly_repos(token, days=7, limit=4):
         repo = item.get("repository")
         if not repo or not repo.get("nameWithOwner"):
             continue
-        commits = item.get("contributions", {}).get("totalCount", 0)
-        if commits == 0:
+
+        # Ignore private repositories as requested
+        if repo.get("isPrivate"):
             continue
 
-        # Filter out meta profile repo unless there are very few active repos
-        if repo["nameWithOwner"].lower() == meta_repo and len(contribs) > 3:
+        commits_count = item.get("contributions", {}).get("totalCount", 0)
+        if commits_count == 0:
             continue
+
+        repo_name = repo["nameWithOwner"]
+        if repo_name.lower() == meta_repo and len(contribs) > 3:
+            continue
+
+        # Fetch commits in past N days to calculate exact code additions (insertions)
+        commits_url = f"https://api.github.com/repos/{repo_name}/commits?since={since_iso}&per_page=100"
+        commits = github_request(commits_url, token)
+        if not commits or not isinstance(commits, list) or len(commits) == 0:
+            continue
+
+        total_insertions = 0
+        if len(commits) == 1:
+            c_data = github_request(
+                f"https://api.github.com/repos/{repo_name}/commits/{commits[0]['sha']}",
+                token,
+            )
+            if c_data and "stats" in c_data:
+                total_insertions = c_data["stats"].get("additions", 0)
+        else:
+            parents = commits[-1].get("parents", [])
+            base_sha = parents[0]["sha"] if parents else commits[-1]["sha"]
+            latest_sha = commits[0]["sha"]
+            comp = github_request(
+                f"https://api.github.com/repos/{repo_name}/compare/{base_sha}...{latest_sha}",
+                token,
+            )
+            if comp and "files" in comp:
+                total_insertions = sum(f.get("additions", 0) for f in comp["files"])
+                if not parents:
+                    c_data = github_request(
+                        f"https://api.github.com/repos/{repo_name}/commits/{commits[-1]['sha']}",
+                        token,
+                    )
+                    if c_data and "stats" in c_data:
+                        total_insertions += c_data["stats"].get("additions", 0)
+            else:
+                for c in commits[:15]:
+                    c_data = github_request(
+                        f"https://api.github.com/repos/{repo_name}/commits/{c['sha']}",
+                        token,
+                    )
+                    if c_data and "stats" in c_data:
+                        total_insertions += c_data["stats"].get("additions", 0)
 
         raw_edges = repo.get("languages", {}).get("edges", []) or []
         langs = []
@@ -200,27 +245,26 @@ def get_weekly_repos(token, days=7, limit=4):
             {
                 "name": repo["name"],
                 "nameWithOwner": repo["nameWithOwner"],
-                "isPrivate": repo.get("isPrivate", False),
+                "isPrivate": False,
                 "url": repo.get("url", f"https://github.com/{repo['nameWithOwner']}"),
-                "commits": commits,
+                "commits": commits_count,
+                "insertions": total_insertions,
                 "languages": lang_percentages,
             }
         )
 
-        if len(results) >= limit:
-            break
-
-    return results
+    # Rank strictly by insertions descending
+    results.sort(key=lambda x: x["insertions"], reverse=True)
+    return results[:limit]
 
 
 def render_weekly_repos_card(repos, output_path):
-    """Render a standalone dark SVG card showing top contributed repos with stacked bars."""
+    """Render a standalone dark SVG card showing top public repos with stacked bars."""
     today_str = datetime.date.today().strftime("%B %d, %Y")
 
     num_repos = len(repos)
-    # Calculate height dynamically based on number of repos
-    row_height = 76
-    card_height = max(240, 68 + num_repos * row_height + 18)
+    row_height = 68
+    card_height = max(220, 66 + num_repos * row_height + 14)
     card_width = 820
 
     svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {card_width} {card_height}" width="{card_width}" height="{card_height}" fill="none">
@@ -244,7 +288,7 @@ def render_weekly_repos_card(repos, output_path):
       font-size: 14px;
       fill: #fe428e;
     }}
-    .commit-count {{
+    .insertions-count {{
       font-weight: 600;
       font-size: 12px;
       fill: #a9fef7;
@@ -253,11 +297,6 @@ def render_weekly_repos_card(repos, output_path):
       font-weight: 500;
       font-size: 11px;
       fill: #ffffff;
-    }}
-    .private-badge {{
-      font-weight: 600;
-      font-size: 10px;
-      fill: #f8d847;
     }}
   </style>
 
@@ -269,26 +308,25 @@ def render_weekly_repos_card(repos, output_path):
   <svg x="25" y="18" width="18" height="18" viewBox="0 -960 960 960" fill="#fe428e">
     <path d="M160-400q0-116 71.5-225T428-811q17-11 34.5-.5T480-780v72q0 34 23.5 57t57.5 23q18 0 33.5-7.5T622-658q8-9 18-12.5t19 2.5q66 45 103.5 116T800-400q0 95-49 171.5T622-113q23-26 35.5-58t12.5-67q0-38-14-71.5T615-370L480-502 346-370q-28 27-42 60.5T290-238q0 35 12.5 67t35.5 58q-80-39-129-115.5T160-400Zm320-18 92 90q18 18 28 41t10 49q0 53-38 90.5T480-110q-54 0-92-37.5T350-238q0-26 9.5-49t28.5-41l92-90Z"/>
   </svg>
-  <text x="49" y="33" class="header">Top Contributed Repositories (This Week)</text>
-  <text x="795" y="33" text-anchor="end" class="footer">Past 7 Days · Updated: {today_str}</text>
+  <text x="49" y="33" class="header">Top Contributed Projects (This Week)</text>
+  <text x="795" y="33" text-anchor="end" class="footer">Past 7 Days · Ranked by Insertions</text>
   <line x1="25" y1="46" x2="795" y2="46" stroke="#7F3FBF" stroke-opacity="0.3" stroke-width="1"/>
 """
 
     bar_width = 770
-    bar_height = 9
+    bar_height = 8
     start_x = 25
-
-    y_offset = 72
+    y_offset = 68
 
     if not repos:
         svg += """
-  <text x="410" y="140" text-anchor="middle" class="footer">No public or private commit activity recorded this week.</text>
+  <text x="410" y="140" text-anchor="middle" class="footer">No public repository insertions recorded this week.</text>
 """
     else:
         for idx, repo in enumerate(repos):
             repo_name = repo["nameWithOwner"]
-            commits = repo["commits"]
-            commit_label = f"+{commits} {'commit' if commits == 1 else 'commits'} this week"
+            insertions = repo.get("insertions", 0)
+            insertions_label = f"+{insertions:,} insertions this week"
             langs = repo["languages"]
 
             # Repo Title Row
@@ -300,20 +338,13 @@ def render_weekly_repos_card(repos, output_path):
       <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Z"/>
     </svg>
     <text x="46" y="0" class="repo-name">{repo_name}</text>
-"""
-            if repo["isPrivate"]:
-                svg += """
-    <rect x="220" y="-12" width="52" height="16" rx="4" fill="#222036" stroke="#7F3FBF" stroke-width="1"/>
-    <text x="246" y="0" text-anchor="middle" class="private-badge">Private</text>
-"""
-
-            svg += f"""    <text x="795" y="0" text-anchor="end" class="commit-count">{commit_label}</text>
+    <text x="795" y="0" text-anchor="end" class="insertions-count">{insertions_label}</text>
 
     <!-- Stacked Bar -->
     <mask id="bar-mask-{idx}">
-      <rect x="{start_x}" y="9" width="{bar_width}" height="{bar_height}" rx="4.5" fill="white"/>
+      <rect x="{start_x}" y="8" width="{bar_width}" height="{bar_height}" rx="4" fill="white"/>
     </mask>
-    <rect x="{start_x}" y="9" width="{bar_width}" height="{bar_height}" rx="4.5" fill="#222036"/>
+    <rect x="{start_x}" y="8" width="{bar_width}" height="{bar_height}" rx="4" fill="#222036"/>
 """
 
             # Stacked bar segments
@@ -321,17 +352,17 @@ def render_weekly_repos_card(repos, output_path):
             for l in langs:
                 seg_w = (l["percentage"] / 100.0) * bar_width
                 if seg_w > 0:
-                    svg += f'    <rect x="{seg_x:.2f}" y="9" width="{seg_w:.2f}" height="{bar_height}" fill="{l["color"]}" mask="url(#bar-mask-{idx})"/>\n'
+                    svg += f'    <rect x="{seg_x:.2f}" y="8" width="{seg_w:.2f}" height="{bar_height}" fill="{l["color"]}" mask="url(#bar-mask-{idx})"/>\n'
                     seg_x += seg_w
 
             # Language Legend underneath
-            legend_y = 32
+            legend_y = 28
             cur_leg_x = start_x
             for l in langs:
                 lang_label = f"{l['name']} {l['percentage']:.1f}%"
-                approx_width = len(lang_label) * 7.2 + 18
-                svg += f"""    <circle cx="{cur_leg_x + 4}" cy="{legend_y - 4}" r="3.5" fill="{l['color']}"/>
-    <text x="{cur_leg_x + 12}" y="{legend_y}" class="lang-legend">{lang_label}</text>
+                approx_width = len(lang_label) * 7.0 + 16
+                svg += f"""    <circle cx="{cur_leg_x + 4}" cy="{legend_y - 3.5}" r="3.5" fill="{l['color']}"/>
+    <text x="{cur_leg_x + 11}" y="{legend_y}" class="lang-legend">{lang_label}</text>
 """
                 cur_leg_x += approx_width
 
@@ -339,7 +370,7 @@ def render_weekly_repos_card(repos, output_path):
 
             # Divider line between repos
             if idx < len(repos) - 1:
-                div_y = y_offset + 52
+                div_y = y_offset + 46
                 svg += f'  <line x1="25" y1="{div_y}" x2="795" y2="{div_y}" stroke="#7F3FBF" stroke-opacity="0.2" stroke-dasharray="3 3" stroke-width="1"/>\n'
 
             y_offset += row_height
@@ -358,18 +389,18 @@ def render_markdown_section(repos):
     md.append("<!-- START_SECTION:weekly_repos -->")
     md.append('<p align="center">')
     md.append(
-        '  <img src="./assets/cards/weekly-repos.svg" alt="Top Contributed Repositories (This Week)" width="100%"/>'
+        '  <img src="./assets/cards/weekly-repos.svg" alt="Top Contributed Projects (This Week)" width="100%"/>'
     )
     md.append("</p>\n")
 
     # Hidden crawler data
     md.append("<!--")
-    md.append("Weekly Contributed Repositories Data:")
-    md.append("| Repository | Commits This Week | Primary Languages |")
-    md.append("| :--- | :--- | :--- |")
-    for r in repos:
+    md.append("Weekly Contributed Projects Data (Ranked by Insertions):")
+    md.append("| Rank | Repository | Insertions This Week | Commits | Primary Languages |")
+    md.append("| :--- | :--- | :--- | :--- | :--- |")
+    for idx, r in enumerate(repos):
         lang_str = ", ".join([f"{l['name']} ({l['percentage']:.1f}%)" for l in r["languages"]])
-        md.append(f"| {r['nameWithOwner']} | {r['commits']} commits | {lang_str} |")
+        md.append(f"| {idx+1} | {r['nameWithOwner']} | +{r['insertions']:,} lines | {r['commits']} commits | {lang_str} |")
     md.append("-->")
     md.append("<!-- END_SECTION:weekly_repos -->")
     return "\n".join(md)
@@ -409,16 +440,14 @@ def update_readme(template_path, readme_path, section_md):
     print(f"Updated {readme_path} with weekly repos section.")
     return True
 
-    return False
-
 
 def main():
     token = get_token()
-    print("1. Fetching top contributed repositories for the past 7 days...")
-    repos = get_weekly_repos(token, days=7, limit=4)
-    print(f"   Found {len(repos)} active repositories this week.")
+    print("1. Fetching top public contributed repositories for the past 7 days (ranked by insertions)...")
+    repos = get_weekly_repos(token, days=7, limit=7)
+    print(f"   Found {len(repos)} active public repositories this week.")
     for r in repos:
-        print(f"   - {r['nameWithOwner']}: {r['commits']} commits")
+        print(f"   - {r['nameWithOwner']}: +{r['insertions']:,} insertions ({r['commits']} commits)")
 
     base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
     template_path = os.path.join(base_dir, "TEMPLATE_README.md")

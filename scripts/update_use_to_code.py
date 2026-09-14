@@ -716,7 +716,7 @@ def main():
                 update_readme as update_weekly_readme,
             )
         weekly_svg = os.path.join(base_dir, "assets", "cards", "weekly-repos.svg")
-        weekly_repos = get_weekly_repos(token, days=7, limit=4)
+        weekly_repos = get_weekly_repos(token, days=7, limit=7)
         render_weekly_repos_card(weekly_repos, weekly_svg)
         weekly_md = render_weekly_section(weekly_repos)
         update_weekly_readme(template_path, readme_path, weekly_md)
