@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 330" width="820" height="330" fill="none">
+  <defs>
+    <style>
+      .header { font: 600 17px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #F85D7F; }
+      .subhead { font: 600 14px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #F8D866; }
+      .label { font: 500 13px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #e6edf3; }
+      .value { font: 400 12px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #8b949e; }
+      .footer { font: 400 11px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #6e7681; }
+    </style>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0D1117" />
+      <stop offset="100%" stop-color="#161b22" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Card -->
+  <rect x="1.5" y="1.5" width="817" height="327" rx="12" fill="url(#cardGrad)" stroke="#7F3FBF" stroke-width="2"/>
+
+  <!-- Title Banner -->
+  <text x="30" y="38" class="header">⚡ Languages &amp; Tools Ranking</text>
+  <text x="790" y="38" text-anchor="end" class="footer">Updated: September 14, 2026</text>
+  <line x1="30" y1="52" x2="790" y2="52" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Column 1: All-Time Ranking -->
+  <g transform="translate(30, 72)">
+    <text x="0" y="0" class="subhead">🏆 All-Time Codebase</text>
+
+    <!-- Item 1: Python -->
+    <circle cx="6" cy="20" r="5" fill="#3572A5"/>
+    <text x="20" y="24" class="label">Python</text>
+    <text x="350" y="24" text-anchor="end" class="value">62.2 MB (54.9%)</text>
+    <!-- Progress Bar Track & Fill -->
+    <rect x="20" y="32" width="330" height="7" rx="3.5" fill="#21262d"/>
+    <rect x="20" y="32" width="180" height="7" rx="3.5" fill="#3572A5"/>
+
+    <!-- Item 2: Jupyter Notebook -->
+    <circle cx="6" cy="62" r="5" fill="#DA5B0B"/>
+    <text x="20" y="66" class="label">Jupyter Notebook</text>
+    <text x="350" y="66" text-anchor="end" class="value">42.5 MB (37.5%)</text>
+    <!-- Progress Bar Track & Fill -->
+    <rect x="20" y="74" width="330" height="7" rx="3.5" fill="#21262d"/>
+    <rect x="20" y="74" width="123" height="7" rx="3.5" fill="#DA5B0B"/>
+
+    <!-- Item 3: TypeScript -->
+    <circle cx="6" cy="104" r="5" fill="#3178c6"/>
+    <text x="20" y="108" class="label">TypeScript</text>
+    <text x="350" y="108" text-anchor="end" class="value">2.6 MB (2.3%)</text>
+    <!-- Progress Bar Track & Fill -->
+    <rect x="20" y="116" width="330" height="7" rx="3.5" fill="#21262d"/>
+    <rect x="20" y="116" width="8" height="7" rx="3.5" fill="#3178c6"/>
+
+    <!-- Item 4: Cython -->
+    <circle cx="6" cy="146" r="5" fill="#fed10a"/>
+    <text x="20" y="150" class="label">Cython</text>
+    <text x="350" y="150" text-anchor="end" class="value">1.4 MB (1.3%)</text>
+    <!-- Progress Bar Track & Fill -->
+    <rect x="20" y="158" width="330" height="7" rx="3.5" fill="#21262d"/>
+    <rect x="20" y="158" width="8" height="7" rx="3.5" fill="#fed10a"/>
+
+    <!-- Item 5: Dart -->
+    <circle cx="6" cy="188" r="5" fill="#00B4AB"/>
+    <text x="20" y="192" class="label">Dart</text>
+    <text x="350" y="192" text-anchor="end" class="value">886 KB (0.8%)</text>
+    <!-- Progress Bar Track & Fill -->
+    <rect x="20" y="200" width="330" height="7" rx="3.5" fill="#21262d"/>
+    <rect x="20" y="200" width="8" height="7" rx="3.5" fill="#00B4AB"/>
+  </g>
+
+  <!-- Divider Line -->
+  <line x1="410" y1="65" x2="410" y2="280" stroke="#30363d" stroke-dasharray="4 4" stroke-width="1"/>
+
+  <!-- Column 2: Currently Coding (Past 30 Days) -->
+  <g transform="translate(435, 72)">
+    <text x="0" y="0" class="subhead">🔥 Currently Coding (Past 30 Days)</text>
+
+    <!-- Item 1: Python -->
+    <circle cx="6" cy="20" r="5" fill="#3572A5"/>
+    <text x="20" y="24" class="label">Python</text>
+    <text x="350" y="24" text-anchor="end" class="value">+16,342 lines (52.5%)</text>
+    <!-- Progress Bar Track & Fill -->
+    <rect x="20" y="32" width="330" height="7" rx="3.5" fill="#21262d"/>
+    <rect x="20" y="32" width="172" height="7" rx="3.5" fill="#3572A5"/>
+
+    <!-- Item 2: Jupyter Notebook -->
+    <circle cx="6" cy="62" r="5" fill="#DA5B0B"/>
+    <text x="20" y="66" class="label">Jupyter Notebook</text>
+    <text x="350" y="66" text-anchor="end" class="value">+11,400 lines (36.6%)</text>
+    <!-- Progress Bar Track & Fill -->
+    <rect x="20" y="74" width="330" height="7" rx="3.5" fill="#21262d"/>
+    <rect x="20" y="74" width="120" height="7" rx="3.5" fill="#DA5B0B"/>
+
+    <!-- Item 3: Kotlin -->
+    <circle cx="6" cy="104" r="5" fill="#A97BFF"/>
+    <text x="20" y="108" class="label">Kotlin</text>
+    <text x="350" y="108" text-anchor="end" class="value">+1,692 lines (5.4%)</text>
+    <!-- Progress Bar Track & Fill -->
+    <rect x="20" y="116" width="330" height="7" rx="3.5" fill="#21262d"/>
+    <rect x="20" y="116" width="17" height="7" rx="3.5" fill="#A97BFF"/>
+
+    <!-- Item 4: JavaScript -->
+    <circle cx="6" cy="146" r="5" fill="#f1e05a"/>
+    <text x="20" y="150" class="label">JavaScript</text>
+    <text x="350" y="150" text-anchor="end" class="value">+385 lines (1.2%)</text>
+    <!-- Progress Bar Track & Fill -->
+    <rect x="20" y="158" width="330" height="7" rx="3.5" fill="#21262d"/>
+    <rect x="20" y="158" width="8" height="7" rx="3.5" fill="#f1e05a"/>
+
+    <!-- Item 5: Go -->
+    <circle cx="6" cy="188" r="5" fill="#00ADD8"/>
+    <text x="20" y="192" class="label">Go</text>
+    <text x="350" y="192" text-anchor="end" class="value">+361 lines (1.2%)</text>
+    <!-- Progress Bar Track & Fill -->
+    <rect x="20" y="200" width="330" height="7" rx="3.5" fill="#21262d"/>
+    <rect x="20" y="200" width="8" height="7" rx="3.5" fill="#00ADD8"/>
+  </g>
+
+  <!-- Footer Info -->
+  <line x1="30" y1="298" x2="790" y2="298" stroke="#30363d" stroke-width="1"/>
+  <text x="30" y="315" class="footer">✨ Dynamic statistics computed weekly from commits &amp; language distributions</text>
+</svg>

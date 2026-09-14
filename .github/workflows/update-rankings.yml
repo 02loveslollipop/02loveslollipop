@@ -1,0 +1,40 @@
+name: Update Use To Code Rankings
+
+on:
+  schedule:
+    - cron: "0 0 * * 0" # Runs every Sunday at 00:00 UTC
+  workflow_dispatch:      # Allows manual run from GitHub Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  update-rankings:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Update Use To Code Rankings
+        env:
+          GH_PAT: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+        run: python3 scripts/update_use_to_code.py
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md assets/cards/code-ranking.svg
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update use-to-code rankings [skip ci]"
+            git push
+          else
+            echo "No changes detected in rankings."
+          fi

@@ -27,6 +27,31 @@
 
 ## Use To Code
 
+<!-- START_SECTION:use_to_code -->
+<p align="center">
+  <img src="./assets/cards/code-ranking.svg" alt="Languages Ranking: All-Time vs Now" width="100%"/>
+</p>
+
+<details open>
+<summary><b>📊 Detailed Breakdown & Activity Metrics</b></summary>
+
+
+| Rank | 🏆 All-Time Language | Codebase Share | 🔥 Currently Coding (Last 30 Days) | Recent Share |
+| :---: | :--- | :--- | :--- | :--- |
+| 🥇 | **Python** (62.2 MB) | `███████░░░░░` 54.9% | **Python** (+16,342 lines) | `██████░░░░░░` 52.5% |
+| 🥈 | **Jupyter Notebook** (42.5 MB) | `█████░░░░░░░` 37.5% | **Jupyter Notebook** (+11,400 lines) | `████░░░░░░░░` 36.6% |
+| 🥉 | **TypeScript** (2.6 MB) | `░░░░░░░░░░░░` 2.3% | **Kotlin** (+1,692 lines) | `█░░░░░░░░░░░` 5.4% |
+| 4️⃣ | **Cython** (1.4 MB) | `░░░░░░░░░░░░` 1.3% | **JavaScript** (+385 lines) | `░░░░░░░░░░░░` 1.2% |
+| 5️⃣ | **Dart** (886 KB) | `░░░░░░░░░░░░` 0.8% | **Go** (+361 lines) | `░░░░░░░░░░░░` 1.2% |
+| 6️⃣ | **C++** (862 KB) | `░░░░░░░░░░░░` 0.7% | **CSS** (+300 lines) | `░░░░░░░░░░░░` 1.0% |
+
+</details>
+<!-- END_SECTION:use_to_code -->
+
+<br/>
+
+### 🛠️ Frameworks, Tools & Platforms
+
 <p align="left"> <a href="https://www.arduino.cc/" target="_blank" rel="noreferrer"> <img src="https://cdn.worldvectorlogo.com/logos/arduino-1.svg" alt="arduino" width="40" height="40"/> </a> <a href="https://aws.amazon.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="40" height="40"/> </a> <a href="https://www.gnu.org/software/bash/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg" alt="bash" width="40" height="40"/> </a> <a href="https://www.cprogramming.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt="c" width="40" height="40"/> </a> <a href="https://www.w3schools.com/cs/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg" alt="csharp" width="40" height="40"/> </a> <a href="https://www.docker.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" alt="docker" width="40" height="40"/> </a> <a href="https://cloud.google.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg" alt="gcp" width="40" height="40"/> </a> <a href="https://www.adobe.com/in/products/illustrator.html" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/adobe_illustrator/adobe_illustrator-icon.svg" alt="illustrator" width="40" height="40"/> </a> <a href="https://www.java.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40"/> </a> <a href="https://www.linux.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="linux" width="40" height="40"/> </a> <a href="https://opencv.org/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/opencv/opencv-icon.svg" alt="opencv" width="40" height="40"/> </a> <a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> <a href="https://www.tensorflow.org" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/tensorflow/tensorflow-icon.svg" alt="tensorflow" width="40" height="40"/> </a> <a href="https://pytorch.org/" target="_blank" rel="noreferrer"> <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/PyTorch_logo_icon.svg" alt="PyTorch" width="40" height="40"/> </a> </p>
 
 <br/>
