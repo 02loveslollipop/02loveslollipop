@@ -36,16 +36,16 @@
 Data for search engine crawlers and screen readers:
 | Rank | All-Time Language | Codebase (KB) | Est. Lines | Codebase Share | Currently Coding (Last 30 Days) | Recent Share |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 | Python | 63,736 KB | 1.86M lines | 77.2% | Python (+24,258 lines) | 42.4% |
-| 2 | Java | 10,539 KB | 240k lines | 12.8% | JavaScript (+14,046 lines) | 24.6% |
-| 3 | Cython | 1,478 KB | 43.3k lines | 1.8% | TypeScript (+11,660 lines) | 20.4% |
-| 4 | TypeScript | 1,083 KB | 29.2k lines | 1.3% | Jupyter Notebook (+2,482 lines) | 4.3% |
-| 5 | Dart | 886 KB | 25.2k lines | 1.1% | Kotlin (+1,692 lines) | 3.0% |
-| 6 | JavaScript | 876 KB | 23.6k lines | 1.1% | LaTeX (+1,377 lines) | 2.4% |
-| 7 | C++ | 862 KB | 23.2k lines | 1.0% | SQL (+556 lines) | 1.0% |
-| 8 | LaTeX | 451 KB | 13.2k lines | 0.5% | CSS (+418 lines) | 0.7% |
-| 9 | Jupyter Notebook | 420 KB | 8.9k lines | 0.5% | Go (+361 lines) | 0.6% |
-| 10 | CSS | 354 KB | 11.3k lines | 0.4% | Shell (+212 lines) | 0.4% |
+| 1 | Python | 63,791 KB | 1.87M lines | 75.7% | Python (+17,900 lines) | 79.5% |
+| 2 | Java | 10,539 KB | 240k lines | 12.5% | Kotlin (+1,692 lines) | 7.5% |
+| 3 | TypeScript | 2,684 KB | 72.3k lines | 3.2% | Jupyter Notebook (+1,241 lines) | 5.5% |
+| 4 | Cython | 1,478 KB | 43.3k lines | 1.8% | JavaScript (+385 lines) | 1.7% |
+| 5 | Dart | 886 KB | 25.2k lines | 1.1% | Go (+361 lines) | 1.6% |
+| 6 | JavaScript | 876 KB | 23.6k lines | 1.0% | CSS (+300 lines) | 1.3% |
+| 7 | C++ | 862 KB | 23.2k lines | 1.0% | SQL (+269 lines) | 1.2% |
+| 8 | Jupyter Notebook | 456 KB | 9.5k lines | 0.5% | Shell (+212 lines) | 0.9% |
+| 9 | LaTeX | 451 KB | 13.2k lines | 0.5% | Dockerfile (+75 lines) | 0.3% |
+| 10 | CSS | 354 KB | 11.3k lines | 0.4% | TypeScript (+24 lines) | 0.1% |
 -->
 <!-- END_SECTION:use_to_code -->
 
@@ -53,19 +53,19 @@ Data for search engine crawlers and screen readers:
 
 <!-- START_SECTION:weekly_repos -->
 <p align="center">
-  <img src="./assets/cards/weekly-repos.svg" alt="Top Contributed Projects (This Week)" width="100%"/>
+  <img src="./assets/cards/weekly-repos.svg" alt="Top 7 Contributed Projects (This Month)" width="100%"/>
 </p>
 
 <!--
-Weekly Contributed Projects Data (Ranked by Insertions):
-| Rank | Repository | Insertions This Week | Commits | Primary Languages |
+Top Contributed Projects Data (Ranked by Monthly Insertions):
+| Rank | Repository | Insertions This Month | Commits | Primary Languages |
 | :--- | :--- | :--- | :--- | :--- |
-| 1 | 03loveslollipop/cdp_2026 | +12,763 lines | 25 commits | Python (81.0%), Jupyter Notebook (13.6%), HTML (3.7%), PowerShell (0.5%) |
+| 1 | 03loveslollipop/cdp_2026 | +25,071 lines | 30 commits | Python (81.0%), Jupyter Notebook (13.6%), HTML (3.7%), PowerShell (0.5%) |
 | 2 | 02loveslollipop/MiPedido | +4,818 lines | 48 commits | Dart (34.8%), Python (25.6%), Kotlin (22.1%), C++ (5.8%), Go (5.6%), CMake (4.5%), HTML (1.1%), Swift (0.5%) |
-| 3 | 02loveslollipop/opsdesk | +2,444 lines | 36 commits | Python (70.2%), HTML (17.7%), CSS (9.2%), Dockerfile (1.6%), Makefile (1.3%) |
-| 4 | 02loveslollipop/02labs | +1,457 lines | 5 commits | Astro (28.6%), TypeScript (22.6%), CSS (20.1%), LaTeX (19.3%), JavaScript (5.8%), Python (2.3%), Shell (1.4%) |
-| 5 | 02loveslollipop/Sap-Price-Updater | +238 lines | 5 commits | Python (96.9%), PowerShell (1.7%), Shell (1.4%) |
-| 6 | 02loveslollipop/OpenCROW | +25 lines | 6 commits | Python (92.2%), Shell (4.4%), HTML (1.7%), Sage (0.9%) |
+| 3 | 02loveslollipop/OpenCROW | +4,519 lines | 41 commits | Python (92.2%), Shell (4.4%), HTML (1.7%), Sage (0.9%) |
+| 4 | 02loveslollipop/opsdesk | +2,444 lines | 36 commits | Python (70.2%), HTML (17.7%), CSS (9.2%), Dockerfile (1.6%), Makefile (1.3%) |
+| 5 | 02loveslollipop/02labs | +838 lines | 8 commits | Astro (28.6%), TypeScript (22.6%), CSS (20.1%), LaTeX (19.3%), JavaScript (5.8%), Python (2.3%), Shell (1.4%) |
+| 6 | 02loveslollipop/Sap-Price-Updater | +238 lines | 5 commits | Python (96.9%), PowerShell (1.7%), Shell (1.4%) |
 -->
 <!-- END_SECTION:weekly_repos -->
 

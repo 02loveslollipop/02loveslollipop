@@ -792,10 +792,12 @@ def main():
                 update_readme as update_weekly_readme,
             )
         weekly_svg = os.path.join(base_dir, "assets", "cards", "weekly-repos.svg")
-        weekly_repos = get_weekly_repos(token, days=7, limit=7)
-        render_weekly_repos_card(weekly_repos, weekly_svg)
-        weekly_md = render_weekly_section(weekly_repos)
-        update_weekly_readme(template_path, readme_path, weekly_md)
+        monthly_svg = os.path.join(base_dir, "assets", "cards", "monthly-repos.svg")
+        monthly_repos = get_weekly_repos(token, days=30, limit=7)
+        render_weekly_repos_card(monthly_repos, weekly_svg)
+        render_weekly_repos_card(monthly_repos, monthly_svg)
+        monthly_md = render_weekly_section(monthly_repos)
+        update_weekly_readme(template_path, readme_path, monthly_md)
     except Exception as e:
         print(f"Weekly repos card update warning: {e}", file=sys.stderr)
 
