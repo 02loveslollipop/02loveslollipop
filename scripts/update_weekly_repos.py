@@ -372,8 +372,8 @@ def render_weekly_repos_card(repos, output_path):
   <svg x="25" y="18" width="18" height="18" viewBox="0 -960 960 960" fill="#fe428e">
     <path d="M160-400q0-116 71.5-225T428-811q17-11 34.5-.5T480-780v72q0 34 23.5 57t57.5 23q18 0 33.5-7.5T622-658q8-9 18-12.5t19 2.5q66 45 103.5 116T800-400q0 95-49 171.5T622-113q23-26 35.5-58t12.5-67q0-38-14-71.5T615-370L480-502 346-370q-28 27-42 60.5T290-238q0 35 12.5 67t35.5 58q-80-39-129-115.5T160-400Zm320-18 92 90q18 18 28 41t10 49q0 53-38 90.5T480-110q-54 0-92-37.5T350-238q0-26 9.5-49t28.5-41l92-90Z"/>
   </svg>
-  <text x="49" y="33" class="header">Top 7 Contributed Projects (This Month)</text>
-  <text x="795" y="33" text-anchor="end" class="footer">Past 30 Days · Ranked by Insertions</text>
+  <text x="49" y="33" class="header">Top 7 Contributed Projects</text>
+  <text x="795" y="33" text-anchor="end" class="footer">Updated: {today_str}</text>
   <line x1="25" y1="46" x2="795" y2="46" stroke="#7F3FBF" stroke-opacity="0.3" stroke-width="1"/>
 """
 
@@ -384,13 +384,13 @@ def render_weekly_repos_card(repos, output_path):
 
     if not repos:
         svg += """
-  <text x="410" y="140" text-anchor="middle" class="footer">No public repository insertions recorded this month.</text>
+  <text x="410" y="140" text-anchor="middle" class="footer">No public repository insertions recorded.</text>
 """
     else:
         for idx, repo in enumerate(repos):
             repo_name = repo["nameWithOwner"]
             insertions = repo.get("insertions", 0)
-            insertions_label = f"+{insertions:,} insertions this month"
+            insertions_label = f"+{insertions:,} insertions"
             langs = repo["languages"]
 
             # Repo Title Row
@@ -453,14 +453,14 @@ def render_markdown_section(repos):
     md.append("<!-- START_SECTION:weekly_repos -->")
     md.append('<p align="center">')
     md.append(
-        '  <img src="./assets/cards/weekly-repos.svg" alt="Top 7 Contributed Projects (This Month)" width="100%"/>'
+        '  <img src="./assets/cards/weekly-repos.svg" alt="Top 7 Contributed Projects" width="100%"/>'
     )
     md.append("</p>\n")
 
     # Hidden crawler data
     md.append("<!--")
-    md.append("Top Contributed Projects Data (Ranked by Monthly Insertions):")
-    md.append("| Rank | Repository | Insertions This Month | Commits | Primary Languages |")
+    md.append("Top Contributed Projects Data:")
+    md.append("| Rank | Repository | Insertions | Commits | Primary Languages |")
     md.append("| :--- | :--- | :--- | :--- | :--- |")
     for idx, r in enumerate(repos):
         lang_str = ", ".join([f"{l['name']} ({l['percentage']:.1f}%)" for l in r["languages"]])

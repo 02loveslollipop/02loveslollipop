@@ -34,18 +34,18 @@
 
 <!--
 Data for search engine crawlers and screen readers:
-| Rank | All-Time Language | Codebase (KB) | Est. Lines | Codebase Share | Currently Coding (Last 30 Days) | Recent Share |
+| Rank | All-Time Language | Codebase (KB) | Est. Lines | Codebase Share | Currently Coding | Recent Share |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 | Python | 63,911 KB | 1.87M lines | 77.2% | Python (+28,591 lines) | 46.0% |
-| 2 | Java | 10,539 KB | 240k lines | 12.7% | JavaScript (+14,046 lines) | 22.6% |
-| 3 | Cython | 1,478 KB | 43.3k lines | 1.8% | TypeScript (+11,660 lines) | 18.8% |
-| 4 | TypeScript | 1,083 KB | 29.2k lines | 1.3% | Jupyter Notebook (+3,059 lines) | 4.9% |
-| 5 | Dart | 886 KB | 25.2k lines | 1.1% | Kotlin (+1,692 lines) | 2.7% |
-| 6 | JavaScript | 876 KB | 23.6k lines | 1.1% | LaTeX (+1,377 lines) | 2.2% |
-| 7 | C++ | 862 KB | 23.2k lines | 1.0% | SQL (+556 lines) | 0.9% |
-| 8 | Jupyter Notebook | 456 KB | 9.5k lines | 0.6% | CSS (+418 lines) | 0.7% |
-| 9 | LaTeX | 451 KB | 13.2k lines | 0.5% | Go (+361 lines) | 0.6% |
-| 10 | CSS | 354 KB | 11.3k lines | 0.4% | Shell (+212 lines) | 0.3% |
+| 1 | Python | 63,911 KB | 1.87M lines | 75.0% | Python (+17,905 lines) | 48.9% |
+| 2 | Java | 10,539 KB | 240k lines | 12.4% | JavaScript (+14,182 lines) | 38.8% |
+| 3 | TypeScript | 2,684 KB | 72.3k lines | 3.1% | Kotlin (+1,692 lines) | 4.6% |
+| 4 | JavaScript | 1,693 KB | 45.6k lines | 2.0% | Jupyter Notebook (+1,241 lines) | 3.4% |
+| 5 | Cython | 1,478 KB | 43.3k lines | 1.7% | SQL (+556 lines) | 1.5% |
+| 6 | Dart | 886 KB | 25.2k lines | 1.0% | Go (+361 lines) | 1.0% |
+| 7 | C++ | 862 KB | 23.2k lines | 1.0% | CSS (+300 lines) | 0.8% |
+| 8 | Jupyter Notebook | 456 KB | 9.5k lines | 0.5% | Shell (+212 lines) | 0.6% |
+| 9 | LaTeX | 451 KB | 13.2k lines | 0.5% | Dockerfile (+75 lines) | 0.2% |
+| 10 | CSS | 354 KB | 11.3k lines | 0.4% | TypeScript (+24 lines) | 0.1% |
 -->
 <!-- END_SECTION:use_to_code -->
 
@@ -53,19 +53,20 @@ Data for search engine crawlers and screen readers:
 
 <!-- START_SECTION:weekly_repos -->
 <p align="center">
-  <img src="./assets/cards/weekly-repos.svg" alt="Top 7 Contributed Projects (This Month)" width="100%"/>
+  <img src="./assets/cards/weekly-repos.svg" alt="Top 7 Contributed Projects" width="100%"/>
 </p>
 
 <!--
-Top Contributed Projects Data (Ranked by Monthly Insertions):
-| Rank | Repository | Insertions This Month | Commits | Primary Languages |
+Top Contributed Projects Data:
+| Rank | Repository | Insertions | Commits | Primary Languages |
 | :--- | :--- | :--- | :--- | :--- |
-| 1 | 03loveslollipop/cdp_2026 | +25,071 lines | 30 commits | Python (81.0%), Jupyter Notebook (13.6%), HTML (3.7%), PowerShell (0.5%) |
-| 2 | 02loveslollipop/MiPedido | +4,818 lines | 48 commits | Dart (34.8%), Python (25.6%), Kotlin (22.1%), C++ (5.8%), Go (5.6%), CMake (4.5%), HTML (1.1%), Swift (0.5%) |
-| 3 | 02loveslollipop/OpenCROW | +4,519 lines | 41 commits | Python (92.2%), Shell (4.4%), HTML (1.7%), Sage (0.9%) |
-| 4 | 02loveslollipop/opsdesk | +2,444 lines | 36 commits | Python (70.2%), HTML (17.7%), CSS (9.2%), Dockerfile (1.6%), Makefile (1.3%) |
-| 5 | 02loveslollipop/02labs | +838 lines | 8 commits | Astro (28.6%), TypeScript (22.6%), CSS (20.1%), LaTeX (19.3%), JavaScript (5.8%), Python (2.3%), Shell (1.4%) |
-| 6 | 02loveslollipop/Sap-Price-Updater | +238 lines | 5 commits | Python (96.9%), PowerShell (1.7%), Shell (1.4%) |
+| 1 | 02loveslollipop/flareform | +26,015 lines | 3 commits | JavaScript (100.0%) |
+| 2 | 03loveslollipop/cdp_2026 | +25,071 lines | 30 commits | Python (81.0%), Jupyter Notebook (13.6%), HTML (3.7%), PowerShell (0.5%) |
+| 3 | 02loveslollipop/MiPedido | +4,818 lines | 48 commits | Dart (34.8%), Python (25.6%), Kotlin (22.1%), C++ (5.8%), Go (5.6%), CMake (4.5%), HTML (1.1%), Swift (0.5%) |
+| 4 | 02loveslollipop/OpenCROW | +4,519 lines | 41 commits | Python (92.2%), Shell (4.4%), HTML (1.7%), Sage (0.9%) |
+| 5 | 02loveslollipop/opsdesk | +2,444 lines | 36 commits | Python (70.2%), HTML (17.7%), CSS (9.2%), Dockerfile (1.6%), Makefile (1.3%) |
+| 6 | 02loveslollipop/02labs | +838 lines | 8 commits | Astro (28.6%), TypeScript (22.6%), CSS (20.1%), LaTeX (19.3%), JavaScript (5.8%), Python (2.3%), Shell (1.4%) |
+| 7 | 02loveslollipop/Sap-Price-Updater | +238 lines | 5 commits | Python (96.9%), PowerShell (1.7%), Shell (1.4%) |
 -->
 <!-- END_SECTION:weekly_repos -->
 

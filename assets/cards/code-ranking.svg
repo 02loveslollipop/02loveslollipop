@@ -41,7 +41,7 @@
 
   <!-- Title Banner -->
   <text x="25" y="33" class="header">Languages &amp; Tools Ranking</text>
-  <text x="795" y="33" text-anchor="end" class="footer">Updated: September 15, 2026</text>
+  <text x="795" y="33" text-anchor="end" class="footer">Updated: September 14, 2026</text>
   <line x1="25" y1="46" x2="795" y2="46" stroke="#7F3FBF" stroke-opacity="0.3" stroke-width="1"/>
 
   <!-- Divider Line Between Columns -->
@@ -60,42 +60,42 @@
     <text x="16" y="26" class="label">Python</text>
     <text x="360" y="26" text-anchor="end" class="value">63,911 KB · 1.87M lines</text>
     <rect x="16" y="32" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="32" width="265" height="5" rx="2.5" fill="#3572A5"/>
+    <rect x="16" y="32" width="257" height="5" rx="2.5" fill="#3572A5"/>
 
     <!-- Item 2: Java -->
     <circle cx="5" cy="56" r="4" fill="#b07219"/>
     <text x="16" y="60" class="label">Java</text>
     <text x="360" y="60" text-anchor="end" class="value">10,539 KB · 240k lines</text>
     <rect x="16" y="66" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="66" width="43" height="5" rx="2.5" fill="#b07219"/>
+    <rect x="16" y="66" width="42" height="5" rx="2.5" fill="#b07219"/>
 
-    <!-- Item 3: Cython -->
-    <circle cx="5" cy="90" r="4" fill="#fed10a"/>
-    <text x="16" y="94" class="label">Cython</text>
-    <text x="360" y="94" text-anchor="end" class="value">1,478 KB · 43.3k lines</text>
+    <!-- Item 3: TypeScript -->
+    <circle cx="5" cy="90" r="4" fill="#3178c6"/>
+    <text x="16" y="94" class="label">TypeScript</text>
+    <text x="360" y="94" text-anchor="end" class="value">2,684 KB · 72.3k lines</text>
     <rect x="16" y="100" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="100" width="6" height="5" rx="2.5" fill="#fed10a"/>
+    <rect x="16" y="100" width="10" height="5" rx="2.5" fill="#3178c6"/>
 
-    <!-- Item 4: TypeScript -->
-    <circle cx="5" cy="124" r="4" fill="#3178c6"/>
-    <text x="16" y="128" class="label">TypeScript</text>
-    <text x="360" y="128" text-anchor="end" class="value">1,083 KB · 29.2k lines</text>
+    <!-- Item 4: JavaScript -->
+    <circle cx="5" cy="124" r="4" fill="#f1e05a"/>
+    <text x="16" y="128" class="label">JavaScript</text>
+    <text x="360" y="128" text-anchor="end" class="value">1,693 KB · 45.6k lines</text>
     <rect x="16" y="134" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="134" width="5" height="5" rx="2.5" fill="#3178c6"/>
+    <rect x="16" y="134" width="6" height="5" rx="2.5" fill="#f1e05a"/>
 
-    <!-- Item 5: Dart -->
-    <circle cx="5" cy="158" r="4" fill="#00B4AB"/>
-    <text x="16" y="162" class="label">Dart</text>
-    <text x="360" y="162" text-anchor="end" class="value">886 KB · 25.2k lines</text>
+    <!-- Item 5: Cython -->
+    <circle cx="5" cy="158" r="4" fill="#fed10a"/>
+    <text x="16" y="162" class="label">Cython</text>
+    <text x="360" y="162" text-anchor="end" class="value">1,478 KB · 43.3k lines</text>
     <rect x="16" y="168" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="168" width="5" height="5" rx="2.5" fill="#00B4AB"/>
+    <rect x="16" y="168" width="5" height="5" rx="2.5" fill="#fed10a"/>
 
-    <!-- Item 6: JavaScript -->
-    <circle cx="5" cy="192" r="4" fill="#f1e05a"/>
-    <text x="16" y="196" class="label">JavaScript</text>
-    <text x="360" y="196" text-anchor="end" class="value">876 KB · 23.6k lines</text>
+    <!-- Item 6: Dart -->
+    <circle cx="5" cy="192" r="4" fill="#00B4AB"/>
+    <text x="16" y="196" class="label">Dart</text>
+    <text x="360" y="196" text-anchor="end" class="value">886 KB · 25.2k lines</text>
     <rect x="16" y="202" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="202" width="5" height="5" rx="2.5" fill="#f1e05a"/>
+    <rect x="16" y="202" width="5" height="5" rx="2.5" fill="#00B4AB"/>
 
     <!-- Item 7: C++ -->
     <circle cx="5" cy="226" r="4" fill="#f34b7d"/>
@@ -132,76 +132,76 @@
     <svg x="0" y="-15" width="18" height="18" viewBox="0 -960 960 960" fill="#fe428e">
       <path d="M160-400q0-116 71.5-225T428-811q17-11 34.5-.5T480-780v72q0 34 23.5 57t57.5 23q18 0 33.5-7.5T622-658q8-9 18-12.5t19 2.5q66 45 103.5 116T800-400q0 95-49 171.5T622-113q23-26 35.5-58t12.5-67q0-38-14-71.5T615-370L480-502 346-370q-28 27-42 60.5T290-238q0 35 12.5 67t35.5 58q-80-39-129-115.5T160-400Zm320-18 92 90q18 18 28 41t10 49q0 53-38 90.5T480-110q-54 0-92-37.5T350-238q0-26 9.5-49t28.5-41l92-90Z"/>
     </svg>
-    <text x="24" y="0" class="subhead-fire">Currently Coding (Past 30 Days)</text>
+    <text x="24" y="0" class="subhead-fire">Currently Coding</text>
 
     <!-- Item 1: Python -->
     <circle cx="5" cy="22" r="4" fill="#3572A5"/>
     <text x="16" y="26" class="label">Python</text>
-    <text x="360" y="26" text-anchor="end" class="value">+28,591 lines (46.0%)</text>
+    <text x="360" y="26" text-anchor="end" class="value">+17,905 lines (48.9%)</text>
     <rect x="16" y="32" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="32" width="158" height="5" rx="2.5" fill="#3572A5"/>
+    <rect x="16" y="32" width="168" height="5" rx="2.5" fill="#3572A5"/>
 
     <!-- Item 2: JavaScript -->
     <circle cx="5" cy="56" r="4" fill="#f1e05a"/>
     <text x="16" y="60" class="label">JavaScript</text>
-    <text x="360" y="60" text-anchor="end" class="value">+14,046 lines (22.6%)</text>
+    <text x="360" y="60" text-anchor="end" class="value">+14,182 lines (38.8%)</text>
     <rect x="16" y="66" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="66" width="77" height="5" rx="2.5" fill="#f1e05a"/>
+    <rect x="16" y="66" width="133" height="5" rx="2.5" fill="#f1e05a"/>
 
-    <!-- Item 3: TypeScript -->
-    <circle cx="5" cy="90" r="4" fill="#3178c6"/>
-    <text x="16" y="94" class="label">TypeScript</text>
-    <text x="360" y="94" text-anchor="end" class="value">+11,660 lines (18.8%)</text>
+    <!-- Item 3: Kotlin -->
+    <circle cx="5" cy="90" r="4" fill="#A97BFF"/>
+    <text x="16" y="94" class="label">Kotlin</text>
+    <text x="360" y="94" text-anchor="end" class="value">+1,692 lines (4.6%)</text>
     <rect x="16" y="100" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="100" width="64" height="5" rx="2.5" fill="#3178c6"/>
+    <rect x="16" y="100" width="15" height="5" rx="2.5" fill="#A97BFF"/>
 
     <!-- Item 4: Jupyter Notebook -->
     <circle cx="5" cy="124" r="4" fill="#DA5B0B"/>
     <text x="16" y="128" class="label">Jupyter Notebook</text>
-    <text x="360" y="128" text-anchor="end" class="value">+3,059 lines (4.9%)</text>
+    <text x="360" y="128" text-anchor="end" class="value">+1,241 lines (3.4%)</text>
     <rect x="16" y="134" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="134" width="16" height="5" rx="2.5" fill="#DA5B0B"/>
+    <rect x="16" y="134" width="11" height="5" rx="2.5" fill="#DA5B0B"/>
 
-    <!-- Item 5: Kotlin -->
-    <circle cx="5" cy="158" r="4" fill="#A97BFF"/>
-    <text x="16" y="162" class="label">Kotlin</text>
-    <text x="360" y="162" text-anchor="end" class="value">+1,692 lines (2.7%)</text>
+    <!-- Item 5: SQL -->
+    <circle cx="5" cy="158" r="4" fill="#e38c00"/>
+    <text x="16" y="162" class="label">SQL</text>
+    <text x="360" y="162" text-anchor="end" class="value">+556 lines (1.5%)</text>
     <rect x="16" y="168" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="168" width="9" height="5" rx="2.5" fill="#A97BFF"/>
+    <rect x="16" y="168" width="5" height="5" rx="2.5" fill="#e38c00"/>
 
-    <!-- Item 6: LaTeX -->
-    <circle cx="5" cy="192" r="4" fill="#3D6117"/>
-    <text x="16" y="196" class="label">LaTeX</text>
-    <text x="360" y="196" text-anchor="end" class="value">+1,377 lines (2.2%)</text>
+    <!-- Item 6: Go -->
+    <circle cx="5" cy="192" r="4" fill="#00ADD8"/>
+    <text x="16" y="196" class="label">Go</text>
+    <text x="360" y="196" text-anchor="end" class="value">+361 lines (1.0%)</text>
     <rect x="16" y="202" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="202" width="7" height="5" rx="2.5" fill="#3D6117"/>
+    <rect x="16" y="202" width="5" height="5" rx="2.5" fill="#00ADD8"/>
 
-    <!-- Item 7: SQL -->
-    <circle cx="5" cy="226" r="4" fill="#e38c00"/>
-    <text x="16" y="230" class="label">SQL</text>
-    <text x="360" y="230" text-anchor="end" class="value">+556 lines (0.9%)</text>
+    <!-- Item 7: CSS -->
+    <circle cx="5" cy="226" r="4" fill="#563d7c"/>
+    <text x="16" y="230" class="label">CSS</text>
+    <text x="360" y="230" text-anchor="end" class="value">+300 lines (0.8%)</text>
     <rect x="16" y="236" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="236" width="5" height="5" rx="2.5" fill="#e38c00"/>
+    <rect x="16" y="236" width="5" height="5" rx="2.5" fill="#563d7c"/>
 
-    <!-- Item 8: CSS -->
-    <circle cx="5" cy="260" r="4" fill="#563d7c"/>
-    <text x="16" y="264" class="label">CSS</text>
-    <text x="360" y="264" text-anchor="end" class="value">+418 lines (0.7%)</text>
+    <!-- Item 8: Shell -->
+    <circle cx="5" cy="260" r="4" fill="#89e051"/>
+    <text x="16" y="264" class="label">Shell</text>
+    <text x="360" y="264" text-anchor="end" class="value">+212 lines (0.6%)</text>
     <rect x="16" y="270" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="270" width="5" height="5" rx="2.5" fill="#563d7c"/>
+    <rect x="16" y="270" width="5" height="5" rx="2.5" fill="#89e051"/>
 
-    <!-- Item 9: Go -->
-    <circle cx="5" cy="294" r="4" fill="#00ADD8"/>
-    <text x="16" y="298" class="label">Go</text>
-    <text x="360" y="298" text-anchor="end" class="value">+361 lines (0.6%)</text>
+    <!-- Item 9: Dockerfile -->
+    <circle cx="5" cy="294" r="4" fill="#384d54"/>
+    <text x="16" y="298" class="label">Dockerfile</text>
+    <text x="360" y="298" text-anchor="end" class="value">+75 lines (0.2%)</text>
     <rect x="16" y="304" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="304" width="5" height="5" rx="2.5" fill="#00ADD8"/>
+    <rect x="16" y="304" width="5" height="5" rx="2.5" fill="#384d54"/>
 
-    <!-- Item 10: Shell -->
-    <circle cx="5" cy="328" r="4" fill="#89e051"/>
-    <text x="16" y="332" class="label">Shell</text>
-    <text x="360" y="332" text-anchor="end" class="value">+212 lines (0.3%)</text>
+    <!-- Item 10: TypeScript -->
+    <circle cx="5" cy="328" r="4" fill="#3178c6"/>
+    <text x="16" y="332" class="label">TypeScript</text>
+    <text x="360" y="332" text-anchor="end" class="value">+24 lines (0.1%)</text>
     <rect x="16" y="338" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="338" width="5" height="5" rx="2.5" fill="#89e051"/>
+    <rect x="16" y="338" width="5" height="5" rx="2.5" fill="#3178c6"/>
   </g>
 </svg>

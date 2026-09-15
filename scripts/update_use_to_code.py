@@ -522,7 +522,7 @@ def render_markdown_section(all_time, recent, custom_lines=None):
     md.append("<!--")
     md.append("Data for search engine crawlers and screen readers:")
     md.append(
-        "| Rank | All-Time Language | Codebase (KB) | Est. Lines | Codebase Share | Currently Coding (Last 30 Days) | Recent Share |"
+        "| Rank | All-Time Language | Codebase (KB) | Est. Lines | Codebase Share | Currently Coding | Recent Share |"
     )
     md.append(
         "| :--- | :--- | :--- | :--- | :--- | :--- | :--- |"
@@ -666,7 +666,7 @@ def render_svg_card(all_time, recent, output_path, custom_lines=None):
     <svg x="0" y="-15" width="18" height="18" viewBox="0 -960 960 960" fill="#fe428e">
       <path d="M160-400q0-116 71.5-225T428-811q17-11 34.5-.5T480-780v72q0 34 23.5 57t57.5 23q18 0 33.5-7.5T622-658q8-9 18-12.5t19 2.5q66 45 103.5 116T800-400q0 95-49 171.5T622-113q23-26 35.5-58t12.5-67q0-38-14-71.5T615-370L480-502 346-370q-28 27-42 60.5T290-238q0 35 12.5 67t35.5 58q-80-39-129-115.5T160-400Zm320-18 92 90q18 18 28 41t10 49q0 53-38 90.5T480-110q-54 0-92-37.5T350-238q0-26 9.5-49t28.5-41l92-90Z"/>
     </svg>
-    <text x="24" y="0" class="subhead-fire">Currently Coding (Past 30 Days)</text>
+    <text x="24" y="0" class="subhead-fire">Currently Coding</text>
 """
 
     # Add right column items (Top 10)

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 488" width="820" height="488" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 556" width="820" height="556" fill="none">
   <style>
     * {
       font-family: 'Segoe UI', Ubuntu, "Helvetica Neue", Sans-Serif;
@@ -32,35 +32,55 @@
   </style>
 
   <!-- Background Card -->
-  <rect x="1" y="1" width="818" height="486" rx="6" fill="#141321" stroke="#7F3FBF" stroke-width="1.5"/>
+  <rect x="1" y="1" width="818" height="554" rx="6" fill="#141321" stroke="#7F3FBF" stroke-width="1.5"/>
 
   <!-- Title Banner -->
   <!-- Material Symbols: Mode Heat (Fire) Icon -->
   <svg x="25" y="18" width="18" height="18" viewBox="0 -960 960 960" fill="#fe428e">
     <path d="M160-400q0-116 71.5-225T428-811q17-11 34.5-.5T480-780v72q0 34 23.5 57t57.5 23q18 0 33.5-7.5T622-658q8-9 18-12.5t19 2.5q66 45 103.5 116T800-400q0 95-49 171.5T622-113q23-26 35.5-58t12.5-67q0-38-14-71.5T615-370L480-502 346-370q-28 27-42 60.5T290-238q0 35 12.5 67t35.5 58q-80-39-129-115.5T160-400Zm320-18 92 90q18 18 28 41t10 49q0 53-38 90.5T480-110q-54 0-92-37.5T350-238q0-26 9.5-49t28.5-41l92-90Z"/>
   </svg>
-  <text x="49" y="33" class="header">Top 7 Contributed Projects (This Month)</text>
-  <text x="795" y="33" text-anchor="end" class="footer">Past 30 Days · Ranked by Insertions</text>
+  <text x="49" y="33" class="header">Top 7 Contributed Projects</text>
+  <text x="795" y="33" text-anchor="end" class="footer">Updated: September 14, 2026</text>
   <line x1="25" y1="46" x2="795" y2="46" stroke="#7F3FBF" stroke-opacity="0.3" stroke-width="1"/>
 
-  <!-- Repo 1: 03loveslollipop/cdp_2026 -->
+  <!-- Repo 1: 02loveslollipop/flareform -->
   <g transform="translate(0, 68)">
     <!-- Folder Icon -->
     <svg x="25" y="-12" width="15" height="15" viewBox="0 -960 960 960" fill="#f8d847">
       <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Z"/>
     </svg>
-    <text x="46" y="0" class="repo-name">03loveslollipop/cdp_2026</text>
-    <text x="795" y="0" text-anchor="end" class="insertions-count">+25,071 insertions this month</text>
+    <text x="46" y="0" class="repo-name">02loveslollipop/flareform</text>
+    <text x="795" y="0" text-anchor="end" class="insertions-count">+26,015 insertions</text>
 
     <!-- Stacked Bar -->
     <mask id="bar-mask-0">
       <rect x="25" y="8" width="770" height="8" rx="4" fill="white"/>
     </mask>
     <rect x="25" y="8" width="770" height="8" rx="4" fill="#222036"/>
-    <rect x="25.00" y="8" width="623.84" height="8" fill="#3572A5" mask="url(#bar-mask-0)"/>
-    <rect x="648.84" y="8" width="104.63" height="8" fill="#DA5B0B" mask="url(#bar-mask-0)"/>
-    <rect x="753.48" y="8" width="28.18" height="8" fill="#e34c26" mask="url(#bar-mask-0)"/>
-    <rect x="781.66" y="8" width="4.11" height="8" fill="#012456" mask="url(#bar-mask-0)"/>
+    <rect x="25.00" y="8" width="770.00" height="8" fill="#f1e05a" mask="url(#bar-mask-0)"/>
+    <circle cx="29" cy="24.5" r="3.5" fill="#f1e05a"/>
+    <text x="36" y="28" class="lang-legend">JavaScript 100.0%</text>
+  </g>
+  <line x1="25" y1="114" x2="795" y2="114" stroke="#7F3FBF" stroke-opacity="0.2" stroke-dasharray="3 3" stroke-width="1"/>
+
+  <!-- Repo 2: 03loveslollipop/cdp_2026 -->
+  <g transform="translate(0, 136)">
+    <!-- Folder Icon -->
+    <svg x="25" y="-12" width="15" height="15" viewBox="0 -960 960 960" fill="#f8d847">
+      <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Z"/>
+    </svg>
+    <text x="46" y="0" class="repo-name">03loveslollipop/cdp_2026</text>
+    <text x="795" y="0" text-anchor="end" class="insertions-count">+25,071 insertions</text>
+
+    <!-- Stacked Bar -->
+    <mask id="bar-mask-1">
+      <rect x="25" y="8" width="770" height="8" rx="4" fill="white"/>
+    </mask>
+    <rect x="25" y="8" width="770" height="8" rx="4" fill="#222036"/>
+    <rect x="25.00" y="8" width="623.84" height="8" fill="#3572A5" mask="url(#bar-mask-1)"/>
+    <rect x="648.84" y="8" width="104.63" height="8" fill="#DA5B0B" mask="url(#bar-mask-1)"/>
+    <rect x="753.48" y="8" width="28.18" height="8" fill="#e34c26" mask="url(#bar-mask-1)"/>
+    <rect x="781.66" y="8" width="4.11" height="8" fill="#012456" mask="url(#bar-mask-1)"/>
     <circle cx="29" cy="24.5" r="3.5" fill="#3572A5"/>
     <text x="36" y="28" class="lang-legend">Python 81.0%</text>
     <circle cx="129.0" cy="24.5" r="3.5" fill="#DA5B0B"/>
@@ -70,30 +90,30 @@
     <circle cx="378.0" cy="24.5" r="3.5" fill="#012456"/>
     <text x="385.0" y="28" class="lang-legend">PowerShell 0.5%</text>
   </g>
-  <line x1="25" y1="114" x2="795" y2="114" stroke="#7F3FBF" stroke-opacity="0.2" stroke-dasharray="3 3" stroke-width="1"/>
+  <line x1="25" y1="182" x2="795" y2="182" stroke="#7F3FBF" stroke-opacity="0.2" stroke-dasharray="3 3" stroke-width="1"/>
 
-  <!-- Repo 2: 02loveslollipop/MiPedido -->
-  <g transform="translate(0, 136)">
+  <!-- Repo 3: 02loveslollipop/MiPedido -->
+  <g transform="translate(0, 204)">
     <!-- Folder Icon -->
     <svg x="25" y="-12" width="15" height="15" viewBox="0 -960 960 960" fill="#f8d847">
       <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Z"/>
     </svg>
     <text x="46" y="0" class="repo-name">02loveslollipop/MiPedido</text>
-    <text x="795" y="0" text-anchor="end" class="insertions-count">+4,818 insertions this month</text>
+    <text x="795" y="0" text-anchor="end" class="insertions-count">+4,818 insertions</text>
 
     <!-- Stacked Bar -->
-    <mask id="bar-mask-1">
+    <mask id="bar-mask-2">
       <rect x="25" y="8" width="770" height="8" rx="4" fill="white"/>
     </mask>
     <rect x="25" y="8" width="770" height="8" rx="4" fill="#222036"/>
-    <rect x="25.00" y="8" width="267.94" height="8" fill="#00B4AB" mask="url(#bar-mask-1)"/>
-    <rect x="292.94" y="8" width="197.18" height="8" fill="#3572A5" mask="url(#bar-mask-1)"/>
-    <rect x="490.13" y="8" width="170.17" height="8" fill="#A97BFF" mask="url(#bar-mask-1)"/>
-    <rect x="660.30" y="8" width="44.63" height="8" fill="#f34b7d" mask="url(#bar-mask-1)"/>
-    <rect x="704.93" y="8" width="42.88" height="8" fill="#00ADD8" mask="url(#bar-mask-1)"/>
-    <rect x="747.81" y="8" width="34.70" height="8" fill="#064F8C" mask="url(#bar-mask-1)"/>
-    <rect x="782.51" y="8" width="8.59" height="8" fill="#e34c26" mask="url(#bar-mask-1)"/>
-    <rect x="791.10" y="8" width="3.90" height="8" fill="#F05138" mask="url(#bar-mask-1)"/>
+    <rect x="25.00" y="8" width="267.94" height="8" fill="#00B4AB" mask="url(#bar-mask-2)"/>
+    <rect x="292.94" y="8" width="197.18" height="8" fill="#3572A5" mask="url(#bar-mask-2)"/>
+    <rect x="490.13" y="8" width="170.17" height="8" fill="#A97BFF" mask="url(#bar-mask-2)"/>
+    <rect x="660.30" y="8" width="44.63" height="8" fill="#f34b7d" mask="url(#bar-mask-2)"/>
+    <rect x="704.93" y="8" width="42.88" height="8" fill="#00ADD8" mask="url(#bar-mask-2)"/>
+    <rect x="747.81" y="8" width="34.70" height="8" fill="#064F8C" mask="url(#bar-mask-2)"/>
+    <rect x="782.51" y="8" width="8.59" height="8" fill="#e34c26" mask="url(#bar-mask-2)"/>
+    <rect x="791.10" y="8" width="3.90" height="8" fill="#F05138" mask="url(#bar-mask-2)"/>
     <circle cx="29" cy="24.5" r="3.5" fill="#00B4AB"/>
     <text x="36" y="28" class="lang-legend">Dart 34.8%</text>
     <circle cx="115.0" cy="24.5" r="3.5" fill="#3572A5"/>
@@ -111,26 +131,26 @@
     <circle cx="617.0" cy="24.5" r="3.5" fill="#F05138"/>
     <text x="624.0" y="28" class="lang-legend">Swift 0.5%</text>
   </g>
-  <line x1="25" y1="182" x2="795" y2="182" stroke="#7F3FBF" stroke-opacity="0.2" stroke-dasharray="3 3" stroke-width="1"/>
+  <line x1="25" y1="250" x2="795" y2="250" stroke="#7F3FBF" stroke-opacity="0.2" stroke-dasharray="3 3" stroke-width="1"/>
 
-  <!-- Repo 3: 02loveslollipop/OpenCROW -->
-  <g transform="translate(0, 204)">
+  <!-- Repo 4: 02loveslollipop/OpenCROW -->
+  <g transform="translate(0, 272)">
     <!-- Folder Icon -->
     <svg x="25" y="-12" width="15" height="15" viewBox="0 -960 960 960" fill="#f8d847">
       <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Z"/>
     </svg>
     <text x="46" y="0" class="repo-name">02loveslollipop/OpenCROW</text>
-    <text x="795" y="0" text-anchor="end" class="insertions-count">+4,519 insertions this month</text>
+    <text x="795" y="0" text-anchor="end" class="insertions-count">+4,519 insertions</text>
 
     <!-- Stacked Bar -->
-    <mask id="bar-mask-2">
+    <mask id="bar-mask-3">
       <rect x="25" y="8" width="770" height="8" rx="4" fill="white"/>
     </mask>
     <rect x="25" y="8" width="770" height="8" rx="4" fill="#222036"/>
-    <rect x="25.00" y="8" width="710.02" height="8" fill="#3572A5" mask="url(#bar-mask-2)"/>
-    <rect x="735.02" y="8" width="33.61" height="8" fill="#89e051" mask="url(#bar-mask-2)"/>
-    <rect x="768.62" y="8" width="13.16" height="8" fill="#e34c26" mask="url(#bar-mask-2)"/>
-    <rect x="781.78" y="8" width="7.01" height="8" fill="#4F88C0" mask="url(#bar-mask-2)"/>
+    <rect x="25.00" y="8" width="710.02" height="8" fill="#3572A5" mask="url(#bar-mask-3)"/>
+    <rect x="735.02" y="8" width="33.61" height="8" fill="#89e051" mask="url(#bar-mask-3)"/>
+    <rect x="768.62" y="8" width="13.16" height="8" fill="#e34c26" mask="url(#bar-mask-3)"/>
+    <rect x="781.78" y="8" width="7.01" height="8" fill="#4F88C0" mask="url(#bar-mask-3)"/>
     <circle cx="29" cy="24.5" r="3.5" fill="#3572A5"/>
     <text x="36" y="28" class="lang-legend">Python 92.2%</text>
     <circle cx="129.0" cy="24.5" r="3.5" fill="#89e051"/>
@@ -140,27 +160,27 @@
     <circle cx="294.0" cy="24.5" r="3.5" fill="#4F88C0"/>
     <text x="301.0" y="28" class="lang-legend">Sage 0.9%</text>
   </g>
-  <line x1="25" y1="250" x2="795" y2="250" stroke="#7F3FBF" stroke-opacity="0.2" stroke-dasharray="3 3" stroke-width="1"/>
+  <line x1="25" y1="318" x2="795" y2="318" stroke="#7F3FBF" stroke-opacity="0.2" stroke-dasharray="3 3" stroke-width="1"/>
 
-  <!-- Repo 4: 02loveslollipop/opsdesk -->
-  <g transform="translate(0, 272)">
+  <!-- Repo 5: 02loveslollipop/opsdesk -->
+  <g transform="translate(0, 340)">
     <!-- Folder Icon -->
     <svg x="25" y="-12" width="15" height="15" viewBox="0 -960 960 960" fill="#f8d847">
       <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Z"/>
     </svg>
     <text x="46" y="0" class="repo-name">02loveslollipop/opsdesk</text>
-    <text x="795" y="0" text-anchor="end" class="insertions-count">+2,444 insertions this month</text>
+    <text x="795" y="0" text-anchor="end" class="insertions-count">+2,444 insertions</text>
 
     <!-- Stacked Bar -->
-    <mask id="bar-mask-3">
+    <mask id="bar-mask-4">
       <rect x="25" y="8" width="770" height="8" rx="4" fill="white"/>
     </mask>
     <rect x="25" y="8" width="770" height="8" rx="4" fill="#222036"/>
-    <rect x="25.00" y="8" width="540.92" height="8" fill="#3572A5" mask="url(#bar-mask-3)"/>
-    <rect x="565.92" y="8" width="136.32" height="8" fill="#e34c26" mask="url(#bar-mask-3)"/>
-    <rect x="702.24" y="8" width="70.50" height="8" fill="#563d7c" mask="url(#bar-mask-3)"/>
-    <rect x="772.75" y="8" width="12.35" height="8" fill="#384d54" mask="url(#bar-mask-3)"/>
-    <rect x="785.10" y="8" width="9.90" height="8" fill="#427819" mask="url(#bar-mask-3)"/>
+    <rect x="25.00" y="8" width="540.92" height="8" fill="#3572A5" mask="url(#bar-mask-4)"/>
+    <rect x="565.92" y="8" width="136.32" height="8" fill="#e34c26" mask="url(#bar-mask-4)"/>
+    <rect x="702.24" y="8" width="70.50" height="8" fill="#563d7c" mask="url(#bar-mask-4)"/>
+    <rect x="772.75" y="8" width="12.35" height="8" fill="#384d54" mask="url(#bar-mask-4)"/>
+    <rect x="785.10" y="8" width="9.90" height="8" fill="#427819" mask="url(#bar-mask-4)"/>
     <circle cx="29" cy="24.5" r="3.5" fill="#3572A5"/>
     <text x="36" y="28" class="lang-legend">Python 70.2%</text>
     <circle cx="129.0" cy="24.5" r="3.5" fill="#e34c26"/>
@@ -172,29 +192,29 @@
     <circle cx="408.0" cy="24.5" r="3.5" fill="#427819"/>
     <text x="415.0" y="28" class="lang-legend">Makefile 1.3%</text>
   </g>
-  <line x1="25" y1="318" x2="795" y2="318" stroke="#7F3FBF" stroke-opacity="0.2" stroke-dasharray="3 3" stroke-width="1"/>
+  <line x1="25" y1="386" x2="795" y2="386" stroke="#7F3FBF" stroke-opacity="0.2" stroke-dasharray="3 3" stroke-width="1"/>
 
-  <!-- Repo 5: 02loveslollipop/02labs -->
-  <g transform="translate(0, 340)">
+  <!-- Repo 6: 02loveslollipop/02labs -->
+  <g transform="translate(0, 408)">
     <!-- Folder Icon -->
     <svg x="25" y="-12" width="15" height="15" viewBox="0 -960 960 960" fill="#f8d847">
       <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Z"/>
     </svg>
     <text x="46" y="0" class="repo-name">02loveslollipop/02labs</text>
-    <text x="795" y="0" text-anchor="end" class="insertions-count">+838 insertions this month</text>
+    <text x="795" y="0" text-anchor="end" class="insertions-count">+838 insertions</text>
 
     <!-- Stacked Bar -->
-    <mask id="bar-mask-4">
+    <mask id="bar-mask-5">
       <rect x="25" y="8" width="770" height="8" rx="4" fill="white"/>
     </mask>
     <rect x="25" y="8" width="770" height="8" rx="4" fill="#222036"/>
-    <rect x="25.00" y="8" width="220.07" height="8" fill="#ff5a03" mask="url(#bar-mask-4)"/>
-    <rect x="245.07" y="8" width="174.10" height="8" fill="#3178c6" mask="url(#bar-mask-4)"/>
-    <rect x="419.16" y="8" width="155.03" height="8" fill="#563d7c" mask="url(#bar-mask-4)"/>
-    <rect x="574.19" y="8" width="148.35" height="8" fill="#3D6117" mask="url(#bar-mask-4)"/>
-    <rect x="722.55" y="8" width="44.71" height="8" fill="#f1e05a" mask="url(#bar-mask-4)"/>
-    <rect x="767.26" y="8" width="17.33" height="8" fill="#3572A5" mask="url(#bar-mask-4)"/>
-    <rect x="784.59" y="8" width="10.41" height="8" fill="#89e051" mask="url(#bar-mask-4)"/>
+    <rect x="25.00" y="8" width="220.07" height="8" fill="#ff5a03" mask="url(#bar-mask-5)"/>
+    <rect x="245.07" y="8" width="174.10" height="8" fill="#3178c6" mask="url(#bar-mask-5)"/>
+    <rect x="419.16" y="8" width="155.03" height="8" fill="#563d7c" mask="url(#bar-mask-5)"/>
+    <rect x="574.19" y="8" width="148.35" height="8" fill="#3D6117" mask="url(#bar-mask-5)"/>
+    <rect x="722.55" y="8" width="44.71" height="8" fill="#f1e05a" mask="url(#bar-mask-5)"/>
+    <rect x="767.26" y="8" width="17.33" height="8" fill="#3572A5" mask="url(#bar-mask-5)"/>
+    <rect x="784.59" y="8" width="10.41" height="8" fill="#89e051" mask="url(#bar-mask-5)"/>
     <circle cx="29" cy="24.5" r="3.5" fill="#ff5a03"/>
     <text x="36" y="28" class="lang-legend">Astro 28.6%</text>
     <circle cx="122.0" cy="24.5" r="3.5" fill="#3178c6"/>
@@ -210,25 +230,25 @@
     <circle cx="636.0" cy="24.5" r="3.5" fill="#89e051"/>
     <text x="643.0" y="28" class="lang-legend">Shell 1.4%</text>
   </g>
-  <line x1="25" y1="386" x2="795" y2="386" stroke="#7F3FBF" stroke-opacity="0.2" stroke-dasharray="3 3" stroke-width="1"/>
+  <line x1="25" y1="454" x2="795" y2="454" stroke="#7F3FBF" stroke-opacity="0.2" stroke-dasharray="3 3" stroke-width="1"/>
 
-  <!-- Repo 6: 02loveslollipop/Sap-Price-Updater -->
-  <g transform="translate(0, 408)">
+  <!-- Repo 7: 02loveslollipop/Sap-Price-Updater -->
+  <g transform="translate(0, 476)">
     <!-- Folder Icon -->
     <svg x="25" y="-12" width="15" height="15" viewBox="0 -960 960 960" fill="#f8d847">
       <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Z"/>
     </svg>
     <text x="46" y="0" class="repo-name">02loveslollipop/Sap-Price-Updater</text>
-    <text x="795" y="0" text-anchor="end" class="insertions-count">+238 insertions this month</text>
+    <text x="795" y="0" text-anchor="end" class="insertions-count">+238 insertions</text>
 
     <!-- Stacked Bar -->
-    <mask id="bar-mask-5">
+    <mask id="bar-mask-6">
       <rect x="25" y="8" width="770" height="8" rx="4" fill="white"/>
     </mask>
     <rect x="25" y="8" width="770" height="8" rx="4" fill="#222036"/>
-    <rect x="25.00" y="8" width="746.13" height="8" fill="#3572A5" mask="url(#bar-mask-5)"/>
-    <rect x="771.13" y="8" width="13.02" height="8" fill="#012456" mask="url(#bar-mask-5)"/>
-    <rect x="784.15" y="8" width="10.85" height="8" fill="#89e051" mask="url(#bar-mask-5)"/>
+    <rect x="25.00" y="8" width="746.13" height="8" fill="#3572A5" mask="url(#bar-mask-6)"/>
+    <rect x="771.13" y="8" width="13.02" height="8" fill="#012456" mask="url(#bar-mask-6)"/>
+    <rect x="784.15" y="8" width="10.85" height="8" fill="#89e051" mask="url(#bar-mask-6)"/>
     <circle cx="29" cy="24.5" r="3.5" fill="#3572A5"/>
     <text x="36" y="28" class="lang-legend">Python 96.9%</text>
     <circle cx="129.0" cy="24.5" r="3.5" fill="#012456"/>
