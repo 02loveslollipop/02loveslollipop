@@ -41,7 +41,7 @@
 
   <!-- Title Banner -->
   <text x="25" y="33" class="header">Languages &amp; Tools Ranking</text>
-  <text x="795" y="33" text-anchor="end" class="footer">Updated: September 15, 2026</text>
+  <text x="795" y="33" text-anchor="end" class="footer">Updated: September 20, 2026</text>
   <line x1="25" y1="46" x2="795" y2="46" stroke="#7F3FBF" stroke-opacity="0.3" stroke-width="1"/>
 
   <!-- Divider Line Between Columns -->
@@ -58,7 +58,7 @@
     <!-- Item 1: Python -->
     <circle cx="5" cy="22" r="4" fill="#3572A5"/>
     <text x="16" y="26" class="label">Python</text>
-    <text x="360" y="26" text-anchor="end" class="value">63,911 KB · 1.87M lines</text>
+    <text x="360" y="26" text-anchor="end" class="value">63,913 KB · 1.87M lines</text>
     <rect x="16" y="32" width="344" height="5" rx="2.5" fill="#222036"/>
     <rect x="16" y="32" width="262" height="5" rx="2.5" fill="#3572A5"/>
 
@@ -72,9 +72,9 @@
     <!-- Item 3: JavaScript -->
     <circle cx="5" cy="90" r="4" fill="#f1e05a"/>
     <text x="16" y="94" class="label">JavaScript</text>
-    <text x="360" y="94" text-anchor="end" class="value">1,693 KB · 45.6k lines</text>
+    <text x="360" y="94" text-anchor="end" class="value">1,717 KB · 46.3k lines</text>
     <rect x="16" y="100" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="100" width="6" height="5" rx="2.5" fill="#f1e05a"/>
+    <rect x="16" y="100" width="7" height="5" rx="2.5" fill="#f1e05a"/>
 
     <!-- Item 4: Cython -->
     <circle cx="5" cy="124" r="4" fill="#fed10a"/>
@@ -104,19 +104,19 @@
     <rect x="16" y="236" width="344" height="5" rx="2.5" fill="#222036"/>
     <rect x="16" y="236" width="5" height="5" rx="2.5" fill="#f34b7d"/>
 
-    <!-- Item 8: Jupyter Notebook -->
-    <circle cx="5" cy="260" r="4" fill="#DA5B0B"/>
-    <text x="16" y="264" class="label">Jupyter Notebook</text>
-    <text x="360" y="264" text-anchor="end" class="value">456 KB · 9.5k lines</text>
+    <!-- Item 8: LaTeX -->
+    <circle cx="5" cy="260" r="4" fill="#3D6117"/>
+    <text x="16" y="264" class="label">LaTeX</text>
+    <text x="360" y="264" text-anchor="end" class="value">465 KB · 13.6k lines</text>
     <rect x="16" y="270" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="270" width="5" height="5" rx="2.5" fill="#DA5B0B"/>
+    <rect x="16" y="270" width="5" height="5" rx="2.5" fill="#3D6117"/>
 
-    <!-- Item 9: LaTeX -->
-    <circle cx="5" cy="294" r="4" fill="#3D6117"/>
-    <text x="16" y="298" class="label">LaTeX</text>
-    <text x="360" y="298" text-anchor="end" class="value">451 KB · 13.2k lines</text>
+    <!-- Item 9: Jupyter Notebook -->
+    <circle cx="5" cy="294" r="4" fill="#DA5B0B"/>
+    <text x="16" y="298" class="label">Jupyter Notebook</text>
+    <text x="360" y="298" text-anchor="end" class="value">456 KB · 9.5k lines</text>
     <rect x="16" y="304" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="304" width="5" height="5" rx="2.5" fill="#3D6117"/>
+    <rect x="16" y="304" width="5" height="5" rx="2.5" fill="#DA5B0B"/>
 
     <!-- Item 10: CSS -->
     <circle cx="5" cy="328" r="4" fill="#563d7c"/>
@@ -137,30 +137,30 @@
     <!-- Item 1: JavaScript -->
     <circle cx="5" cy="22" r="4" fill="#f1e05a"/>
     <text x="16" y="26" class="label">JavaScript</text>
-    <text x="360" y="26" text-anchor="end" class="value">+41,680 lines (46.1%)</text>
+    <text x="360" y="26" text-anchor="end" class="value">+42,913 lines (47.1%)</text>
     <rect x="16" y="32" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="32" width="158" height="5" rx="2.5" fill="#f1e05a"/>
+    <rect x="16" y="32" width="161" height="5" rx="2.5" fill="#f1e05a"/>
 
     <!-- Item 2: Python -->
     <circle cx="5" cy="56" r="4" fill="#3572A5"/>
     <text x="16" y="60" class="label">Python</text>
-    <text x="360" y="60" text-anchor="end" class="value">+28,591 lines (31.6%)</text>
+    <text x="360" y="60" text-anchor="end" class="value">+28,907 lines (31.7%)</text>
     <rect x="16" y="66" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="66" width="108" height="5" rx="2.5" fill="#3572A5"/>
+    <rect x="16" y="66" width="109" height="5" rx="2.5" fill="#3572A5"/>
 
     <!-- Item 3: TypeScript -->
     <circle cx="5" cy="90" r="4" fill="#3178c6"/>
     <text x="16" y="94" class="label">TypeScript</text>
-    <text x="360" y="94" text-anchor="end" class="value">+11,660 lines (12.9%)</text>
+    <text x="360" y="94" text-anchor="end" class="value">+11,660 lines (12.8%)</text>
     <rect x="16" y="100" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="100" width="44" height="5" rx="2.5" fill="#3178c6"/>
+    <rect x="16" y="100" width="43" height="5" rx="2.5" fill="#3178c6"/>
 
     <!-- Item 4: Jupyter Notebook -->
     <circle cx="5" cy="124" r="4" fill="#DA5B0B"/>
     <text x="16" y="128" class="label">Jupyter Notebook</text>
-    <text x="360" y="128" text-anchor="end" class="value">+3,059 lines (3.4%)</text>
+    <text x="360" y="128" text-anchor="end" class="value">+1,818 lines (2.0%)</text>
     <rect x="16" y="134" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="134" width="11" height="5" rx="2.5" fill="#DA5B0B"/>
+    <rect x="16" y="134" width="6" height="5" rx="2.5" fill="#DA5B0B"/>
 
     <!-- Item 5: Kotlin -->
     <circle cx="5" cy="158" r="4" fill="#A97BFF"/>
@@ -172,14 +172,14 @@
     <!-- Item 6: LaTeX -->
     <circle cx="5" cy="192" r="4" fill="#3D6117"/>
     <text x="16" y="196" class="label">LaTeX</text>
-    <text x="360" y="196" text-anchor="end" class="value">+1,377 lines (1.5%)</text>
+    <text x="360" y="196" text-anchor="end" class="value">+1,692 lines (1.9%)</text>
     <rect x="16" y="202" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="202" width="5" height="5" rx="2.5" fill="#3D6117"/>
+    <rect x="16" y="202" width="6" height="5" rx="2.5" fill="#3D6117"/>
 
     <!-- Item 7: SQL -->
     <circle cx="5" cy="226" r="4" fill="#e38c00"/>
     <text x="16" y="230" class="label">SQL</text>
-    <text x="360" y="230" text-anchor="end" class="value">+1,130 lines (1.3%)</text>
+    <text x="360" y="230" text-anchor="end" class="value">+1,340 lines (1.5%)</text>
     <rect x="16" y="236" width="344" height="5" rx="2.5" fill="#222036"/>
     <rect x="16" y="236" width="5" height="5" rx="2.5" fill="#e38c00"/>
 

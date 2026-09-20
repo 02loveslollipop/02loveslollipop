@@ -40,7 +40,7 @@
     <path d="M160-400q0-116 71.5-225T428-811q17-11 34.5-.5T480-780v72q0 34 23.5 57t57.5 23q18 0 33.5-7.5T622-658q8-9 18-12.5t19 2.5q66 45 103.5 116T800-400q0 95-49 171.5T622-113q23-26 35.5-58t12.5-67q0-38-14-71.5T615-370L480-502 346-370q-28 27-42 60.5T290-238q0 35 12.5 67t35.5 58q-80-39-129-115.5T160-400Zm320-18 92 90q18 18 28 41t10 49q0 53-38 90.5T480-110q-54 0-92-37.5T350-238q0-26 9.5-49t28.5-41l92-90Z"/>
   </svg>
   <text x="49" y="33" class="header">Top 7 Contributed Projects</text>
-  <text x="795" y="33" text-anchor="end" class="footer">Updated: September 15, 2026</text>
+  <text x="795" y="33" text-anchor="end" class="footer">Updated: September 20, 2026</text>
   <line x1="25" y1="46" x2="795" y2="46" stroke="#7F3FBF" stroke-opacity="0.3" stroke-width="1"/>
 
   <!-- Repo 1: 02loveslollipop/flareform -->
@@ -50,7 +50,7 @@
       <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Z"/>
     </svg>
     <text x="46" y="0" class="repo-name">02loveslollipop/flareform</text>
-    <text x="795" y="0" text-anchor="end" class="insertions-count">+26,015 insertions</text>
+    <text x="795" y="0" text-anchor="end" class="insertions-count">+26,826 insertions</text>
 
     <!-- Stacked Bar -->
     <mask id="bar-mask-0">
@@ -70,25 +70,25 @@
       <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Z"/>
     </svg>
     <text x="46" y="0" class="repo-name">03loveslollipop/cdp_2026</text>
-    <text x="795" y="0" text-anchor="end" class="insertions-count">+25,071 insertions</text>
+    <text x="795" y="0" text-anchor="end" class="insertions-count">+13,251 insertions</text>
 
     <!-- Stacked Bar -->
     <mask id="bar-mask-1">
       <rect x="25" y="8" width="770" height="8" rx="4" fill="white"/>
     </mask>
     <rect x="25" y="8" width="770" height="8" rx="4" fill="#222036"/>
-    <rect x="25.00" y="8" width="623.84" height="8" fill="#3572A5" mask="url(#bar-mask-1)"/>
-    <rect x="648.84" y="8" width="104.63" height="8" fill="#DA5B0B" mask="url(#bar-mask-1)"/>
-    <rect x="753.48" y="8" width="28.18" height="8" fill="#e34c26" mask="url(#bar-mask-1)"/>
-    <rect x="781.66" y="8" width="4.11" height="8" fill="#012456" mask="url(#bar-mask-1)"/>
+    <rect x="25.00" y="8" width="609.81" height="8" fill="#3572A5" mask="url(#bar-mask-1)"/>
+    <rect x="634.81" y="8" width="101.69" height="8" fill="#DA5B0B" mask="url(#bar-mask-1)"/>
+    <rect x="736.51" y="8" width="27.39" height="8" fill="#e34c26" mask="url(#bar-mask-1)"/>
+    <rect x="763.90" y="8" width="21.64" height="8" fill="#3D6117" mask="url(#bar-mask-1)"/>
     <circle cx="29" cy="24.5" r="3.5" fill="#3572A5"/>
-    <text x="36" y="28" class="lang-legend">Python 81.0%</text>
+    <text x="36" y="28" class="lang-legend">Python 79.2%</text>
     <circle cx="129.0" cy="24.5" r="3.5" fill="#DA5B0B"/>
-    <text x="136.0" y="28" class="lang-legend">Jupyter Notebook 13.6%</text>
+    <text x="136.0" y="28" class="lang-legend">Jupyter Notebook 13.2%</text>
     <circle cx="299.0" cy="24.5" r="3.5" fill="#e34c26"/>
-    <text x="306.0" y="28" class="lang-legend">HTML 3.7%</text>
-    <circle cx="378.0" cy="24.5" r="3.5" fill="#012456"/>
-    <text x="385.0" y="28" class="lang-legend">PowerShell 0.5%</text>
+    <text x="306.0" y="28" class="lang-legend">HTML 3.6%</text>
+    <circle cx="378.0" cy="24.5" r="3.5" fill="#3D6117"/>
+    <text x="385.0" y="28" class="lang-legend">LaTeX 2.8%</text>
   </g>
   <line x1="25" y1="182" x2="795" y2="182" stroke="#7F3FBF" stroke-opacity="0.2" stroke-dasharray="3 3" stroke-width="1"/>
 
@@ -99,7 +99,7 @@
       <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Z"/>
     </svg>
     <text x="46" y="0" class="repo-name">02loveslollipop/MiPedido</text>
-    <text x="795" y="0" text-anchor="end" class="insertions-count">+4,818 insertions</text>
+    <text x="795" y="0" text-anchor="end" class="insertions-count">+4,867 insertions</text>
 
     <!-- Stacked Bar -->
     <mask id="bar-mask-2">

@@ -36,15 +36,15 @@
 Data for search engine crawlers and screen readers:
 | Rank | All-Time Language | Codebase (KB) | Est. Lines | Codebase Share | Currently Coding | Recent Share |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 | Python | 63,911 KB | 1.87M lines | 76.4% | JavaScript (+41,680 lines) | 46.1% |
-| 2 | Java | 10,539 KB | 240k lines | 12.6% | Python (+28,591 lines) | 31.6% |
-| 3 | JavaScript | 1,693 KB | 45.6k lines | 2.0% | TypeScript (+11,660 lines) | 12.9% |
-| 4 | Cython | 1,478 KB | 43.3k lines | 1.8% | Jupyter Notebook (+3,059 lines) | 3.4% |
+| 1 | Python | 63,913 KB | 1.87M lines | 76.4% | JavaScript (+42,913 lines) | 47.1% |
+| 2 | Java | 10,539 KB | 240k lines | 12.6% | Python (+28,907 lines) | 31.7% |
+| 3 | JavaScript | 1,717 KB | 46.3k lines | 2.1% | TypeScript (+11,660 lines) | 12.8% |
+| 4 | Cython | 1,478 KB | 43.3k lines | 1.8% | Jupyter Notebook (+1,818 lines) | 2.0% |
 | 5 | TypeScript | 1,083 KB | 29.2k lines | 1.3% | Kotlin (+1,692 lines) | 1.9% |
-| 6 | Dart | 886 KB | 25.2k lines | 1.1% | LaTeX (+1,377 lines) | 1.5% |
-| 7 | C++ | 862 KB | 23.2k lines | 1.0% | SQL (+1,130 lines) | 1.3% |
-| 8 | Jupyter Notebook | 456 KB | 9.5k lines | 0.5% | CSS (+418 lines) | 0.5% |
-| 9 | LaTeX | 451 KB | 13.2k lines | 0.5% | Go (+361 lines) | 0.4% |
+| 6 | Dart | 886 KB | 25.2k lines | 1.1% | LaTeX (+1,692 lines) | 1.9% |
+| 7 | C++ | 862 KB | 23.2k lines | 1.0% | SQL (+1,340 lines) | 1.5% |
+| 8 | LaTeX | 465 KB | 13.6k lines | 0.6% | CSS (+418 lines) | 0.5% |
+| 9 | Jupyter Notebook | 456 KB | 9.5k lines | 0.5% | Go (+361 lines) | 0.4% |
 | 10 | CSS | 354 KB | 11.3k lines | 0.4% | Shell (+212 lines) | 0.2% |
 -->
 <!-- END_SECTION:use_to_code -->
@@ -60,9 +60,9 @@ Data for search engine crawlers and screen readers:
 Top Contributed Projects Data:
 | Rank | Repository | Insertions | Commits | Primary Languages |
 | :--- | :--- | :--- | :--- | :--- |
-| 1 | 02loveslollipop/flareform | +26,015 lines | 3 commits | JavaScript (100.0%) |
-| 2 | 03loveslollipop/cdp_2026 | +25,071 lines | 30 commits | Python (81.0%), Jupyter Notebook (13.6%), HTML (3.7%), PowerShell (0.5%) |
-| 3 | 02loveslollipop/MiPedido | +4,818 lines | 48 commits | Dart (34.8%), Python (25.6%), Kotlin (22.1%), C++ (5.8%), Go (5.6%), CMake (4.5%), HTML (1.1%), Swift (0.5%) |
+| 1 | 02loveslollipop/flareform | +26,826 lines | 14 commits | JavaScript (100.0%) |
+| 2 | 03loveslollipop/cdp_2026 | +13,251 lines | 34 commits | Python (79.2%), Jupyter Notebook (13.2%), HTML (3.6%), LaTeX (2.8%) |
+| 3 | 02loveslollipop/MiPedido | +4,867 lines | 53 commits | Dart (34.8%), Python (25.6%), Kotlin (22.1%), C++ (5.8%), Go (5.6%), CMake (4.5%), HTML (1.1%), Swift (0.5%) |
 | 4 | 02loveslollipop/OpenCROW | +4,519 lines | 41 commits | Python (92.2%), Shell (4.4%), HTML (1.7%), Sage (0.9%) |
 | 5 | 02loveslollipop/opsdesk | +2,444 lines | 36 commits | Python (70.2%), HTML (17.7%), CSS (9.2%), Dockerfile (1.6%), Makefile (1.3%) |
 | 6 | 02loveslollipop/02labs | +838 lines | 8 commits | Astro (28.6%), TypeScript (22.6%), CSS (20.1%), LaTeX (19.3%), JavaScript (5.8%), Python (2.3%), Shell (1.4%) |
