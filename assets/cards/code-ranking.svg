@@ -41,7 +41,7 @@
 
   <!-- Title Banner -->
   <text x="25" y="33" class="header">Languages &amp; Tools Ranking</text>
-  <text x="795" y="33" text-anchor="end" class="footer">Updated: October 11, 2026</text>
+  <text x="795" y="33" text-anchor="end" class="footer">Updated: October 18, 2026</text>
   <line x1="25" y1="46" x2="795" y2="46" stroke="#7F3FBF" stroke-opacity="0.3" stroke-width="1"/>
 
   <!-- Divider Line Between Columns -->
@@ -58,7 +58,7 @@
     <!-- Item 1: Python -->
     <circle cx="5" cy="22" r="4" fill="#3572A5"/>
     <text x="16" y="26" class="label">Python</text>
-    <text x="360" y="26" text-anchor="end" class="value">64,479 KB · 1.89M lines</text>
+    <text x="360" y="26" text-anchor="end" class="value">64,879 KB · 1.90M lines</text>
     <rect x="16" y="32" width="344" height="5" rx="2.5" fill="#222036"/>
     <rect x="16" y="32" width="261" height="5" rx="2.5" fill="#3572A5"/>
 
@@ -86,7 +86,7 @@
     <!-- Item 5: TypeScript -->
     <circle cx="5" cy="158" r="4" fill="#3178c6"/>
     <text x="16" y="162" class="label">TypeScript</text>
-    <text x="360" y="162" text-anchor="end" class="value">1,083 KB · 29.2k lines</text>
+    <text x="360" y="162" text-anchor="end" class="value">1,085 KB · 29.2k lines</text>
     <rect x="16" y="168" width="344" height="5" rx="2.5" fill="#222036"/>
     <rect x="16" y="168" width="5" height="5" rx="2.5" fill="#3178c6"/>
 
