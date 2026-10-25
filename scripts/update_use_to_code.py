@@ -4,7 +4,7 @@ update_use_to_code.py
 
 Analyzes GitHub activity using GitHub GraphQL and REST APIs to calculate:
 1. All-Time Language Ranking (bytes and percentage across user's repositories)
-2. Current / "Now" Language Ranking (exact lines of code added in the past 30 days)
+2. Current / "Now" Language Ranking (exact lines of code added in the rolling past 7 days)
 
 Updates README.md between:
 <!-- START_SECTION:use_to_code -->
@@ -185,8 +185,8 @@ def fetch_graphql(query, token, variables=None):
 def get_all_time_languages(token):
     """Fetch all non-fork repos (public and private) across all pages and aggregate language byte counts."""
     query = """
-    query ($after: String) {
-      viewer {
+    query ($after: String, $username: String!) {
+      user(login: $username) {
         login
         repositories(first: 100, after: $after, ownerAffiliations: [OWNER, COLLABORATOR, ORGANIZATION_MEMBER], orderBy: {field: PUSHED_AT, direction: DESC}) {
           pageInfo {
@@ -217,17 +217,17 @@ def get_all_time_languages(token):
     has_next_page = True
     after_cursor = None
     lang_bytes = {}
-    username = "02loveslollipop"
+    username = os.environ.get("PROFILE_USERNAME", "02loveslollipop")
     public_count = 0
     private_count = 0
     jupyter_repos = []
 
     while has_next_page:
-        res = fetch_graphql(query, token, variables={"after": after_cursor})
-        if not res or "data" not in res or not res["data"].get("viewer"):
+        res = fetch_graphql(query, token, variables={"after": after_cursor, "username": username})
+        if not res or "data" not in res or not res["data"].get("user"):
             break
 
-        viewer = res["data"]["viewer"]
+        viewer = res["data"]["user"]
         username = viewer.get("login", username)
         repos_data = viewer.get("repositories", {})
 
@@ -286,103 +286,24 @@ def get_all_time_languages(token):
     return lang_bytes, username, custom_lines
 
 
-def get_recent_activity(token, days=30):
-    """Fetch lines of code added in the past N days per language."""
-    now = datetime.datetime.now(datetime.timezone.utc)
-    since_date = now - datetime.timedelta(days=days)
-    since_iso = since_date.isoformat()
-    now_iso = now.isoformat()
-
-    query = f"""
-    query {{
-      viewer {{
-        contributionsCollection(from: "{since_iso}", to: "{now_iso}") {{
-          commitContributionsByRepository(maxRepositories: 30) {{
-            repository {{
-              nameWithOwner
-            }}
-            contributions {{
-              totalCount
-            }}
-          }}
-        }}
-      }}
-    }}
-    """
-    res = fetch_graphql(query, token)
-    if not res or "data" not in res:
-        print("Failed to fetch recent contributions.", file=sys.stderr)
-        return {}
-
-    repos = res["data"]["viewer"]["contributionsCollection"][
-        "commitContributionsByRepository"
-    ]
+def get_recent_activity(token, days=7, activity=None):
+    """Count code additions from public pushes across all branches in the window."""
+    try:
+        from scripts.github_activity import get_recent_repositories
+    except ImportError:
+        from github_activity import get_recent_repositories
+    if activity is None:
+        activity = get_recent_repositories(token, days=days)
     lang_lines = {}
-
-    for item in repos:
-        if not item or not item.get("repository") or not item["repository"].get("nameWithOwner"):
+    for item in activity:
+        repo_name = item["repository"]["full_name"]
+        owner, name = repo_name.split("/", 1)
+        if owner.lower() == name.lower():
             continue
-        repo_name = item["repository"]["nameWithOwner"]
-        count = item.get("contributions", {}).get("totalCount", 0)
-        if count == 0:
-            continue
-
-        # Fetch commits since date
-        commits_url = f"https://api.github.com/repos/{repo_name}/commits?since={since_iso}&per_page=100"
-        commits = github_request(commits_url, token)
-        if not commits or not isinstance(commits, list) or len(commits) == 0:
-            continue
-
-        if len(commits) == 1:
-            # Single commit: fetch single commit file diff
-            commit_sha = commits[0]["sha"]
-            c_url = f"https://api.github.com/repos/{repo_name}/commits/{commit_sha}"
-            c_data = github_request(c_url, token)
-            if c_data and "files" in c_data:
-                parent_sha = (
-                    c_data["parents"][0]["sha"] if c_data.get("parents") else None
-                )
-                for f in c_data["files"]:
-                    add_file_additions(
-                        f, lang_lines, repo_name, commit_sha, parent_sha, token
-                    )
-        else:
-            # Multiple commits: compare parent of earliest commit to latest commit
-            earliest_commit = commits[-1]
-            latest_sha = commits[0]["sha"]
-            parents = earliest_commit.get("parents", [])
-            base_sha = parents[0]["sha"] if parents else earliest_commit["sha"]
-
-            comp_url = f"https://api.github.com/repos/{repo_name}/compare/{base_sha}...{latest_sha}"
-            comp_data = github_request(comp_url, token)
-            if comp_data and "files" in comp_data:
-                for f in comp_data["files"]:
-                    add_file_additions(
-                        f, lang_lines, repo_name, latest_sha, base_sha, token
-                    )
-                # If earliest commit had no parent (initial commit), also add its own files
-                if not parents:
-                    c_url = f"https://api.github.com/repos/{repo_name}/commits/{earliest_commit['sha']}"
-                    c_data = github_request(c_url, token)
-                    if c_data and "files" in c_data:
-                        for f in c_data["files"]:
-                            add_file_additions(
-                                f, lang_lines, repo_name, earliest_commit["sha"], None, token
-                            )
-            else:
-                # Fallback: iterate commits if compare fails
-                for c in commits[:15]:
-                    c_url = f"https://api.github.com/repos/{repo_name}/commits/{c['sha']}"
-                    c_data = github_request(c_url, token)
-                    if c_data and "files" in c_data:
-                        parent_sha = (
-                            c_data["parents"][0]["sha"] if c_data.get("parents") else None
-                        )
-                        for f in c_data["files"]:
-                            add_file_additions(
-                                f, lang_lines, repo_name, c["sha"], parent_sha, token
-                            )
-
+        for commit in item["commits"]:
+            parent_sha = commit["parents"][0]["sha"] if commit.get("parents") else None
+            for file in commit["files"]:
+                add_file_additions(file, lang_lines, repo_name, commit["sha"], parent_sha, token)
     return lang_lines
 
 
@@ -574,7 +495,7 @@ def render_svg_card(all_time, recent, output_path, custom_lines=None):
     )[:10]
     sorted_recent = sorted(recent.items(), key=lambda x: x[1], reverse=True)[:10]
 
-    today_str = datetime.date.today().strftime("%B %d, %Y")
+    today_str = datetime.datetime.now(datetime.timezone.utc).strftime("%B %d, %Y")
 
     svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 440" width="820" height="440" fill="none">
   <style>
@@ -660,13 +581,13 @@ def render_svg_card(all_time, recent, output_path, custom_lines=None):
 
     svg += """  </g>
 
-  <!-- Column 2: Currently Coding (Past 30 Days - Top 10) -->
+  <!-- Column 2: Currently Coding (Last 7 Days - Top 10) -->
   <g transform="translate(435, 70)">
     <!-- Material Symbols: Mode Heat (Rounded Filled) -->
     <svg x="0" y="-15" width="18" height="18" viewBox="0 -960 960 960" fill="#fe428e">
       <path d="M160-400q0-116 71.5-225T428-811q17-11 34.5-.5T480-780v72q0 34 23.5 57t57.5 23q18 0 33.5-7.5T622-658q8-9 18-12.5t19 2.5q66 45 103.5 116T800-400q0 95-49 171.5T622-113q23-26 35.5-58t12.5-67q0-38-14-71.5T615-370L480-502 346-370q-28 27-42 60.5T290-238q0 35 12.5 67t35.5 58q-80-39-129-115.5T160-400Zm320-18 92 90q18 18 28 41t10 49q0 53-38 90.5T480-110q-54 0-92-37.5T350-238q0-26 9.5-49t28.5-41l92-90Z"/>
     </svg>
-    <text x="24" y="0" class="subhead-fire">Currently Coding</text>
+    <text x="24" y="0" class="subhead-fire">Currently Coding · Last 7 Days</text>
 """
 
     # Add right column items (Top 10)
@@ -758,9 +679,14 @@ def main():
     all_time, username, custom_lines = get_all_time_languages(token)
     print(f"   Found {len(all_time)} languages across {username}'s repositories.")
 
-    print("2. Fetching recent 30-day activity & line additions...")
-    recent = get_recent_activity(token, days=30)
-    print(f"   Found {len(recent)} languages active in the last 30 days.")
+    print("2. Fetching rolling 7-day push activity & line additions...")
+    try:
+        from scripts.github_activity import get_recent_repositories
+    except ImportError:
+        from github_activity import get_recent_repositories
+    activity = get_recent_repositories(token, days=7)
+    recent = get_recent_activity(token, days=7, activity=activity)
+    print(f"   Found {len(recent)} languages active in the last 7 days.")
 
     # Paths
     base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
@@ -777,29 +703,22 @@ def main():
 
     print("5. Generating weekly contributed repos card & updating README...")
     try:
-        try:
-            from update_weekly_repos import (
-                get_weekly_repos,
-                render_weekly_repos_card,
-                render_markdown_section as render_weekly_section,
-                update_readme as update_weekly_readme,
-            )
-        except ImportError:
-            from scripts.update_weekly_repos import (
-                get_weekly_repos,
-                render_weekly_repos_card,
-                render_markdown_section as render_weekly_section,
-                update_readme as update_weekly_readme,
-            )
-        weekly_svg = os.path.join(base_dir, "assets", "cards", "weekly-repos.svg")
-        monthly_svg = os.path.join(base_dir, "assets", "cards", "monthly-repos.svg")
-        monthly_repos = get_weekly_repos(token, days=30, limit=7)
-        render_weekly_repos_card(monthly_repos, weekly_svg)
-        render_weekly_repos_card(monthly_repos, monthly_svg)
-        monthly_md = render_weekly_section(monthly_repos)
-        update_weekly_readme(template_path, readme_path, monthly_md)
-    except Exception as e:
-        print(f"Weekly repos card update warning: {e}", file=sys.stderr)
+        from scripts.update_weekly_repos import (
+            get_weekly_repos, render_weekly_repos_card,
+            render_markdown_section as render_weekly_section,
+            update_readme as update_weekly_readme,
+        )
+    except ImportError:
+        from update_weekly_repos import (
+            get_weekly_repos, render_weekly_repos_card,
+            render_markdown_section as render_weekly_section,
+            update_readme as update_weekly_readme,
+        )
+    weekly_svg = os.path.join(base_dir, "assets", "cards", "weekly-repos.svg")
+    weekly_repos = get_weekly_repos(token, days=7, limit=7, activity=activity)
+    render_weekly_repos_card(weekly_repos, weekly_svg)
+    weekly_md = render_weekly_section(weekly_repos)
+    update_weekly_readme(template_path, readme_path, weekly_md)
 
     print("Done!")
 

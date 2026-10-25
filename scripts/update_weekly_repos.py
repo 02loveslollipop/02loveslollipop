@@ -9,27 +9,14 @@ card (assets/cards/weekly-repos.svg) showing language breakdown for each reposit
 
 import os
 import sys
-import json
 import re
 import datetime
-import urllib.request
-import urllib.error
 import subprocess
 
 try:
-    from scripts.jupyter_utils import (
-        get_notebook_commit_additions,
-        analyze_repository_notebooks,
-        load_cache,
-        save_cache,
-    )
+    from scripts.jupyter_utils import get_notebook_commit_additions
 except ImportError:
-    from jupyter_utils import (
-        get_notebook_commit_additions,
-        analyze_repository_notebooks,
-        load_cache,
-        save_cache,
-    )
+    from jupyter_utils import get_notebook_commit_additions
 
 # Language Colors (consistent with profile widgets)
 LANGUAGE_COLORS = {
@@ -64,11 +51,6 @@ LANGUAGE_COLORS = {
     "Other": "#8b949e",
 }
 
-LANGUAGE_ALIASES = {
-    "TeX": "LaTeX",
-}
-
-
 def get_token():
     """Retrieve GitHub token from environment or local gh cli."""
     token = os.environ.get("GH_PAT") or os.environ.get("GITHUB_TOKEN")
@@ -85,246 +67,64 @@ def get_token():
     return token
 
 
-def github_request(url, token, method="GET", data=None):
-    """Execute authenticated HTTP request to GitHub API."""
-    headers = {
-        "Authorization": f"Bearer {token}",
-        "Accept": "application/vnd.github.v3+json",
-        "User-Agent": "02loveslollipop-stats-agent",
-    }
-    req_data = json.dumps(data).encode("utf-8") if data else None
-    req = urllib.request.Request(
-        url, data=req_data, headers=headers, method=method
-    )
+def get_weekly_repos(token, days=7, limit=7, activity=None):
+    """Rank public projects by cumulative insertions pushed across all branches."""
     try:
-        with urllib.request.urlopen(req) as resp:
-            return json.loads(resp.read().decode("utf-8"))
-    except urllib.error.HTTPError as e:
-        body = e.read().decode("utf-8", errors="replace")
-        print(f"HTTP {e.code} for {url}: {body}", file=sys.stderr)
-        return None
-    except Exception as e:
-        print(f"Request error for {url}: {e}", file=sys.stderr)
-        return None
+        from scripts.github_activity import get_recent_repositories
+        from scripts.update_use_to_code import add_file_additions
+    except ImportError:
+        from github_activity import get_recent_repositories
+        from update_use_to_code import add_file_additions
 
-
-def fetch_graphql(query, token, variables=None):
-    """Execute GraphQL query."""
-    payload = {"query": query}
-    if variables:
-        payload["variables"] = variables
-    return github_request(
-        "https://api.github.com/graphql", token, method="POST", data=payload
-    )
-
-
-def get_weekly_repos(token, days=30, limit=7):
-    """Fetch top contributed PUBLIC repositories in the past N days (default 30 days), ranked by insertions."""
-    now = datetime.datetime.now(datetime.timezone.utc)
-    since_date = now - datetime.timedelta(days=days)
-    since_iso = since_date.isoformat()
-    now_iso = now.isoformat()
-
-    query = f"""
-    query {{
-      viewer {{
-        login
-        contributionsCollection(from: "{since_iso}", to: "{now_iso}") {{
-          commitContributionsByRepository(maxRepositories: 25) {{
-            repository {{
-              name
-              nameWithOwner
-              isPrivate
-              description
-              url
-              defaultBranchRef {{
-                name
-              }}
-              primaryLanguage {{
-                name
-                color
-              }}
-              languages(first: 8, orderBy: {{field: SIZE, direction: DESC}}) {{
-                totalSize
-                edges {{
-                  size
-                  node {{
-                    name
-                    color
-                  }}
-                }}
-              }}
-            }}
-            contributions {{
-              totalCount
-            }}
-          }}
-        }}
-      }}
-    }}
-    """
-    res = fetch_graphql(query, token)
-    if not res or "data" not in res or not res["data"].get("viewer"):
-        print("Failed to fetch weekly repository contributions.", file=sys.stderr)
-        return []
-
-    viewer_login = res["data"]["viewer"].get("login", "02loveslollipop")
-    contribs = res["data"]["viewer"]["contributionsCollection"].get(
-        "commitContributionsByRepository", []
-    )
-
+    if activity is None:
+        activity = get_recent_repositories(token, days=days)
     results = []
-    meta_repo = f"{viewer_login}/{viewer_login}".lower()
-    cache = load_cache()
-
-    for item in contribs:
-        repo = item.get("repository")
-        if not repo or not repo.get("nameWithOwner"):
+    for item in activity:
+        repo = item["repository"]
+        if repo.get("private"):
             continue
-
-        # Ignore private repositories as requested
-        if repo.get("isPrivate"):
+        repo_name = repo["full_name"]
+        # The profile repository's generated cards aren't project work.
+        owner, name = repo_name.split("/", 1)
+        if owner.lower() == name.lower():
             continue
-
-        commits_count = item.get("contributions", {}).get("totalCount", 0)
-        if commits_count == 0:
-            continue
-
-        repo_name = repo["nameWithOwner"]
-        if repo_name.lower() == meta_repo and len(contribs) > 3:
-            continue
-
-        # Fetch commits in past N days to calculate exact code additions (insertions)
-        commits_url = f"https://api.github.com/repos/{repo_name}/commits?since={since_iso}&per_page=100"
-        commits = github_request(commits_url, token)
-        if not commits or not isinstance(commits, list) or len(commits) == 0:
-            continue
-
         total_insertions = 0
-        if len(commits) == 1:
-            c_data = github_request(
-                f"https://api.github.com/repos/{repo_name}/commits/{commits[0]['sha']}",
-                token,
-            )
-            if c_data and "files" in c_data:
-                parent_sha = (
-                    c_data["parents"][0]["sha"] if c_data.get("parents") else None
-                )
-                for f in c_data["files"]:
-                    if f["filename"].endswith(".ipynb"):
-                        total_insertions += get_notebook_commit_additions(
-                            repo_name, commits[0]["sha"], parent_sha, f["filename"], token
-                        )
-                    else:
-                        total_insertions += f.get("additions", 0)
-            elif c_data and "stats" in c_data:
-                total_insertions = c_data["stats"].get("additions", 0)
-        else:
-            parents = commits[-1].get("parents", [])
-            base_sha = parents[0]["sha"] if parents else commits[-1]["sha"]
-            latest_sha = commits[0]["sha"]
-            comp = github_request(
-                f"https://api.github.com/repos/{repo_name}/compare/{base_sha}...{latest_sha}",
-                token,
-            )
-            if comp and "files" in comp:
-                for f in comp["files"]:
-                    if f["filename"].endswith(".ipynb"):
-                        total_insertions += get_notebook_commit_additions(
-                            repo_name, latest_sha, base_sha, f["filename"], token
-                        )
-                    else:
-                        total_insertions += f.get("additions", 0)
-                if not parents:
-                    c_data = github_request(
-                        f"https://api.github.com/repos/{repo_name}/commits/{commits[-1]['sha']}",
-                        token,
+        language_lines = {}
+        for commit in item["commits"]:
+            parent_sha = commit["parents"][0]["sha"] if commit.get("parents") else None
+            for file in commit["files"]:
+                if file["filename"].endswith(".ipynb"):
+                    additions = get_notebook_commit_additions(
+                        repo_name, commit["sha"], parent_sha, file["filename"], token
                     )
-                    if c_data and "files" in c_data:
-                        for f in c_data["files"]:
-                            if f["filename"].endswith(".ipynb"):
-                                total_insertions += get_notebook_commit_additions(
-                                    repo_name, commits[-1]["sha"], None, f["filename"], token
-                                )
-                            else:
-                                total_insertions += f.get("additions", 0)
-            else:
-                for c in commits[:15]:
-                    c_data = github_request(
-                        f"https://api.github.com/repos/{repo_name}/commits/{c['sha']}",
-                        token,
+                    total_insertions += additions
+                    language_lines["Jupyter Notebook"] = (
+                        language_lines.get("Jupyter Notebook", 0) + additions
                     )
-                    if c_data and "files" in c_data:
-                        parent_sha = (
-                            c_data["parents"][0]["sha"] if c_data.get("parents") else None
-                        )
-                        for f in c_data["files"]:
-                            if f["filename"].endswith(".ipynb"):
-                                total_insertions += get_notebook_commit_additions(
-                                    repo_name, c["sha"], parent_sha, f["filename"], token
-                                )
-                            else:
-                                total_insertions += f.get("additions", 0)
-
-        raw_edges = repo.get("languages", {}).get("edges", []) or []
-        langs = []
-        total_size = 0
-        for edge in raw_edges:
-            name = edge["node"]["name"]
-            size = edge.get("size", 0)
-            name = LANGUAGE_ALIASES.get(name, name)
-            if name == "Jupyter Notebook":
-                branch = (
-                    repo.get("defaultBranchRef", {}).get("name")
-                    if repo.get("defaultBranchRef")
-                    else "main"
-                )
-                repo_jupyter = analyze_repository_notebooks(
-                    repo_name, branch, token, cache, github_request
-                )
-                if repo_jupyter and repo_jupyter.get("bytes", 0) > 0:
-                    size = repo_jupyter["bytes"]
-            langs.append({"name": name, "size": size})
-            total_size += size
-
-        save_cache(cache)
-        langs.sort(key=lambda x: x["size"], reverse=True)
-        total_size = total_size or 1
-
-        # Calculate percentages
-        lang_percentages = []
-        for l in langs:
-            pct = (l["size"] / total_size) * 100.0
-            if pct >= 0.5:  # filter negligible <0.5%
-                lang_percentages.append(
-                    {
-                        "name": l["name"],
-                        "size": l["size"],
-                        "percentage": pct,
-                        "color": LANGUAGE_COLORS.get(l["name"], "#8b949e"),
-                    }
-                )
-
-        results.append(
-            {
-                "name": repo["name"],
-                "nameWithOwner": repo["nameWithOwner"],
-                "isPrivate": False,
-                "url": repo.get("url", f"https://github.com/{repo['nameWithOwner']}"),
-                "commits": commits_count,
-                "insertions": total_insertions,
-                "languages": lang_percentages,
-            }
-        )
-
-    # Rank strictly by insertions descending
-    results.sort(key=lambda x: x["insertions"], reverse=True)
+                else:
+                    total_insertions += file.get("additions", 0)
+                    add_file_additions(file, language_lines)
+        total_language_lines = sum(language_lines.values()) or 1
+        languages = [
+            {"name": name, "size": lines,
+             "percentage": lines / total_language_lines * 100,
+             "color": LANGUAGE_COLORS.get(name, LANGUAGE_COLORS["Other"])}
+            for name, lines in sorted(language_lines.items(), key=lambda pair: pair[1], reverse=True)
+            if lines / total_language_lines >= 0.005
+        ]
+        results.append({
+            "name": repo["name"], "nameWithOwner": repo_name,
+            "isPrivate": False, "url": repo["html_url"],
+            "commits": len(item["commits"]), "pushes": item["pushes"],
+            "insertions": total_insertions, "languages": languages,
+        })
+    results.sort(key=lambda repo: (-repo["insertions"], -repo["pushes"], repo["nameWithOwner"]))
     return results[:limit]
 
 
 def render_weekly_repos_card(repos, output_path):
     """Render a standalone dark SVG card showing top public repos with stacked bars."""
-    today_str = datetime.date.today().strftime("%B %d, %Y")
+    today_str = datetime.datetime.now(datetime.timezone.utc).strftime("%B %d, %Y")
 
     num_repos = len(repos)
     row_height = 68
@@ -372,7 +172,7 @@ def render_weekly_repos_card(repos, output_path):
   <svg x="25" y="18" width="18" height="18" viewBox="0 -960 960 960" fill="#fe428e">
     <path d="M160-400q0-116 71.5-225T428-811q17-11 34.5-.5T480-780v72q0 34 23.5 57t57.5 23q18 0 33.5-7.5T622-658q8-9 18-12.5t19 2.5q66 45 103.5 116T800-400q0 95-49 171.5T622-113q23-26 35.5-58t12.5-67q0-38-14-71.5T615-370L480-502 346-370q-28 27-42 60.5T290-238q0 35 12.5 67t35.5 58q-80-39-129-115.5T160-400Zm320-18 92 90q18 18 28 41t10 49q0 53-38 90.5T480-110q-54 0-92-37.5T350-238q0-26 9.5-49t28.5-41l92-90Z"/>
   </svg>
-  <text x="49" y="33" class="header">Top 7 Contributed Projects</text>
+  <text x="49" y="33" class="header">Top 7 Projects · Last 7 Days</text>
   <text x="795" y="33" text-anchor="end" class="footer">Updated: {today_str}</text>
   <line x1="25" y1="46" x2="795" y2="46" stroke="#7F3FBF" stroke-opacity="0.3" stroke-width="1"/>
 """
@@ -384,13 +184,13 @@ def render_weekly_repos_card(repos, output_path):
 
     if not repos:
         svg += """
-  <text x="410" y="140" text-anchor="middle" class="footer">No public repository insertions recorded.</text>
+  <text x="410" y="140" text-anchor="middle" class="footer">No public branch pushes in the last 7 days.</text>
 """
     else:
         for idx, repo in enumerate(repos):
             repo_name = repo["nameWithOwner"]
             insertions = repo.get("insertions", 0)
-            insertions_label = f"+{insertions:,} insertions"
+            insertions_label = f"+{insertions:,} insertions · {repo.get('pushes', 0)} pushes"
             langs = repo["languages"]
 
             # Repo Title Row
@@ -453,18 +253,18 @@ def render_markdown_section(repos):
     md.append("<!-- START_SECTION:weekly_repos -->")
     md.append('<p align="center">')
     md.append(
-        '  <img src="./assets/cards/weekly-repos.svg" alt="Top 7 Contributed Projects" width="100%"/>'
+        '  <img src="./assets/cards/weekly-repos.svg" alt="Top 7 Projects: Last 7 Days, All Branches" width="100%"/>'
     )
     md.append("</p>\n")
 
     # Hidden crawler data
     md.append("<!--")
-    md.append("Top Contributed Projects Data:")
-    md.append("| Rank | Repository | Insertions | Commits | Primary Languages |")
-    md.append("| :--- | :--- | :--- | :--- | :--- |")
+    md.append("Public projects pushed in the rolling last 7 days (all branches).\nLanguage shares reflect code additions in those pushes.\nTop Contributed Projects Data:")
+    md.append("| Rank | Repository | Insertions | Commits | Pushes | Languages Pushed |")
+    md.append("| :--- | :--- | :--- | :--- | :--- | :--- |")
     for idx, r in enumerate(repos):
         lang_str = ", ".join([f"{l['name']} ({l['percentage']:.1f}%)" for l in r["languages"]])
-        md.append(f"| {idx+1} | {r['nameWithOwner']} | +{r['insertions']:,} lines | {r['commits']} commits | {lang_str} |")
+        md.append(f"| {idx+1} | {r['nameWithOwner']} | +{r['insertions']:,} lines | {r['commits']} commits | {r['pushes']} pushes | {lang_str} |")
     md.append("-->")
     md.append("<!-- END_SECTION:weekly_repos -->")
     return "\n".join(md)
@@ -508,9 +308,9 @@ def update_readme(template_path, readme_path, section_md):
 
 def main():
     token = get_token()
-    print("1. Fetching top public contributed repositories for the past 30 days (ranked by insertions)...")
-    repos = get_weekly_repos(token, days=30, limit=7)
-    print(f"   Found {len(repos)} active public repositories this month.")
+    print("1. Fetching top public contributed repositories for the rolling past 7 days (ranked by insertions)...")
+    repos = get_weekly_repos(token, days=7, limit=7)
+    print(f"   Found {len(repos)} active public repositories in the last 7 days.")
     for r in repos:
         print(f"   - {r['nameWithOwner']}: +{r['insertions']:,} insertions ({r['commits']} commits)")
 
@@ -518,11 +318,9 @@ def main():
     template_path = os.path.join(base_dir, "TEMPLATE_README.md")
     readme_path = os.path.join(base_dir, "README.md")
     weekly_svg_path = os.path.join(base_dir, "assets", "cards", "weekly-repos.svg")
-    monthly_svg_path = os.path.join(base_dir, "assets", "cards", "monthly-repos.svg")
 
     print("2. Generating SVG card with stacked bars...")
     render_weekly_repos_card(repos, weekly_svg_path)
-    render_weekly_repos_card(repos, monthly_svg_path)
 
     print("3. Updating README section...")
     section_md = render_markdown_section(repos)

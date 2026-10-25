@@ -31,7 +31,7 @@
 
 <br/>
 
-{monthly repos}
+{weekly repos}
 
 <br/>
 

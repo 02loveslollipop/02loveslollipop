@@ -1,12 +1,16 @@
-name: Update Use To Code Rankings
+name: Update Rankings and Weekly Projects
 
 on:
   push:
     branches:
       - main
   schedule:
-    - cron: "0 0 * * 0" # Runs every Sunday at 00:00 UTC
+    - cron: "17 6 * * *" # Refresh the rolling last 7 days daily at 06:17 UTC
   workflow_dispatch:      # Allows manual run from GitHub Actions tab
+
+concurrency:
+  group: profile-updates
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -25,8 +29,11 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Update Use To Code Rankings
+      # This entry point generates both cards from the same rolling 168-hour
+      # collection of public pushes across all branches.
+      - name: Update rankings and rolling 7-day projects
         env:
+          PROFILE_USERNAME: 02loveslollipop
           GH_PAT: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
         run: python3 scripts/update_use_to_code.py
 
@@ -34,7 +41,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md assets/cards/code-ranking.svg assets/cards/weekly-repos.svg assets/cards/monthly-repos.svg scripts/.cache/jupyter_cache.json
+          git add README.md assets/cards/code-ranking.svg assets/cards/weekly-repos.svg scripts/.cache/jupyter_cache.json
           if ! git diff --cached --quiet; then
             git commit -m "chore: update use-to-code rankings and weekly repos [skip ci]"
             git push
