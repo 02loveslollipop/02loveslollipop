@@ -36,13 +36,13 @@
 Data for search engine crawlers and screen readers:
 | Rank | All-Time Language | Codebase (KB) | Est. Lines | Codebase Share | Currently Coding | Recent Share |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 | Python | 66,272 KB | 1.94M lines | 76.2% | Python (+14,022 lines) | 73.4% |
-| 2 | Java | 10,539 KB | 240k lines | 12.1% | TypeScript (+4,872 lines) | 25.5% |
-| 3 | JavaScript | 1,717 KB | 46.3k lines | 2.0% | CSS (+90 lines) | 0.5% |
-| 4 | Cython | 1,478 KB | 43.3k lines | 1.7% | Dockerfile (+59 lines) | 0.3% |
-| 5 | TypeScript | 1,279 KB | 34.5k lines | 1.5% | SQL (+48 lines) | 0.3% |
-| 6 | Dart | 886 KB | 25.2k lines | 1.0% | JavaScript (+2 lines) | 0.0% |
-| 7 | C++ | 862 KB | 23.2k lines | 1.0% | - | - |
+| 1 | Python | 66,345 KB | 1.94M lines | 76.2% | Python (+18,755 lines) | 75.9% |
+| 2 | Java | 10,539 KB | 240k lines | 12.1% | TypeScript (+5,734 lines) | 23.2% |
+| 3 | JavaScript | 1,717 KB | 46.3k lines | 2.0% | CSS (+90 lines) | 0.4% |
+| 4 | Cython | 1,478 KB | 43.3k lines | 1.7% | Dockerfile (+60 lines) | 0.2% |
+| 5 | TypeScript | 1,279 KB | 34.5k lines | 1.5% | SQL (+48 lines) | 0.2% |
+| 6 | Dart | 886 KB | 25.2k lines | 1.0% | Shell (+25 lines) | 0.1% |
+| 7 | C++ | 862 KB | 23.2k lines | 1.0% | JavaScript (+4 lines) | 0.0% |
 | 8 | LaTeX | 775 KB | 22.7k lines | 0.9% | - | - |
 | 9 | Jupyter Notebook | 706 KB | 15.1k lines | 0.8% | - | - |
 | 10 | CSS | 359 KB | 11.5k lines | 0.4% | - | - |
@@ -62,12 +62,11 @@ Language shares reflect code additions in those pushes.
 Top Contributed Projects Data:
 | Rank | Repository | Insertions | Commits | Pushes | Languages Pushed |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 | 02loveslollipop/coa-puroseka-heroku | +16,412 lines | 25 commits | 24 pushes | Python (75.4%), TypeScript (23.4%) |
-| 2 | 02loveslollipop/coa-puroseka | +13,672 lines | 4 commits | 3 pushes | Python (69.0%), TypeScript (30.0%), CSS (0.6%) |
-| 3 | 03loveslollipop/cdp_2026 | +466 lines | 3 commits | 3 pushes | Python (100.0%) |
-| 4 | 02loveslollipop/OpenCROW | +162 lines | 11 commits | 11 pushes | Python (100.0%) |
-| 5 | 02loveslollipop/02labs | +8 lines | 1 commits | 1 pushes | JavaScript (66.7%), TypeScript (33.3%) |
-| 6 | 02loveslollipop/opsdesk | +1 lines | 1 commits | 1 pushes |  |
+| 1 | 02loveslollipop/coa-puroseka-heroku | +17,594 lines | 33 commits | 31 pushes | Python (77.8%), TypeScript (21.2%) |
+| 2 | 02loveslollipop/coa-puroseka | +15,293 lines | 8 commits | 7 pushes | Python (72.0%), TypeScript (27.1%), CSS (0.5%) |
+| 3 | 02loveslollipop/OpenCROW | +11,162 lines | 29 commits | 21 pushes | Python (78.9%), TypeScript (20.4%), Shell (0.6%) |
+| 4 | 02loveslollipop/02labs | +8 lines | 1 commits | 1 pushes | JavaScript (66.7%), TypeScript (33.3%) |
+| 5 | 02loveslollipop/opsdesk | +1 lines | 1 commits | 1 pushes |  |
 -->
 <!-- END_SECTION:weekly_repos -->
 
