@@ -36,7 +36,7 @@
 Data for search engine crawlers and screen readers:
 | Rank | All-Time Language | Codebase (KB) | Est. Lines | Codebase Share | Currently Coding | Recent Share |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 | Python | 66,345 KB | 1.94M lines | 76.2% | Python (+18,755 lines) | 75.9% |
+| 1 | Python | 66,345 KB | 1.94M lines | 76.2% | Python (+18,744 lines) | 75.9% |
 | 2 | Java | 10,539 KB | 240k lines | 12.1% | TypeScript (+5,734 lines) | 23.2% |
 | 3 | JavaScript | 1,717 KB | 46.3k lines | 2.0% | CSS (+90 lines) | 0.4% |
 | 4 | Cython | 1,478 KB | 43.3k lines | 1.7% | Dockerfile (+60 lines) | 0.2% |
@@ -64,7 +64,7 @@ Top Contributed Projects Data:
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | 1 | 02loveslollipop/coa-puroseka-heroku | +17,594 lines | 33 commits | 31 pushes | Python (77.8%), TypeScript (21.2%) |
 | 2 | 02loveslollipop/coa-puroseka | +15,293 lines | 8 commits | 7 pushes | Python (72.0%), TypeScript (27.1%), CSS (0.5%) |
-| 3 | 02loveslollipop/OpenCROW | +11,162 lines | 29 commits | 21 pushes | Python (78.9%), TypeScript (20.4%), Shell (0.6%) |
+| 3 | 02loveslollipop/OpenCROW | +11,147 lines | 28 commits | 20 pushes | Python (78.9%), TypeScript (20.5%), Shell (0.6%) |
 | 4 | 02loveslollipop/02labs | +8 lines | 1 commits | 1 pushes | JavaScript (66.7%), TypeScript (33.3%) |
 | 5 | 02loveslollipop/opsdesk | +1 lines | 1 commits | 1 pushes |  |
 -->
