@@ -36,16 +36,13 @@
 Data for search engine crawlers and screen readers:
 | Rank | All-Time Language | Codebase (KB) | Est. Lines | Codebase Share | Currently Coding | Recent Share |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 | Python | 66,345 KB | 1.94M lines | 76.2% | Python (+18,744 lines) | 75.9% |
-| 2 | Java | 10,539 KB | 240k lines | 12.1% | TypeScript (+5,734 lines) | 23.2% |
-| 3 | JavaScript | 1,717 KB | 46.3k lines | 2.0% | CSS (+90 lines) | 0.4% |
-| 4 | Cython | 1,478 KB | 43.3k lines | 1.7% | Dockerfile (+60 lines) | 0.2% |
-| 5 | TypeScript | 1,279 KB | 34.5k lines | 1.5% | SQL (+48 lines) | 0.2% |
-| 6 | Dart | 886 KB | 25.2k lines | 1.0% | Shell (+25 lines) | 0.1% |
-| 7 | C++ | 862 KB | 23.2k lines | 1.0% | JavaScript (+4 lines) | 0.0% |
-| 8 | LaTeX | 775 KB | 22.7k lines | 0.9% | - | - |
-| 9 | Jupyter Notebook | 706 KB | 15.1k lines | 0.8% | - | - |
-| 10 | CSS | 359 KB | 11.5k lines | 0.4% | - | - |
+| 1 | - | - | - | - | Python (+18,734 lines) | 75.9% |
+| 2 | - | - | - | - | TypeScript (+5,734 lines) | 23.2% |
+| 3 | - | - | - | - | CSS (+90 lines) | 0.4% |
+| 4 | - | - | - | - | Dockerfile (+60 lines) | 0.2% |
+| 5 | - | - | - | - | SQL (+48 lines) | 0.2% |
+| 6 | - | - | - | - | Shell (+25 lines) | 0.1% |
+| 7 | - | - | - | - | JavaScript (+4 lines) | 0.0% |
 -->
 <!-- END_SECTION:use_to_code -->
 
@@ -64,7 +61,7 @@ Top Contributed Projects Data:
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | 1 | 02loveslollipop/coa-puroseka-heroku | +17,594 lines | 33 commits | 31 pushes | Python (77.8%), TypeScript (21.2%) |
 | 2 | 02loveslollipop/coa-puroseka | +15,293 lines | 8 commits | 7 pushes | Python (72.0%), TypeScript (27.1%), CSS (0.5%) |
-| 3 | 02loveslollipop/OpenCROW | +11,147 lines | 28 commits | 20 pushes | Python (78.9%), TypeScript (20.5%), Shell (0.6%) |
+| 3 | 02loveslollipop/OpenCROW | +11,126 lines | 26 commits | 18 pushes | Python (78.8%), TypeScript (20.5%), Shell (0.6%) |
 | 4 | 02loveslollipop/02labs | +8 lines | 1 commits | 1 pushes | JavaScript (66.7%), TypeScript (33.3%) |
 | 5 | 02loveslollipop/opsdesk | +1 lines | 1 commits | 1 pushes |  |
 -->
