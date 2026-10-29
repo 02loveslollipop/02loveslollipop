@@ -41,7 +41,7 @@
 
   <!-- Title Banner -->
   <text x="25" y="33" class="header">Languages &amp; Tools Ranking</text>
-  <text x="795" y="33" text-anchor="end" class="footer">Updated: October 28, 2026</text>
+  <text x="795" y="33" text-anchor="end" class="footer">Updated: October 29, 2026</text>
   <line x1="25" y1="46" x2="795" y2="46" stroke="#7F3FBF" stroke-opacity="0.3" stroke-width="1"/>
 
   <!-- Divider Line Between Columns -->
@@ -54,6 +54,76 @@
       <path d="M284-526v-166H180v44q0 45 29.5 78.5T284-526Zm392 0q45-10 74.5-43.5T780-648v-44H676v166ZM450-180v-148q-54-11-96-46.5T296-463q-74-8-125-60t-51-125v-44q0-24.75 17.63-42.38Q155.25-752 180-752h104v-28q0-24.75 17.63-42.38Q319.25-840 344-840h272q24.75 0 42.38 17.62Q676-804.75 676-780v28h104q24.75 0 42.38 17.62Q840-716.75 840-692v44q0 73-51 125t-125 60q-16 53-58 88.5T510-328v148h122q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H328q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h122Z"/>
     </svg>
     <text x="24" y="0" class="subhead-trophy">All-Time Codebase</text>
+
+    <!-- Item 1: Python -->
+    <circle cx="5" cy="22" r="4" fill="#3572A5"/>
+    <text x="16" y="26" class="label">Python</text>
+    <text x="360" y="26" text-anchor="end" class="value">66,345 KB · 1.94M lines</text>
+    <rect x="16" y="32" width="344" height="5" rx="2.5" fill="#222036"/>
+    <rect x="16" y="32" width="262" height="5" rx="2.5" fill="#3572A5"/>
+
+    <!-- Item 2: Java -->
+    <circle cx="5" cy="56" r="4" fill="#b07219"/>
+    <text x="16" y="60" class="label">Java</text>
+    <text x="360" y="60" text-anchor="end" class="value">10,539 KB · 240k lines</text>
+    <rect x="16" y="66" width="344" height="5" rx="2.5" fill="#222036"/>
+    <rect x="16" y="66" width="41" height="5" rx="2.5" fill="#b07219"/>
+
+    <!-- Item 3: JavaScript -->
+    <circle cx="5" cy="90" r="4" fill="#f1e05a"/>
+    <text x="16" y="94" class="label">JavaScript</text>
+    <text x="360" y="94" text-anchor="end" class="value">1,717 KB · 46.3k lines</text>
+    <rect x="16" y="100" width="344" height="5" rx="2.5" fill="#222036"/>
+    <rect x="16" y="100" width="6" height="5" rx="2.5" fill="#f1e05a"/>
+
+    <!-- Item 4: Cython -->
+    <circle cx="5" cy="124" r="4" fill="#fed10a"/>
+    <text x="16" y="128" class="label">Cython</text>
+    <text x="360" y="128" text-anchor="end" class="value">1,478 KB · 43.3k lines</text>
+    <rect x="16" y="134" width="344" height="5" rx="2.5" fill="#222036"/>
+    <rect x="16" y="134" width="5" height="5" rx="2.5" fill="#fed10a"/>
+
+    <!-- Item 5: TypeScript -->
+    <circle cx="5" cy="158" r="4" fill="#3178c6"/>
+    <text x="16" y="162" class="label">TypeScript</text>
+    <text x="360" y="162" text-anchor="end" class="value">1,279 KB · 34.5k lines</text>
+    <rect x="16" y="168" width="344" height="5" rx="2.5" fill="#222036"/>
+    <rect x="16" y="168" width="5" height="5" rx="2.5" fill="#3178c6"/>
+
+    <!-- Item 6: Dart -->
+    <circle cx="5" cy="192" r="4" fill="#00B4AB"/>
+    <text x="16" y="196" class="label">Dart</text>
+    <text x="360" y="196" text-anchor="end" class="value">886 KB · 25.2k lines</text>
+    <rect x="16" y="202" width="344" height="5" rx="2.5" fill="#222036"/>
+    <rect x="16" y="202" width="5" height="5" rx="2.5" fill="#00B4AB"/>
+
+    <!-- Item 7: C++ -->
+    <circle cx="5" cy="226" r="4" fill="#f34b7d"/>
+    <text x="16" y="230" class="label">C++</text>
+    <text x="360" y="230" text-anchor="end" class="value">862 KB · 23.2k lines</text>
+    <rect x="16" y="236" width="344" height="5" rx="2.5" fill="#222036"/>
+    <rect x="16" y="236" width="5" height="5" rx="2.5" fill="#f34b7d"/>
+
+    <!-- Item 8: LaTeX -->
+    <circle cx="5" cy="260" r="4" fill="#3D6117"/>
+    <text x="16" y="264" class="label">LaTeX</text>
+    <text x="360" y="264" text-anchor="end" class="value">775 KB · 22.7k lines</text>
+    <rect x="16" y="270" width="344" height="5" rx="2.5" fill="#222036"/>
+    <rect x="16" y="270" width="5" height="5" rx="2.5" fill="#3D6117"/>
+
+    <!-- Item 9: Jupyter Notebook -->
+    <circle cx="5" cy="294" r="4" fill="#DA5B0B"/>
+    <text x="16" y="298" class="label">Jupyter Notebook</text>
+    <text x="360" y="298" text-anchor="end" class="value">706 KB · 15.1k lines</text>
+    <rect x="16" y="304" width="344" height="5" rx="2.5" fill="#222036"/>
+    <rect x="16" y="304" width="5" height="5" rx="2.5" fill="#DA5B0B"/>
+
+    <!-- Item 10: CSS -->
+    <circle cx="5" cy="328" r="4" fill="#563d7c"/>
+    <text x="16" y="332" class="label">CSS</text>
+    <text x="360" y="332" text-anchor="end" class="value">359 KB · 11.5k lines</text>
+    <rect x="16" y="338" width="344" height="5" rx="2.5" fill="#222036"/>
+    <rect x="16" y="338" width="5" height="5" rx="2.5" fill="#563d7c"/>
   </g>
 
   <!-- Column 2: Currently Coding (Last 7 Days - Top 10) -->
@@ -67,7 +137,7 @@
     <!-- Item 1: Python -->
     <circle cx="5" cy="22" r="4" fill="#3572A5"/>
     <text x="16" y="26" class="label">Python</text>
-    <text x="360" y="26" text-anchor="end" class="value">+18,734 lines (75.9%)</text>
+    <text x="360" y="26" text-anchor="end" class="value">+18,709 lines (75.8%)</text>
     <rect x="16" y="32" width="344" height="5" rx="2.5" fill="#222036"/>
     <rect x="16" y="32" width="260" height="5" rx="2.5" fill="#3572A5"/>
 
