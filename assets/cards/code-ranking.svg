@@ -41,7 +41,7 @@
 
   <!-- Title Banner -->
   <text x="25" y="33" class="header">Languages &amp; Tools Ranking</text>
-  <text x="795" y="33" text-anchor="end" class="footer">Updated: October 30, 2026</text>
+  <text x="795" y="33" text-anchor="end" class="footer">Updated: October 31, 2026</text>
   <line x1="25" y1="46" x2="795" y2="46" stroke="#7F3FBF" stroke-opacity="0.3" stroke-width="1"/>
 
   <!-- Divider Line Between Columns -->
@@ -137,49 +137,49 @@
     <!-- Item 1: Python -->
     <circle cx="5" cy="22" r="4" fill="#3572A5"/>
     <text x="16" y="26" class="label">Python</text>
-    <text x="360" y="26" text-anchor="end" class="value">+14,798 lines (79.2%)</text>
+    <text x="360" y="26" text-anchor="end" class="value">+8,844 lines (83.2%)</text>
     <rect x="16" y="32" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="32" width="272" height="5" rx="2.5" fill="#3572A5"/>
+    <rect x="16" y="32" width="286" height="5" rx="2.5" fill="#3572A5"/>
 
     <!-- Item 2: TypeScript -->
     <circle cx="5" cy="56" r="4" fill="#3178c6"/>
     <text x="16" y="60" class="label">TypeScript</text>
-    <text x="360" y="60" text-anchor="end" class="value">+3,711 lines (19.9%)</text>
+    <text x="360" y="60" text-anchor="end" class="value">+1,688 lines (15.9%)</text>
     <rect x="16" y="66" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="66" width="68" height="5" rx="2.5" fill="#3178c6"/>
+    <rect x="16" y="66" width="54" height="5" rx="2.5" fill="#3178c6"/>
 
     <!-- Item 3: CSS -->
     <circle cx="5" cy="90" r="4" fill="#563d7c"/>
     <text x="16" y="94" class="label">CSS</text>
-    <text x="360" y="94" text-anchor="end" class="value">+66 lines (0.4%)</text>
+    <text x="360" y="94" text-anchor="end" class="value">+42 lines (0.4%)</text>
     <rect x="16" y="100" width="344" height="5" rx="2.5" fill="#222036"/>
     <rect x="16" y="100" width="5" height="5" rx="2.5" fill="#563d7c"/>
 
-    <!-- Item 4: SQL -->
-    <circle cx="5" cy="124" r="4" fill="#e38c00"/>
-    <text x="16" y="128" class="label">SQL</text>
-    <text x="360" y="128" text-anchor="end" class="value">+48 lines (0.3%)</text>
+    <!-- Item 4: Shell -->
+    <circle cx="5" cy="124" r="4" fill="#89e051"/>
+    <text x="16" y="128" class="label">Shell</text>
+    <text x="360" y="128" text-anchor="end" class="value">+25 lines (0.2%)</text>
     <rect x="16" y="134" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="134" width="5" height="5" rx="2.5" fill="#e38c00"/>
+    <rect x="16" y="134" width="5" height="5" rx="2.5" fill="#89e051"/>
 
     <!-- Item 5: Dockerfile -->
     <circle cx="5" cy="158" r="4" fill="#384d54"/>
     <text x="16" y="162" class="label">Dockerfile</text>
-    <text x="360" y="162" text-anchor="end" class="value">+38 lines (0.2%)</text>
+    <text x="360" y="162" text-anchor="end" class="value">+14 lines (0.1%)</text>
     <rect x="16" y="168" width="344" height="5" rx="2.5" fill="#222036"/>
     <rect x="16" y="168" width="5" height="5" rx="2.5" fill="#384d54"/>
 
-    <!-- Item 6: Shell -->
-    <circle cx="5" cy="192" r="4" fill="#89e051"/>
-    <text x="16" y="196" class="label">Shell</text>
-    <text x="360" y="196" text-anchor="end" class="value">+25 lines (0.1%)</text>
+    <!-- Item 6: SQL -->
+    <circle cx="5" cy="192" r="4" fill="#e38c00"/>
+    <text x="16" y="196" class="label">SQL</text>
+    <text x="360" y="196" text-anchor="end" class="value">+14 lines (0.1%)</text>
     <rect x="16" y="202" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="202" width="5" height="5" rx="2.5" fill="#89e051"/>
+    <rect x="16" y="202" width="5" height="5" rx="2.5" fill="#e38c00"/>
 
     <!-- Item 7: JavaScript -->
     <circle cx="5" cy="226" r="4" fill="#f1e05a"/>
     <text x="16" y="230" class="label">JavaScript</text>
-    <text x="360" y="230" text-anchor="end" class="value">+4 lines (0.0%)</text>
+    <text x="360" y="230" text-anchor="end" class="value">+3 lines (0.0%)</text>
     <rect x="16" y="236" width="344" height="5" rx="2.5" fill="#222036"/>
     <rect x="16" y="236" width="5" height="5" rx="2.5" fill="#f1e05a"/>
   </g>
