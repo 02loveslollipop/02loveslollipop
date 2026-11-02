@@ -36,10 +36,10 @@
 Data for search engine crawlers and screen readers:
 | Rank | All-Time Language | Codebase (KB) | Est. Lines | Codebase Share | Currently Coding | Recent Share |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 | Python | 66,345 KB | 1.94M lines | 76.2% | Python (+2,541 lines) | 74.0% |
-| 2 | Java | 10,539 KB | 240k lines | 12.1% | TypeScript (+863 lines) | 25.1% |
-| 3 | JavaScript | 1,717 KB | 46.3k lines | 2.0% | Shell (+25 lines) | 0.7% |
-| 4 | Cython | 1,478 KB | 43.3k lines | 1.7% | JavaScript (+3 lines) | 0.1% |
+| 1 | Python | 66,348 KB | 1.94M lines | 76.2% | Python (+15 lines) | 88.2% |
+| 2 | Java | 10,539 KB | 240k lines | 12.1% | TypeScript (+1 lines) | 5.9% |
+| 3 | JavaScript | 1,717 KB | 46.3k lines | 2.0% | JavaScript (+1 lines) | 5.9% |
+| 4 | Cython | 1,478 KB | 43.3k lines | 1.7% | - | - |
 | 5 | TypeScript | 1,279 KB | 34.5k lines | 1.5% | - | - |
 | 6 | Dart | 886 KB | 25.2k lines | 1.0% | - | - |
 | 7 | C++ | 862 KB | 23.2k lines | 1.0% | - | - |
@@ -62,7 +62,7 @@ Language shares reflect code additions in those pushes.
 Top Contributed Projects Data:
 | Rank | Repository | Insertions | Commits | Pushes | Languages Pushed |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 | 02loveslollipop/OpenCROW | +9,983 lines | 10 commits | 7 pushes | Python (74.1%), TypeScript (25.1%), Shell (0.7%) |
+| 1 | 02loveslollipop/OpenCROW | +47 lines | 6 commits | 6 pushes | Python (100.0%) |
 | 2 | 02loveslollipop/02labs | +2 lines | 1 commits | 1 pushes | TypeScript (50.0%), JavaScript (50.0%) |
 -->
 <!-- END_SECTION:weekly_repos -->
