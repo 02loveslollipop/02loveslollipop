@@ -41,7 +41,7 @@
 
   <!-- Title Banner -->
   <text x="25" y="33" class="header">Languages &amp; Tools Ranking</text>
-  <text x="795" y="33" text-anchor="end" class="footer">Updated: November 02, 2026</text>
+  <text x="795" y="33" text-anchor="end" class="footer">Updated: November 03, 2026</text>
   <line x1="25" y1="46" x2="795" y2="46" stroke="#7F3FBF" stroke-opacity="0.3" stroke-width="1"/>
 
   <!-- Divider Line Between Columns -->
@@ -58,7 +58,7 @@
     <!-- Item 1: Python -->
     <circle cx="5" cy="22" r="4" fill="#3572A5"/>
     <text x="16" y="26" class="label">Python</text>
-    <text x="360" y="26" text-anchor="end" class="value">66,348 KB · 1.94M lines</text>
+    <text x="360" y="26" text-anchor="end" class="value">66,390 KB · 1.94M lines</text>
     <rect x="16" y="32" width="344" height="5" rx="2.5" fill="#222036"/>
     <rect x="16" y="32" width="262" height="5" rx="2.5" fill="#3572A5"/>
 
@@ -137,22 +137,22 @@
     <!-- Item 1: Python -->
     <circle cx="5" cy="22" r="4" fill="#3572A5"/>
     <text x="16" y="26" class="label">Python</text>
-    <text x="360" y="26" text-anchor="end" class="value">+15 lines (88.2%)</text>
+    <text x="360" y="26" text-anchor="end" class="value">+18 lines (90.0%)</text>
     <rect x="16" y="32" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="32" width="303" height="5" rx="2.5" fill="#3572A5"/>
+    <rect x="16" y="32" width="309" height="5" rx="2.5" fill="#3572A5"/>
 
     <!-- Item 2: TypeScript -->
     <circle cx="5" cy="56" r="4" fill="#3178c6"/>
     <text x="16" y="60" class="label">TypeScript</text>
-    <text x="360" y="60" text-anchor="end" class="value">+1 lines (5.9%)</text>
+    <text x="360" y="60" text-anchor="end" class="value">+1 lines (5.0%)</text>
     <rect x="16" y="66" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="66" width="20" height="5" rx="2.5" fill="#3178c6"/>
+    <rect x="16" y="66" width="17" height="5" rx="2.5" fill="#3178c6"/>
 
     <!-- Item 3: JavaScript -->
     <circle cx="5" cy="90" r="4" fill="#f1e05a"/>
     <text x="16" y="94" class="label">JavaScript</text>
-    <text x="360" y="94" text-anchor="end" class="value">+1 lines (5.9%)</text>
+    <text x="360" y="94" text-anchor="end" class="value">+1 lines (5.0%)</text>
     <rect x="16" y="100" width="344" height="5" rx="2.5" fill="#222036"/>
-    <rect x="16" y="100" width="20" height="5" rx="2.5" fill="#f1e05a"/>
+    <rect x="16" y="100" width="17" height="5" rx="2.5" fill="#f1e05a"/>
   </g>
 </svg>
