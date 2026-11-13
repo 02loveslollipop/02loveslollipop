@@ -36,16 +36,9 @@
 Data for search engine crawlers and screen readers:
 | Rank | All-Time Language | Codebase (KB) | Est. Lines | Codebase Share | Currently Coding | Recent Share |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 | Python | 67,435 KB | 1.97M lines | 64.9% | Python (+3,613 lines) | 79.6% |
-| 2 | TypeScript | 11,866 KB | 320k lines | 11.4% | LaTeX (+892 lines) | 19.6% |
-| 3 | Java | 10,539 KB | 240k lines | 10.1% | Dockerfile (+36 lines) | 0.8% |
-| 4 | JavaScript | 5,952 KB | 160k lines | 5.7% | - | - |
-| 5 | Cython | 1,478 KB | 43.3k lines | 1.4% | - | - |
-| 6 | CSS | 964 KB | 30.8k lines | 0.9% | - | - |
-| 7 | Dart | 886 KB | 25.2k lines | 0.9% | - | - |
-| 8 | C++ | 862 KB | 23.2k lines | 0.8% | - | - |
-| 9 | LaTeX | 818 KB | 23.9k lines | 0.8% | - | - |
-| 10 | Jupyter Notebook | 706 KB | 15.1k lines | 0.7% | - | - |
+| 1 | - | - | - | - | Python (+3,604 lines) | 79.5% |
+| 2 | - | - | - | - | LaTeX (+892 lines) | 19.7% |
+| 3 | - | - | - | - | Dockerfile (+36 lines) | 0.8% |
 -->
 <!-- END_SECTION:use_to_code -->
 
@@ -63,7 +56,7 @@ Top Contributed Projects Data:
 | Rank | Repository | Insertions | Commits | Pushes | Languages Pushed |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | 1 | 03loveslollipop/cdp_2026 | +18,266 lines | 35 commits | 23 pushes | Python (79.0%), LaTeX (20.2%), Dockerfile (0.8%) |
-| 2 | 02loveslollipop/OpenCROW | +163 lines | 12 commits | 12 pushes | Python (100.0%) |
+| 2 | 02loveslollipop/OpenCROW | +149 lines | 10 commits | 10 pushes | Python (100.0%) |
 -->
 <!-- END_SECTION:weekly_repos -->
 
