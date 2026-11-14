@@ -138,7 +138,7 @@
           data-testid="lang-progress"
           x="0"
           y="0"
-          width="239.13"
+          width="238.47"
           height="8"
           fill="#DA5B0B"
         />
@@ -146,9 +146,9 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="239.13"
+          x="238.47"
           y="0"
-          width="84.54"
+          width="85.28"
           height="8"
           fill="#3572A5"
         />
@@ -156,9 +156,9 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="323.67"
+          x="323.75"
           y="0"
-          width="19.630000000000003"
+          width="19.6"
           height="8"
           fill="#3D6117"
         />
@@ -166,9 +166,9 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="333.3"
+          x="333.35"
           y="0"
-          width="17.15"
+          width="17.13"
           height="8"
           fill="#00B4AB"
         />
@@ -176,9 +176,9 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="340.45"
+          x="340.48"
           y="0"
-          width="13.120000000000001"
+          width="13.11"
           height="8"
           fill="#f34b7d"
         />
@@ -186,9 +186,9 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="343.57"
+          x="343.59000000000003"
           y="0"
-          width="12.41"
+          width="12.4"
           height="8"
           fill="#A97BFF"
         />
@@ -196,9 +196,9 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="345.98"
+          x="345.99"
           y="0"
-          width="12.25"
+          width="12.24"
           height="8"
           fill="#a270ba"
         />
@@ -208,7 +208,7 @@
           data-testid="lang-progress"
           x="348.23"
           y="0"
-          width="11.78"
+          width="11.77"
           height="8"
           fill="#ff3e00"
         />
@@ -219,21 +219,21 @@
     <g class="stagger" style="animation-delay: 450ms">
       <circle cx="5" cy="6" r="5" fill="#DA5B0B" />
       <text data-testid="lang-name" x="15" y="10" class='lang-name'>
-        Jupyter Notebook 68.32%
+        Jupyter Notebook 68.13%
       </text>
     </g>
   </g><g transform="translate(0, 25)">
     <g class="stagger" style="animation-delay: 600ms">
       <circle cx="5" cy="6" r="5" fill="#3572A5" />
       <text data-testid="lang-name" x="15" y="10" class='lang-name'>
-        Python 24.15%
+        Python 24.37%
       </text>
     </g>
   </g><g transform="translate(0, 50)">
     <g class="stagger" style="animation-delay: 750ms">
       <circle cx="5" cy="6" r="5" fill="#3D6117" />
       <text data-testid="lang-name" x="15" y="10" class='lang-name'>
-        TeX 2.75%
+        TeX 2.74%
       </text>
     </g>
   </g><g transform="translate(0, 75)">
