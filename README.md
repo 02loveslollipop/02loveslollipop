@@ -36,12 +36,11 @@
 Data for search engine crawlers and screen readers:
 | Rank | All-Time Language | Codebase (KB) | Est. Lines | Codebase Share | Currently Coding | Recent Share |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 | - | - | - | - | TypeScript (+8,288 lines) | 63.6% |
-| 2 | - | - | - | - | Python (+4,221 lines) | 32.4% |
-| 3 | - | - | - | - | LaTeX (+229 lines) | 1.8% |
-| 4 | - | - | - | - | JavaScript (+188 lines) | 1.4% |
-| 5 | - | - | - | - | CSS (+79 lines) | 0.6% |
-| 6 | - | - | - | - | Dockerfile (+17 lines) | 0.1% |
+| 1 | - | - | - | - | TypeScript (+7,894 lines) | 68.5% |
+| 2 | - | - | - | - | Python (+3,345 lines) | 29.0% |
+| 3 | - | - | - | - | JavaScript (+188 lines) | 1.6% |
+| 4 | - | - | - | - | CSS (+78 lines) | 0.7% |
+| 5 | - | - | - | - | Dockerfile (+17 lines) | 0.1% |
 -->
 <!-- END_SECTION:use_to_code -->
 
@@ -58,9 +57,8 @@ Language shares reflect code additions in those pushes.
 Top Contributed Projects Data:
 | Rank | Repository | Insertions | Commits | Pushes | Languages Pushed |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 | 02loveslollipop/TCGMarketplaceAgent | +16,201 lines | 37 commits | 18 pushes | TypeScript (66.4%), Python (31.3%), JavaScript (1.5%), CSS (0.6%) |
-| 2 | 03loveslollipop/cdp_2026 | +2,378 lines | 11 commits | 1 pushes | LaTeX (100.0%) |
-| 3 | 02loveslollipop/OpenCROW | +403 lines | 10 commits | 1 pushes | Python (100.0%) |
+| 1 | 02loveslollipop/TCGMarketplaceAgent | +14,515 lines | 32 commits | 15 pushes | TypeScript (70.4%), Python (27.1%), JavaScript (1.7%), CSS (0.7%) |
+| 2 | 02loveslollipop/OpenCROW | +403 lines | 10 commits | 1 pushes | Python (100.0%) |
 -->
 <!-- END_SECTION:weekly_repos -->
 
