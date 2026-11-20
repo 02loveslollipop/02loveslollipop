@@ -36,11 +36,16 @@
 Data for search engine crawlers and screen readers:
 | Rank | All-Time Language | Codebase (KB) | Est. Lines | Codebase Share | Currently Coding | Recent Share |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 | - | - | - | - | TypeScript (+7,894 lines) | 68.5% |
-| 2 | - | - | - | - | Python (+3,345 lines) | 29.0% |
-| 3 | - | - | - | - | JavaScript (+188 lines) | 1.6% |
-| 4 | - | - | - | - | CSS (+78 lines) | 0.7% |
-| 5 | - | - | - | - | Dockerfile (+17 lines) | 0.1% |
+| 1 | Python | 68,735 KB | 2.01M lines | 64.6% | TypeScript (+4,436 lines) | 51.1% |
+| 2 | TypeScript | 12,800 KB | 345k lines | 12.0% | Python (+3,912 lines) | 45.1% |
+| 3 | Java | 10,539 KB | 240k lines | 9.9% | JavaScript (+188 lines) | 2.2% |
+| 4 | JavaScript | 6,015 KB | 162k lines | 5.7% | Shell (+76 lines) | 0.9% |
+| 5 | Cython | 1,478 KB | 43.3k lines | 1.4% | CSS (+51 lines) | 0.6% |
+| 6 | CSS | 1,124 KB | 36.0k lines | 1.1% | Dockerfile (+17 lines) | 0.2% |
+| 7 | Dart | 970 KB | 27.6k lines | 0.9% | - | - |
+| 8 | C++ | 862 KB | 23.2k lines | 0.8% | - | - |
+| 9 | LaTeX | 818 KB | 23.9k lines | 0.8% | - | - |
+| 10 | Jupyter Notebook | 706 KB | 15.1k lines | 0.7% | - | - |
 -->
 <!-- END_SECTION:use_to_code -->
 
@@ -57,8 +62,9 @@ Language shares reflect code additions in those pushes.
 Top Contributed Projects Data:
 | Rank | Repository | Insertions | Commits | Pushes | Languages Pushed |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 | 02loveslollipop/TCGMarketplaceAgent | +14,515 lines | 32 commits | 15 pushes | TypeScript (70.4%), Python (27.1%), JavaScript (1.7%), CSS (0.7%) |
-| 2 | 02loveslollipop/OpenCROW | +403 lines | 10 commits | 1 pushes | Python (100.0%) |
+| 1 | 02loveslollipop/TCGMarketplaceAgent | +8,111 lines | 16 commits | 8 pushes | TypeScript (84.4%), Python (10.7%), JavaScript (3.6%), CSS (1.0%) |
+| 2 | 02loveslollipop/codex-chat-sync | +3,305 lines | 1 commits | 1 pushes | Python (97.6%), Shell (2.4%) |
+| 3 | 02loveslollipop/OpenCROW | +403 lines | 10 commits | 1 pushes | Python (100.0%) |
 -->
 <!-- END_SECTION:weekly_repos -->
 
