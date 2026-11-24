@@ -36,7 +36,7 @@
 Data for search engine crawlers and screen readers:
 | Rank | All-Time Language | Codebase (KB) | Est. Lines | Codebase Share | Currently Coding | Recent Share |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 | Python | 68,793 KB | 2.01M lines | 64.6% | Python (+3,688 lines) | 94.4% |
+| 1 | Python | 68,795 KB | 2.01M lines | 64.6% | Python (+3,688 lines) | 94.4% |
 | 2 | TypeScript | 12,800 KB | 345k lines | 12.0% | TypeScript (+141 lines) | 3.6% |
 | 3 | Java | 10,539 KB | 240k lines | 9.9% | Shell (+76 lines) | 1.9% |
 | 4 | JavaScript | 6,015 KB | 162k lines | 5.6% | - | - |
