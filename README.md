@@ -36,16 +36,9 @@
 Data for search engine crawlers and screen readers:
 | Rank | All-Time Language | Codebase (KB) | Est. Lines | Codebase Share | Currently Coding | Recent Share |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 | Python | 68,795 KB | 2.01M lines | 64.6% | Python (+3,688 lines) | 94.4% |
-| 2 | TypeScript | 12,800 KB | 345k lines | 12.0% | TypeScript (+141 lines) | 3.6% |
-| 3 | Java | 10,539 KB | 240k lines | 9.9% | Shell (+76 lines) | 1.9% |
-| 4 | JavaScript | 6,015 KB | 162k lines | 5.6% | - | - |
-| 5 | Cython | 1,478 KB | 43.3k lines | 1.4% | - | - |
-| 6 | CSS | 1,124 KB | 36.0k lines | 1.1% | - | - |
-| 7 | Dart | 975 KB | 27.7k lines | 0.9% | - | - |
-| 8 | C++ | 862 KB | 23.2k lines | 0.8% | - | - |
-| 9 | LaTeX | 818 KB | 23.9k lines | 0.8% | - | - |
-| 10 | Jupyter Notebook | 706 KB | 15.1k lines | 0.7% | - | - |
+| 1 | - | - | - | - | Python (+3,380 lines) | 94.0% |
+| 2 | - | - | - | - | TypeScript (+141 lines) | 3.9% |
+| 3 | - | - | - | - | Shell (+76 lines) | 2.1% |
 -->
 <!-- END_SECTION:use_to_code -->
 
@@ -64,7 +57,6 @@ Top Contributed Projects Data:
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | 1 | 02loveslollipop/codex-chat-sync | +3,305 lines | 1 commits | 1 pushes | Python (97.6%), Shell (2.4%) |
 | 2 | 02loveslollipop/TCGMarketplaceAgent | +497 lines | 5 commits | 4 pushes | Python (70.5%), TypeScript (29.5%) |
-| 3 | 02loveslollipop/OpenCROW | +403 lines | 10 commits | 1 pushes | Python (100.0%) |
 -->
 <!-- END_SECTION:weekly_repos -->
 
