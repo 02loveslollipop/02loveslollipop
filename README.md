@@ -36,12 +36,12 @@
 Data for search engine crawlers and screen readers:
 | Rank | All-Time Language | Codebase (KB) | Est. Lines | Codebase Share | Currently Coding | Recent Share |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 | Python | 68,799 KB | 2.01M lines | 64.6% | - | - |
-| 2 | TypeScript | 12,801 KB | 345k lines | 12.0% | - | - |
-| 3 | Java | 10,539 KB | 240k lines | 9.9% | - | - |
-| 4 | JavaScript | 6,015 KB | 162k lines | 5.6% | - | - |
+| 1 | Python | 68,799 KB | 2.01M lines | 63.6% | - | - |
+| 2 | TypeScript | 12,801 KB | 345k lines | 11.8% | - | - |
+| 3 | Java | 10,539 KB | 240k lines | 9.7% | - | - |
+| 4 | JavaScript | 7,544 KB | 203k lines | 7.0% | - | - |
 | 5 | Cython | 1,478 KB | 43.3k lines | 1.4% | - | - |
-| 6 | CSS | 1,124 KB | 36.0k lines | 1.1% | - | - |
+| 6 | CSS | 1,190 KB | 38.1k lines | 1.1% | - | - |
 | 7 | Dart | 975 KB | 27.7k lines | 0.9% | - | - |
 | 8 | C++ | 862 KB | 23.2k lines | 0.8% | - | - |
 | 9 | LaTeX | 818 KB | 23.9k lines | 0.8% | - | - |
